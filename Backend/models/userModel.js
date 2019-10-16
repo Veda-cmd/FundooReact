@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const util = require('../services/utilService');
 
 const userSchema = mongoose.Schema({
     firstName: {
@@ -19,8 +20,8 @@ const userSchema = mongoose.Schema({
         required:true
     },
     forgot_token:{
-        type: String,
-        required:false
+        type:String,
+        required:true
     },
     created_at: {
         type: Date,
@@ -37,17 +38,26 @@ const User =  mongoose.model('user',userSchema);
 
 class Usermodel
 {
-    findOne(req,callback){
-        User.findOne({email:req},(err,data)=>
+    findOne(req)
+    {
+        return new Promise((resolve,reject)=>
         {
-            if(err)
-                callback(err);
-            else
-                callback(null,data);
+            // console.log(req.forgot_token);
+            User.findOne(req)
+            .then(data=>
+            {
+                // console.log('Data',data); 
+                resolve(data);
+            })
+            .catch(err=>
+            {
+                console.log(err);
+                reject(err);
+            })
         })
     }
 
-    find(req,callback){
+    findAll(req,callback){
         User.find({},(err,data)=>
         {
             if(err)
@@ -57,50 +67,122 @@ class Usermodel
         })
     }
 
-    hashPassword(req,callback)
-    {
-        bcrypt.hash(req,10,(err,data)=>
+    updateToken(req,callback)
+    {     
+        User.updateOne({email:req.email},{$set:{forgot_token:req.token}})
+        .then(data=>
         {
-            if(err)
-                callback(err);
-            else
-                callback(data);
+            callback(null,data);
         })
+        .catch(err=>
+        {
+            callback(err);
+        })
+       
     }
 
     login(req,callback)
     {   
-        this.findOne(req.email,(err,data)=>
+        this.findOne({email:req.email})
+        .then(data=>
         {
-            // console.log('Err',err,'Data',data); 
-            if(err)
-                callback(err)
-            else
+            bcrypt.compare(req.password,data.password,(err,result)=>
             {
-                bcrypt.compare(req.password,data.password,(err,result)=>
+                if(err)
+                    callback(err);
+                else if(result)
                 {
-                    if(err)
-                        callback(err);
-                    else if(data)
+                    let response = 
                     {
-                        let response = {
-                            id:data._id,
-                            firstName:data.firstName,
-                            email:data.email,
-                            message:'Success'
-                        }
-                        callback(null,response);
-                    }   
+                        id:data._id,
+                        firstName:data.firstName,
+                        email:data.email,
+                        message:'Success'
+                    }
+                    callback(null,response);
+                }   
+                else
+                {
+                    console.log('Login failed');
+                    callback({message:"Wrong password entered"});
+                }
+            });
+        })
+        .catch(err=>
+        {
+            callback(err);
+        })
+    }
+
+    forgot(req)
+    {
+        return new Promise((resolve,reject)=>
+        {
+            this.findOne({email:req.email})
+            .then(data=>
+            {
+                let result={
+                    email:data.email,
+                    firstName:data.firstName,
+                    success:true,
+                    message:"Success"
+                }
+                resolve(result);
+            })
+            .catch(err=>
+            {
+                reject(err);
+            })
+        }) 
+    }
+
+    reset(req)
+    {
+        return new Promise((resolve,reject)=>
+        {   
+            this.findOne({forgot_token:req.token})
+            .then(data=>
+            {    
+                bcrypt.compare(req.old_password,data.password,(err,result)=>
+                {   
+                    if(err)
+                        reject(err)
+                    else if(result)
+                    {
+                        let hash = util.hashPassword(req.new_password);
+                        hash.then(response=>
+                        {
+                            User.updateOne({_id:data._id},{$set:{password:response}})
+                            .then(res=>
+                            {
+                                // console.log(res);
+                                resolve({message:"Password updated"})
+                            })
+                            .catch(err=>
+                            {
+                                reject(err)
+                            })
+                        })
+                        .catch(err=>
+                        {
+                            reject(err)
+                        })    
+                    }
                     else
                     {
-                        console.log('Login failed');
-                        callback({message:"Wrong password entered"});
+                        console.log('Passwords do not match. Please enter correct password');
+                        reject({message:"Password updation failed"})
                     }
+
                 });
-            }
                 
-        })
-        
+            })
+            .catch(err=>
+            {
+                console.log('In error')
+                reject(err);
+            })
+        }) 
     }
 }
 

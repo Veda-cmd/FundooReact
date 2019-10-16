@@ -12,6 +12,38 @@ class Userservice
                 callback(null,data);
         });
     }
+
+    forgot(req)
+    {
+        return new Promise((resolve,reject)=>
+        {
+            userModel.forgot(req)
+            .then(data=>
+            {
+                resolve(data);
+            })
+            .catch(err=>
+            {
+                reject(err);
+            })
+        })
+    }
+
+    reset(req)
+    {
+        return new Promise((resolve,reject)=>
+        {   
+            userModel.reset(req)
+            .then(data=>
+            {
+                resolve(data);
+            })
+            .catch(err=>
+            {
+                reject(err);
+            })
+        })
+    }
 }
 
 module.exports = new Userservice();
