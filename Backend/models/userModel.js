@@ -19,9 +19,13 @@ const userSchema = mongoose.Schema({
         type: String,
         required:true
     },
+    verify_value:{
+        type: Boolean,
+        required:false
+    },
     forgot_token:{
         type:String,
-        required:true
+        required:false
     },
     created_at: {
         type: Date,
@@ -79,6 +83,62 @@ class Usermodel
             callback(err);
         })
        
+    }
+
+    updateFlag(req,callback)
+    {     
+        User.updateOne({email:req.email},{$set:{verify_value:true}})
+        .then(data=>
+        {
+            let message={message:'Updated Boolean value'};
+            callback(null,message);
+        })
+        .catch(err=>
+        {
+            callback(err);
+        })
+       
+    }
+
+    register(req,callback)
+    {
+        this.findOne({email:req.email})
+        .then(data=>
+        {
+            if(data)
+                callback(null,data);
+            else
+            {
+                let hash = util.hashPassword(req.password);
+                hash.then(data=>
+                {
+                    const user = new User({
+                        firstName:req.firstName,
+                        lastName:req.lastName,
+                        email:req.email,
+                        password:data
+                    })
+                    user.save((err,result)=>
+                    {
+                        if(err)
+                            callback(err)
+                        else
+                        {
+                            let response = {
+                                email:result.email,
+                                success:true,
+                            }
+                            callback(null,response)
+                        }
+                            
+                    })
+                })
+            }    
+        })
+        .catch(err=>
+        {
+            callback(err);
+        })    
     }
 
     login(req,callback)

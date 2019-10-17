@@ -18,9 +18,10 @@ const auth = require('../auth/auth');
 *@description The particular method is called depending on the route. 
 */
 
-// router.post('/register', userControl.register);
+router.post('/register', userControl.register);
 router.post('/login', userControl.login);
 router.post('/forgot',userControl.forgot);
 router.post('/reset',auth.checkToken,userControl.reset);
+router.post('/:url',userControl.verifyMail)
 
 module.exports = router;

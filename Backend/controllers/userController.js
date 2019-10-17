@@ -1,21 +1,55 @@
 const userService = require('../services/userService');
-const userModel = require('../models/userModel')
+const userModel = require('../models/userModel');
+const urlService = require('../services/urlService');
 const authentication = require('../auth/auth');
 const mail = require('../services/mailService');
 
 class Usercontroller
 {
 
-    // register(req,res)
-    // {
-    //     req.check('firstName','Length of name should be min 3 characters').isLength({min: 3});
-    //     req.check('lastName','Length of name should be min 3 characters').isLength({min: 3});
-    //     req.check('email','Invalid email').isEmail();
-    //     req.check('password','Invalid password').notEmpty().isLength({ min: 6 });
-    //     const errors = req.validationErrors();
-    //     if(errors)
-    //         return res.status(422).json({ errors: errors });
-    // }
+    async register(req,res)
+    {
+        try 
+        {
+            req.check('firstName','Length of name should be min 3 characters').isLength({min: 3});
+            req.check('lastName','Last Name cannot be empty').notEmpty();
+            req.check('email','Invalid email').isEmail();
+            req.check('password','Invalid password').notEmpty().isLength({ min: 6 });
+            const errors = await req.validationErrors();
+            if(errors)
+                return res.status(422).json({ errors: errors });
+            userService.register(req.body)
+            .then(data=>
+            {   
+                let request =
+                {
+                    email:data.email,
+                    url:'http://localhost:8080/'
+                }
+                urlService.shortenUrl(request,(err,result)=>
+                {
+                    if(err)
+                        res.status(422).send(err)
+                    else
+                    { 
+                        mail.sendLink(result.shortUrl,result.email);
+                        res.status(200).send(result)
+                    }        
+                });
+            })
+            .catch(err=>
+            {
+                res.status(422).send(err);
+            })    
+        } 
+        catch (error) 
+        {
+            let response = {};
+            response.success = false;
+            response.data = error;
+            res.status(404).send(response);
+        }
+    }
 
     async login(req,res)
     {
@@ -120,6 +154,27 @@ class Usercontroller
             {
                 res.status(422).send(err);
             })    
+        } 
+        catch (error) 
+        {
+            let response = {};
+            response.success = false;
+            response.data = error;
+            res.status(404).send(response);
+        }
+    }
+
+    async verifyMail(req,res)
+    {
+        try 
+        {
+            await urlService.verifyUrl(req,(err,data)=>
+            {
+                if(err)
+                    res.status(422).send(err);
+                else
+                    res.status(200).send(data);
+            })
         } 
         catch (error) 
         {

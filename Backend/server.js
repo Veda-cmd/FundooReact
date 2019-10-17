@@ -83,7 +83,7 @@ mongoose.connect(config.url, {
     console.log("Successfully connected to the database");    
 }).catch(err => {
     console.log('Could not connect to the database. Exiting now...', err);
-    process.exit();
+    process.exit(1);
 });
 
 // define a simple route

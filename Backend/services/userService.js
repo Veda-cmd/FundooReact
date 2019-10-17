@@ -2,6 +2,20 @@ const userModel = require('../models/userModel');
 
 class Userservice
 { 
+    register(req)
+    {
+        return new Promise((resolve,reject)=>
+        {
+            userModel.register(req,(err,result)=>
+            {
+                if(err)
+                    reject(err)
+                else
+                    resolve(result)
+            })
+        })
+    }
+
     login(req,callback)
     {   
         userModel.login(req,(err,data)=>

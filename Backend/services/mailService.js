@@ -14,8 +14,8 @@ sendLink = (url,req) =>
     let mailOptions = {
         from: process.env.email_id,
         to: req,
-        subject: 'Forget password link',
-        text: 'Click on the following link to reset.\n'+url
+        subject: 'Verification link',
+        text: 'Click on the following link to verify.\n'+url
     };
 
     transporter.sendMail(mailOptions, function(error, info){
