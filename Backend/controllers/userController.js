@@ -28,11 +28,12 @@ class Usercontroller
                 }
                 urlService.shortenUrl(request,(err,result)=>
                 {
+                    
                     if(err)
                         res.status(422).send(err)
                     else
                     { 
-                        mail.sendLink(result.shortUrl,result.email);
+                        // mail.sendVerifyLink(result.shortUrl,result.email);
                         res.status(200).send(result)
                     }        
                 });
@@ -55,15 +56,12 @@ class Usercontroller
     {
         try 
         {   
-            req.checkBody('email','Invalid email').isEmail();
+            req.checkBody('email','Invalid email').notEmpty().isEmail();
             req.checkBody('password','Invalid password').notEmpty().isLength({ min: 6 });
             const errors = await req.validationErrors();
 
             if(errors)
-            {
-                console.log('Errors');
                 return res.status(422).json({ errors: errors });
-            }
              
             userService.login(req.body,(err,data)=>
             {
@@ -106,11 +104,11 @@ class Usercontroller
                 {
                     // console.log('Err',err,'Result',result)
                     if(err)
-                        res.status(200).send(err);
+                        res.status(422).send(err);
                     else
                     {
                         let url = 'http://localhost:8080/#!/reset/'+token;
-                        mail.sendLink(url,data.email);
+                        mail.sendForgotLink(url,data.email);
                         res.status(200).send(data);
                     }
                 });               
@@ -168,7 +166,7 @@ class Usercontroller
     {
         try 
         {
-            await urlService.verifyUrl(req,(err,data)=>
+            urlService.verifyUrl(req,(err,data)=>
             {
                 if(err)
                     res.status(422).send(err);

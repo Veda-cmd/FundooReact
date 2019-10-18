@@ -19,7 +19,7 @@ class urlService
                     if(err)
                         callback(err)
                     else if (result)
-                    {
+                    {   
                         let response =
                         {   
                             shortUrl:result.shortUrl,
@@ -49,15 +49,10 @@ class urlService
                                 callback(err)
                             }   
                             else
-                            {
-                                console.log('Result');
-                                callback(null,res)
-                            }
-                                
+                                callback(null,res)                                
                         });
                     }
-                });
-                
+                });    
             } 
             catch (err) {
                 console.error(err);

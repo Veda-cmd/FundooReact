@@ -23,7 +23,7 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         required:false
     },
-    forgot_token:{
+    forgot_token:{ 
         type:String,
         required:false
     },
@@ -90,7 +90,7 @@ class Usermodel
         User.updateOne({email:req.email},{$set:{verify_value:true}})
         .then(data=>
         {
-            let message={message:'Updated Boolean value'};
+            let message={message:'Updated flag value'};
             callback(null,message);
         })
         .catch(err=>
@@ -106,7 +106,7 @@ class Usermodel
         .then(data=>
         {
             if(data)
-                callback(null,data);
+                callback({message:"Email already registered"});
             else
             {
                 let hash = util.hashPassword(req.password);
@@ -145,28 +145,35 @@ class Usermodel
     {   
         this.findOne({email:req.email})
         .then(data=>
-        {
-            bcrypt.compare(req.password,data.password,(err,result)=>
+        {    
+            if(data.verify_value)
             {
-                if(err)
-                    callback(err);
-                else if(result)
+                bcrypt.compare(req.password,data.password,(err,result)=>
                 {
-                    let response = 
+                    if(err)
+                        callback(err);
+                    else if(result)
                     {
-                        id:data._id,
-                        firstName:data.firstName,
-                        email:data.email,
-                        message:'Success'
+                        let response = 
+                        {
+                            id:data._id,
+                            firstName:data.firstName,
+                            email:data.email,
+                            message:'Success'
+                        }
+                        callback(null,response);
+                    }   
+                    else
+                    {
+                        console.log('Login failed');
+                        callback({message:"Wrong password entered"});
                     }
-                    callback(null,response);
-                }   
-                else
-                {
-                    console.log('Login failed');
-                    callback({message:"Wrong password entered"});
-                }
-            });
+                });
+            }
+            else
+            {
+                callback({message:'User account is not verified yet.Please check mail for verification link'})
+            }
         })
         .catch(err=>
         {
@@ -246,4 +253,4 @@ class Usermodel
     }
 }
 
-module.exports = new Usermodel();
+module.exports = new Usermodel(),User;

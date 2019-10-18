@@ -77,10 +77,10 @@ mongoose.Promise = global.Promise;
 
 // Connecting to the database
 
-mongoose.connect(config.url, {
+mongoose.connect('mongodb://localhost:27017/fundoo-app', {
     useNewUrlParser: true
 }).then(() => {
-    console.log("Successfully connected to the database");    
+    // console.log("Successfully connected to the database");    
 }).catch(err => {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit(1);
@@ -97,3 +97,4 @@ app.listen(config.port, () => {
     console.log("Server is listening on port 8080");
 });
 
+module.exports=app;
