@@ -1,5 +1,20 @@
+/**
+* @description: 
+* @file: mailService.js
+* @author: Vedant Nare
+* @version: 1.0
+*/
+
+/**
+*@description Dependencies are installed for execution. 
+*/
+
 require('dotenv').config();
 const nodemailer = require('nodemailer');
+
+/**
+*@description Nodemailer is used for sending mail. 
+*/
 
 sendForgotLink = (url,req) =>
 {   

@@ -1,4 +1,19 @@
+/**
+* @description: 
+* @file: utilService.js
+* @author: Vedant Nare
+* @version: 1.0
+*/
+
+/**
+*@description Dependencies are installed for execution. 
+*/
+
 const bcrypt = require('bcrypt');
+
+/**
+*@description hashPassword is used for encrypting password using SHA-256 algorithm.
+*/
 
 hashPassword = (req) =>
 {

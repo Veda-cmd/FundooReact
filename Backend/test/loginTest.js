@@ -1,3 +1,14 @@
+/**
+* @description: 
+* @file: loginTest.js
+* @author: Vedant Nare
+* @version: 1.0
+*/
+
+/**
+*@description Dependencies are installed for execution. 
+*/
+
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('../server');

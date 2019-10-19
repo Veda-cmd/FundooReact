@@ -94,7 +94,7 @@ app.get('/', (req, res) => {
 
 // listen for requests
 app.listen(config.port, () => {
-    console.log("Server is listening on port 8080");
+    console.log("Server is listening on port 5000");
 });
 
 module.exports=app;

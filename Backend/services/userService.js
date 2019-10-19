@@ -1,3 +1,14 @@
+/**
+* @description: 
+* @file: userService.js
+* @author: Vedant Nare
+* @version: 1.0
+*/
+
+/**
+*@description Dependencies are installed for execution. 
+*/
+
 const userModel = require('../models/userModel');
 
 class Userservice

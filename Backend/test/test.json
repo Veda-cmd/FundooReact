@@ -39,7 +39,7 @@
         "lastName": "Travis",
         "email": "scott12@gmail.com",
         "password": "scott12"
-    }, 
+    },
     "loginSuccess": {
         "email": "vedant.nare04@gmail.com",
         "password": "vedant"
@@ -66,10 +66,26 @@
     "forgotSuccess": {
         "email": "vedant.nare04@gmail.com"
     },
-    "forgotIncomplete": {
-    },
+    "forgotIncomplete": {},
     "forgotEmail": {
         "email": "vedant.nare04"
     },
-    "reset": {}
+    "resetSuccess": {
+        "old_password": "vedant",
+        "new_password": "vedant123"
+    },
+    "resetIncomplete":{
+        "old_password":"vedant"
+    },
+    "resetWithoutToken":{
+        "old_password":"vedant",
+        "new_password": "vedant123"
+    },
+    "resetWithToken":{
+        "headers":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWF0IjoxNTcxNDY3NjQ1LCJleHAiOjE1NzE0NzEyNDV9.vUn44ht1kqMVAQOlQB4o8M1F_PZ0BkvAG3_1Tb30t9c"
+    },
+    "resetPassword":{
+        "old_password":"ved",
+        "new_password": "vedant12"
+    }
 }

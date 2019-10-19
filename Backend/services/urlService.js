@@ -1,3 +1,14 @@
+/**
+* @description: 
+* @file: urlService.js
+* @author: Vedant Nare
+* @version: 1.0
+*/
+
+/**
+*@description Dependencies are installed for execution. 
+*/
+
 const validUrl = require('valid-url');
 const shortid = require('shortid');
 const auth = require('../auth/auth');
@@ -6,6 +17,10 @@ const userModel = require('../models/userModel');
 
 class urlService
 {
+    /**
+    *@description Url is shortened using shortid and stored in Url database. 
+    */
+
     shortenUrl(req, callback)
     {
         const baseUrl = req.url;
@@ -64,6 +79,10 @@ class urlService
             callback('Invalid base url');
         }
     }
+
+    /**
+    *@description Url is verified and flag is set to true for the particular user in User database. 
+    */
 
     verifyUrl(req,callback)
     {   

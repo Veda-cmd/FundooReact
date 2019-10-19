@@ -1,3 +1,14 @@
+/**
+* @description: 
+* @file: urlModel.js
+* @author: Vedant Nare
+* @version: 1.0
+*/ 
+
+/**
+*@description Dependencies are installed for execution. 
+*/
+
 const mongoose = require('mongoose');
 
 const urlSchema = new mongoose.Schema({
@@ -7,8 +18,12 @@ const urlSchema = new mongoose.Schema({
     shortUrl: String,
     date: { type: String, 
         default: Date.now }
-  });
-  
-  const Url = mongoose.model('url', urlSchema);
+});
 
-  module.exports = Url;
+/**
+*@description Schema is defined for storing object in database. 
+*/
+
+const Url = mongoose.model('url', urlSchema);
+
+module.exports = Url;
