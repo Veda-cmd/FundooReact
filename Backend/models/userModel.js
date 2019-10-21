@@ -30,11 +30,23 @@ const userSchema = mongoose.Schema({
         type: String,
         required:true
     },
-    verify_value:{
+    isVerified:{
         type: Boolean,
         required:false
     },
     forgot_token:{ 
+        type:String,
+        required:false
+    },
+    longUrl:{ 
+        type:String,
+        required:false
+    },
+    shortUrl:{ 
+        type:String,
+        required:false
+    },
+    urlCode:{ 
         type:String,
         required:false
     },
@@ -77,7 +89,7 @@ class Usermodel
             User.findOne(req)
             .then(data=>
             {
-                // console.log('Data',data); 
+                // console.log(data); 
                 resolve(data);
             })
             .catch(err=>
@@ -98,11 +110,14 @@ class Usermodel
         })
     }
 
-    updateToken(req,callback)
-    {     
-        User.updateOne({email:req.email},{$set:{forgot_token:req.token}})
+    update(req,res,callback)
+    {   
+        // console.log(req,res);
+          
+        User.updateOne(req,res)
         .then(data=>
         {
+            // console.log(data);
             callback(null,data);
         })
         .catch(err=>
@@ -112,172 +127,60 @@ class Usermodel
        
     }
 
-    updateFlag(req,callback)
-    {     
-        User.updateOne({email:req.email},{$set:{verify_value:true}})
-        .then(data=>
-        {
-            let message={message:'Updated flag value'};
-            callback(null,message);
-        })
-        .catch(err=>
-        {
-            callback(err);
-        })
-       
-    }
-
     register(req,callback)
-    {
-        this.findOne({email:req.email})
-        .then(data=>
+    {       
+        const user = new User({
+            firstName:req.firstName,
+            lastName:req.lastName,
+            email:req.email,
+            password:req.password
+        });
+        user.save((err,result)=>
         {
-            if(data)
-                callback({message:"Email already registered"});
+            if(err)
+                callback(err)
             else
             {
-                let hash = util.hashPassword(req.password);
-                hash.then(data=>
-                {
-                    const user = new User({
-                        firstName:req.firstName,
-                        lastName:req.lastName,
-                        email:req.email,
-                        password:data
-                    })
-                    user.save((err,result)=>
-                    {
-                        if(err)
-                            callback(err)
-                        else
-                        {
-                            let response = {
-                                email:result.email,
-                                success:true,
-                            }
-                            callback(null,response)
-                        }
-                            
-                    })
-                })
-            }    
-        })
-        .catch(err=>
-        {
-            callback(err);
-        })    
+                let response = {
+                    email:result.email,
+                    success:true,
+                }
+                callback(null,response)
+            }
+                
+        }); 
     }
 
     login(req,callback)
-    {   
-        this.findOne({email:req.email})
-        .then(data=>
-        {    
-            if(data.verify_value)
-            {
-                bcrypt.compare(req.password,data.password,(err,result)=>
-                {
-                    if(err)
-                        callback(err);
-                    else if(result)
-                    {
-                        let response = 
-                        {
-                            id:data._id,
-                            firstName:data.firstName,
-                            email:data.email,
-                            message:'Success'
-                        }
-                        callback(null,response);
-                    }   
-                    else
-                    {
-                        console.log('Login failed');
-                        callback({message:"Wrong password entered"});
-                    }
-                });
-            }
-            else
-            {
-                callback({message:'User account is not verified yet.Please check mail for verification link'})
-            }
-        })
-        .catch(err=>
+    {          
+        let response = 
         {
-            callback(err);
-        })
-    }
-
-    forgot(req)
-    {
-        return new Promise((resolve,reject)=>
-        {
-            this.findOne({email:req.email})
-            .then(data=>
-            {
-                let result={
-                    email:data.email,
-                    firstName:data.firstName,
-                    success:true,
-                    message:"Success"
-                }
-                resolve(result);
-            })
-            .catch(err=>
-            {
-                reject(err);
-            })
-        }) 
+            id:req._id,
+            firstName:req.firstName,
+            email:req.email,
+            message:'Success'
+        }
+        callback(null,response);
+               
     }
 
     reset(req)
     {
         return new Promise((resolve,reject)=>
         {   
-            this.findOne({forgot_token:req.token})
-            .then(data=>
-            {    
-                bcrypt.compare(req.old_password,data.password,(err,result)=>
-                {   
-                    if(err)
-                        reject(err)
-                    else if(result)
-                    {
-                        let hash = util.hashPassword(req.new_password);
-                        hash.then(response=>
-                        {
-                            User.updateOne({_id:data._id},{$set:{password:response}})
-                            .then(res=>
-                            {
-                                // console.log(res);
-                                resolve({message:"Password updated"})
-                            })
-                            .catch(err=>
-                            {
-                                reject(err)
-                            })
-                        })
-                        .catch(err=>
-                        {
-                            reject(err)
-                        })    
-                    }
-                    else
-                    {
-                        console.log('Passwords do not match. Please enter correct password');
-                        reject({message:"Password updation failed"})
-                    }
-
-                });
-                
+            User.updateOne({_id:req._id},{password:req.password})
+            .then(res=>
+            {
+                // console.log(res);
+                resolve({message:"Password updated"})
             })
             .catch(err=>
             {
-                console.log('In error')
-                reject(err);
+                reject(err)
             })
         }) 
     }
 }
 
-module.exports = new Usermodel(),User;
+
+module.exports = new Usermodel();

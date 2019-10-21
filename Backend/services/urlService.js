@@ -12,7 +12,6 @@
 const validUrl = require('valid-url');
 const shortid = require('shortid');
 const auth = require('../auth/auth');
-const Url = require('../models/urlModel');
 const userModel = require('../models/userModel');
 
 class urlService
@@ -29,78 +28,73 @@ class urlService
         {
             try 
             {
-                Url.findOne({email:req.email},(err,result)=>
+                userModel.findOne({email:req.email})
+                .then(data=>
                 {
-                    if(err)
-                        callback(err)
-                    else if (result)
-                    {   
-                        let response =
-                        {   
-                            shortUrl:result.shortUrl,
-                            email:result.email,
-                            message:"User not verified yet"
-                        }
-                        callback(null,response);
-                    }    
-                    else 
+                    // console.log('data',data);
+                    let token = auth.generateToken({email:req.email});
+                    const longUrl = baseUrl + token;
+                    const shortUrl = baseUrl + urlCode;
+                    userModel.update({_id:data._id},{longUrl:longUrl,shortUrl:shortUrl,urlCode:urlCode},(err,res)=>
                     {
-                        let token = auth.generateToken({email:req.email});
-                        const longUrl = baseUrl + token;
-                        const shortUrl = baseUrl + urlCode;
-                        const newUrl = new Url({
-                            email:req.email,
-                            longUrl:longUrl,
-                            shortUrl:shortUrl,
-                            urlCode:urlCode,
-                            date: new Date()
-                        });
-                
-                        newUrl.save((err,res)=>
+                        if(err)
+                            callback(err);
+                        else
                         {
-                            if(err)
-                            {
-                                console.log('Error',err);
-                                callback(err)
-                            }   
-                            else
-                                callback(null,res)                                
-                        });
-                    }
-                });    
+                            let response = {
+                                success:true,
+                                shortUrl:shortUrl,
+                                email: data.email,
+                                message:'User registered in database'
+                            };
+                            callback(null,response);
+                        }
+                    })
+                    
+                })
+                .catch(err=>
+                {
+                    callback(err)    
+                })  
             } 
             catch (err) {
+                let res ={
+                success:false,
+                message:"Server error"};
                 console.error(err);
-                callback('Server error');
+                callback(res);
             }
         } 
         else 
         {
-            callback('Invalid base url');
+            callback({message:'Invalid base url'});
         }
     }
 
     /**
-    *@description Url is verified and flag is set to true for the particular user in User database. 
+    *@description User is verified and flag is set to true for the particular user in User database. 
     */
 
     verifyUrl(req,callback)
     {   
-        Url.findOne({urlCode:req.params.url},(err,data)=>
+        userModel.findOne({urlCode:req.params.url})
+        .then(data=>
         {
-            if(err)
-                callback(err)
-            else
+            userModel.update({email:data.email},{isVerified:true},(error,result)=>
             {
-                userModel.updateFlag(data,(error,result)=>
+                if(error)
+                    callback(error);
+                else
                 {
-                    if(error)
-                        callback(error);
-                    else
-                        callback(null,result);
-                });
-            }
-        });
+                    let res={message:'Updated Flag Value'}
+                    callback(null,res);
+                }        
+            });
+        })
+        .catch(err=>
+        {
+            callback(err)
+        })
 
     }
 }

@@ -57,7 +57,6 @@ sendVerifyLink = (url,req) =>
         subject: 'Verification link',
         text: 'Click on the following link to verify Fundoo account.\n'+url
     };
-    console.log(process.env.email_id);
 
     transporter.sendMail(mailOptions, function(error, info){
         if (error)

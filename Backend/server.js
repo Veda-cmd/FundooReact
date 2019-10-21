@@ -14,12 +14,9 @@ const express = require('express');
 const expressValidator = require('express-validator');
 // create express app
 const app = express();
-// const server = require('http').createServer(app);
-// var io = require('socket.io').listen(server);
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// const controller = require('./controllers/chatController');
-const route = require('./routes/routes')
+const route = require('./routes/routes');
 
 //enables CORS
 app.use(cors({
@@ -38,36 +35,6 @@ app.use(bodyParser.json())
 app.use(expressValidator())
 // app.use(express.static('../client'))
 
-// Connecting to the socket
-
-// io.on('connection', function(client) 
-// {
-//     console.log("User connected");
-
-//     // client.on('room', function(data) {
-//     //     console.log(data)
-//     //     client.join(data.roomId);
-//     //     console.log(' Client joined the room and client id is '+ client.id);
-//     // });
-
-//     client.on('send',(message)=>
-//     {
-//         controller.sendMessage(message,(err,data)=>
-//         {        
-//             if(err) 
-//                 return err;   
-//             else     
-//                 return data;
-//         })
-//         // console.log(message);
-            
-//         io.emit(message.receiver_id,message);
-//     })
-//     io.on('disconnect', (client) => {
-//         console.log("socket disconnected");
-//     })
-// })
-
 app.use('/',route)
 
 const config = require('./config/config');
@@ -77,7 +44,7 @@ mongoose.Promise = global.Promise;
 
 // Connecting to the database
 
-mongoose.connect('mongodb://localhost:27017/fundoo-app', {
+mongoose.connect(config.url, {
     useNewUrlParser: true
 }).then(() => {
     // console.log("Successfully connected to the database");    

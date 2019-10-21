@@ -10,6 +10,7 @@
 */
 
 const userModel = require('../models/userModel');
+const util = require('./utilService');
 
 class Userservice
 { 
@@ -17,40 +18,112 @@ class Userservice
     {
         return new Promise((resolve,reject)=>
         {
-            userModel.register(req,(err,result)=>
+            userModel.findOne({email:req.email})
+            .then(data=>
             {
-                if(err)
-                    reject(err)
+                // console.log(data);
+                
+                if(data)
+                    reject({message:"Email already registered"});
                 else
-                    resolve(result)
+                {
+                    let hash = util.hashPassword(req.password)
+                    hash
+                    .then(data=>
+                    {
+                        let request = {
+                            firstName:req.firstName,
+                            lastName:req.lastName,
+                            email:req.email,
+                            password:data
+                        }
+                        userModel.register(request,(err,result)=>
+                        {
+                            if(err)
+                                reject(err);
+                            else
+                                resolve(result);
+                        }) 
+                    })
+                    .catch(err=>
+                    {
+                        reject(err);
+                    })    
+                }
+            })
+            .catch(err=>
+            {
+                console.log('Err',err);
+                reject(err);
             })
         })
     }
 
     login(req,callback)
     {   
-        userModel.login(req,(err,data)=>
+        userModel.findOne({email:req.email})
+        .then(data=>
         {
-            if(err)
-                callback(err)          
+            // console.log(data);
+            // console.log('data',data.verify_value);
+            
+            if(data.isVerified)
+            {
+                util.comparePassword(req.password,data.password,(err,result)=>
+                {
+                    if(err)
+                        callback(err)
+                    else if(result)
+                    {
+                        userModel.login(data,(err,res)=>
+                        {
+                            if(err)
+                                callback(err)          
+                            else
+                                callback(null,res);
+                        });
+                    }
+                    else
+                    {
+                        console.log('Login failed');
+                        callback({message:"Wrong password entered"});
+                    }
+                })
+            }
             else
-                callback(null,data);
-        });
+            {
+                callback({message:'User is not verified yet.Please check mail'})
+            }
+            
+        })
+        .catch(err=>
+        {
+            console.log(err);
+            callback({message:'User not found'})
+        })
+        
     }
 
     forgot(req)
     {
         return new Promise((resolve,reject)=>
         {
-            userModel.forgot(req)
+            userModel.findOne({email:req.email})
             .then(data=>
-            {
-                resolve(data);
+            { 
+                let result={
+                email:data.email,
+                firstName:data.firstName,
+                success:true,
+                message:"Success"
+                }
+                resolve(result);
             })
             .catch(err=>
             {
-                reject(err);
+                reject(err)
             })
+           
         })
     }
 
@@ -58,6 +131,49 @@ class Userservice
     {
         return new Promise((resolve,reject)=>
         {   
+            userModel.findOne({forgot_token:req.token})
+            .then(data=>
+            {
+                // console.log(data);
+                
+                util.comparePassword(req.old_password,data.password,(err,result)=>
+                {
+                    if(err)
+                        reject(err)
+                    else if(result)
+                    {
+                        let hash = util.hashPassword(req.new_password);
+                        hash.then(res=>
+                        {
+                            let request = {
+                                _id:data._id,
+                                password:res
+                            }
+                            userModel.reset(request)
+                            .then(response=>
+                            {
+                                resolve(response)
+                            })
+                            .catch(err=>
+                            {
+                                reject(err)
+                            })
+                        })
+                        .catch(err=>
+                        {
+                            reject(err)
+                        })
+                    }
+                    else
+                    {
+                        reject({message:'Wrong password entered'});
+                    }
+                })
+            })
+            .catch(err=>
+            {
+
+            })
             userModel.reset(req)
             .then(data=>
             {

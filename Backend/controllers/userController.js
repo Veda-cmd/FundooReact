@@ -43,10 +43,10 @@ class Usercontroller
                 let request =
                 {
                     email:data.email,
-                    url:'http://localhost:8080/'
+                    url:'http://localhost:5000/'
                 }
                 urlService.shortenUrl(request,(err,result)=>
-                {
+                {   
                     
                     if(err)
                         res.status(422).send(err)
@@ -55,6 +55,8 @@ class Usercontroller
                         /**
                         * @description Verification email is sent using short url. 
                         */
+                    //    console.log(result);
+                       
                         mail.sendVerifyLink(result.shortUrl,result.email);
                         res.status(200).send(result)
                     }        
@@ -139,18 +141,14 @@ class Usercontroller
                 let token = authentication.generateToken(payload);
                 // console.log(token);
                 
-                let object = {
-                    email:data.email,
-                    token: token
-                }
-                userModel.updateToken(object,(err,result)=>
+                userModel.update({email:data.email},{forgot_token:token},(err,result)=>
                 {
                     // console.log('Err',err,'Result',result)
                     if(err)
                         res.status(422).send(err);
                     else
                     {
-                        let url = 'http://localhost:8080/#!/reset/'+token;
+                        let url = 'http://localhost:5000/#!/reset/'+token;
                         // console.log(url);
                         mail.sendForgotLink(url,data.email);
                         res.status(200).send(data);
