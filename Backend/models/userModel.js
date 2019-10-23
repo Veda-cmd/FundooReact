@@ -10,8 +10,7 @@
 */
 
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const util = require('../services/utilService');
+const logger = require('../services/logService');
 
 const userSchema = mongoose.Schema({
     firstName: {
@@ -85,16 +84,15 @@ class Usermodel
     {
         return new Promise((resolve,reject)=>
         {
-            // console.log(req.forgot_token);
             User.findOne(req)
             .then(data=>
             {
-                // console.log(data); 
+                // logger.info(data); 
                 resolve(data);
             })
             .catch(err=>
             {
-                console.log(err);
+                logger.error(err);
                 reject(err);
             })
         })
@@ -112,12 +110,12 @@ class Usermodel
 
     update(req,res,callback)
     {   
-        // console.log(req,res);
+        // logger.info(req,res);
           
         User.updateOne(req,res)
         .then(data=>
         {
-            // console.log(data);
+            // logger.info(data);
             callback(null,data);
         })
         .catch(err=>
@@ -171,7 +169,7 @@ class Usermodel
             User.updateOne({_id:req._id},{password:req.password})
             .then(res=>
             {
-                // console.log(res);
+                // logger.info(res);
                 resolve({message:"Password updated"})
             })
             .catch(err=>

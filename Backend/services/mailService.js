@@ -11,6 +11,7 @@
 
 require('dotenv').config();
 const nodemailer = require('nodemailer');
+const logger = require('./logService');
 
 /**
 *@description Nodemailer is used for sending mail. 
@@ -30,14 +31,14 @@ sendForgotLink = (url,req) =>
         from: process.env.email_id,
         to: req,
         subject: 'Reset Password Link',
-        text: 'Click on the following link to reset Fundoo password:.\n'+url
+        text: 'Click on the following link to reset Fundoo password.Link will be active for 12 hours.\n'+url
     };
 
     transporter.sendMail(mailOptions, function(error, info){
         if (error)
-            console.log(error);
+            logger.info(error);
         else
-            console.log('Email sent: ' + info.response);
+            logger.info('Email sent: ' + info.response);
     });
 }
 
@@ -60,9 +61,10 @@ sendVerifyLink = (url,req) =>
 
     transporter.sendMail(mailOptions, function(error, info){
         if (error)
-            console.log(error);
+            logger.error(error);
         else
-            console.log('Email sent: ' + info.response);
+            logger.info('Email sent: ' + info.response);
     });
 }
+
 module.exports = {sendForgotLink,sendVerifyLink};

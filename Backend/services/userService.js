@@ -11,6 +11,7 @@
 
 const userModel = require('../models/userModel');
 const util = require('./utilService');
+const logger = require('./logService');
 
 class Userservice
 { 
@@ -21,7 +22,7 @@ class Userservice
             userModel.findOne({email:req.email})
             .then(data=>
             {
-                // console.log(data);
+                // logger.info(data);
                 
                 if(data)
                     reject({message:"Email already registered"});
@@ -53,7 +54,7 @@ class Userservice
             })
             .catch(err=>
             {
-                console.log('Err',err);
+                logger.error('Err',err);
                 reject(err);
             })
         })
@@ -64,8 +65,8 @@ class Userservice
         userModel.findOne({email:req.email})
         .then(data=>
         {
-            // console.log(data);
-            // console.log('data',data.verify_value);
+            // logger.info(data);
+            // logger.info('data',data.verify_value);
             
             if(data.isVerified)
             {
@@ -85,7 +86,7 @@ class Userservice
                     }
                     else
                     {
-                        console.log('Login failed');
+                        logger.error('Login failed');
                         callback({message:"Wrong password entered"});
                     }
                 })
@@ -111,13 +112,22 @@ class Userservice
             userModel.findOne({email:req.email})
             .then(data=>
             { 
-                let result={
-                email:data.email,
-                firstName:data.firstName,
-                success:true,
-                message:"Success"
+                if(data.isVerified == true)
+                {
+                    let result={
+                        id:data._id,
+                        email:data.email,
+                        firstName:data.firstName,
+                        success:true,
+                        message:"Success"
+                    }
+                    resolve(result);
                 }
-                resolve(result);
+                else
+                {
+                  reject({message:'User is not verified yet'});
+                }
+                
             })
             .catch(err=>
             {
@@ -134,7 +144,7 @@ class Userservice
             userModel.findOne({forgot_token:req.token})
             .then(data=>
             {
-                // console.log(data);
+                // logger.error(data);
                 
                 util.comparePassword(req.old_password,data.password,(err,result)=>
                 {
@@ -169,15 +179,6 @@ class Userservice
                         reject({message:'Wrong password entered'});
                     }
                 })
-            })
-            .catch(err=>
-            {
-
-            })
-            userModel.reset(req)
-            .then(data=>
-            {
-                resolve(data);
             })
             .catch(err=>
             {

@@ -17,14 +17,11 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const route = require('./routes/routes');
+const logger = require('./services/logService');
 
 //enables CORS
 app.use(cors({
-    'allowedHeaders': ['sessionId', 'Content-Type'],
-    'exposedHeaders': ['sessionId'],
-    'origin': '*',
-    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    'preflightContinue': false
+    'origin': '*'
   }));
 
 // parse requests of content-type - application/x-www-form-urlencoded
@@ -47,9 +44,9 @@ mongoose.Promise = global.Promise;
 mongoose.connect(config.url, {
     useNewUrlParser: true
 }).then(() => {
-    // console.log("Successfully connected to the database");    
+    logger.info('Successfully connected to the database'); 
 }).catch(err => {
-    console.log('Could not connect to the database. Exiting now...', err);
+    logger.warn('Could not connect to the database. Exiting now...', err);
     process.exit(1);
 });
 
@@ -61,7 +58,7 @@ app.get('/', (req, res) => {
 
 // listen for requests
 app.listen(config.port, () => {
-    console.log("Server is listening on port 5000");
+    logger.info("Server is listening on port 5000");
 });
 
 module.exports=app;

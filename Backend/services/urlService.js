@@ -13,11 +13,13 @@ const validUrl = require('valid-url');
 const shortid = require('shortid');
 const auth = require('../auth/auth');
 const userModel = require('../models/userModel');
+const cache = require('./cacheService');
+const logger = require('./logService');
 
 class urlService
 {
     /**
-    *@description Url is shortened using shortid and stored in Url database. 
+    *@description Url is shortened using shortid and stored in User database. 
     */
 
     shortenUrl(req, callback)
@@ -31,14 +33,27 @@ class urlService
                 userModel.findOne({email:req.email})
                 .then(data=>
                 {
-                    // console.log('data',data);
-                    let token = auth.generateToken({email:req.email});
+                    // logger.info('data',data);
+                    let id = data._id+'verify';
+                    // logger.info(id);
+                    let token = auth.generateToken({email:req.email,id:data._id});
+                    cache.set(id,token,(fail,response)=>
+                    {
+                        if(fail)
+                        {
+                            logger.error(fail);
+                        }
+                        else
+                        {
+                            logger.info(response);
+                        }
+                    });
                     const longUrl = baseUrl + token;
                     const shortUrl = baseUrl + urlCode;
-                    userModel.update({_id:data._id},{longUrl:longUrl,shortUrl:shortUrl,urlCode:urlCode},(err,res)=>
+                    userModel.update({_id:data._id},{longUrl:longUrl,shortUrl:shortUrl,urlCode:urlCode},(error,res)=>
                     {
-                        if(err)
-                            callback(err);
+                        if(error)
+                            callback(error);
                         else
                         {
                             let response = {
@@ -49,19 +64,22 @@ class urlService
                             };
                             callback(null,response);
                         }
-                    })
-                    
+                    });    
                 })
                 .catch(err=>
                 {
                     callback(err)    
                 })  
             } 
-            catch (err) {
-                let res ={
-                success:false,
-                message:"Server error"};
-                console.error(err);
+            catch (error) 
+            {
+                let res =
+                {
+                    success:false,
+                    message:"Server error",
+                    error:error 
+                };
+                logger.error(error);
                 callback(res);
             }
         } 

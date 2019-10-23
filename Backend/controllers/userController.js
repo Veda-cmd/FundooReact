@@ -14,6 +14,8 @@ const userModel = require('../models/userModel');
 const urlService = require('../services/urlService');
 const authentication = require('../auth/auth');
 const mail = require('../services/mailService');
+const cache = require('../services/cacheService');
+const logger = require('../services/logService');
 
 class Usercontroller
 {
@@ -137,19 +139,30 @@ class Usercontroller
                 * @description Token is generated and stored in a variable.
                 */
 
-                let payload = {email:data.email};
-                let token = authentication.generateToken(payload);
-                // console.log(token);
-                
+                let id = data.id+'forgot';
+                let payload = {email:data.email,id:data.id};
+                let token = authentication.generateToken(payload); 
+
+                cache.set(id,token,(error,response)=>
+                {
+                    if(error)
+                    {
+                        logger.error(error);
+                    }
+                    else
+                    {
+                        logger.info(response);
+                    }
+                });
+
                 userModel.update({email:data.email},{forgot_token:token},(err,result)=>
                 {
-                    // console.log('Err',err,'Result',result)
+                    // logger.info('Err',err,'Result',result)
                     if(err)
                         res.status(422).send(err);
                     else
                     {
                         let url = 'http://localhost:5000/#!/reset/'+token;
-                        // console.log(url);
                         mail.sendForgotLink(url,data.email);
                         res.status(200).send(data);
                     }
@@ -200,7 +213,7 @@ class Usercontroller
             })
             .catch(err=>
             {
-                console.log(err); 
+                logger.error(err); 
                 res.status(422).send(err);
             })    
         } 
