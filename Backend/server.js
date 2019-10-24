@@ -9,7 +9,6 @@
 *@description Dependencies are installed for execution. 
 */
 
-// require('events').EventEmitter.defaultMaxListeners = 0;
 const express = require('express');
 const expressValidator = require('express-validator');
 // create express app

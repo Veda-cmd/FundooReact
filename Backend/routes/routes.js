@@ -13,6 +13,7 @@ const express = require('express');
 const router = express.Router();
 const userControl = require('../controllers/userController');
 const auth = require('../auth/auth');
+const {profileImage} = require('../services/s3Service');
 
 /**
 *@description The particular method is called depending on the route. 
@@ -22,6 +23,7 @@ router.post('/register', userControl.register);
 router.post('/login', userControl.login);
 router.post('/forgot',userControl.forgot);
 router.post('/reset',auth.checkToken,userControl.reset);
-router.post('/:url',auth.checkToken,userControl.verifyMail)
+router.post('/:url',auth.checkToken,userControl.verifyMail);
+router.post('/api/upload',profileImage.single('element1'),userControl.upload);
 
 module.exports = router;

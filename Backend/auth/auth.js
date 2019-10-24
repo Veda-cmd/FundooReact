@@ -26,8 +26,7 @@ generateToken = (payload) =>
 
 checkToken = (req,res,next) =>
 {   
-    logger.info('Req',req.originalUrl)
-    // console.log('Req',req.originalUrl);
+    logger.info(`In auth Req --> ${req.originalUrl}`);
     if(req.originalUrl == '/reset')
     {
         var bearerHeader = req.headers.token;
@@ -65,8 +64,8 @@ checkToken = (req,res,next) =>
                                 else
                                 {
                                     let keyToken = reply;
-                                    logger.info(keyToken);
-                                    logger.info(bearerHeader);
+                                    // logger.info(keyToken);
+                                    // logger.info(bearerHeader);
                                     if(keyToken == bearerHeader)
                                     {
                                         logger.info('Reset Tokens matched');

@@ -11,6 +11,7 @@
 
 const mongoose = require('mongoose');
 const logger = require('../services/logService');
+mongoose.set('useFindAndModify',false);
 
 const userSchema = mongoose.Schema({
     firstName: {
@@ -31,6 +32,10 @@ const userSchema = mongoose.Schema({
     },
     isVerified:{
         type: Boolean,
+        required:false
+    },
+    imageUrl:{
+        type:String,
         required:false
     },
     forgot_token:{ 
@@ -96,6 +101,17 @@ class Usermodel
                 reject(err);
             })
         })
+    }
+
+    findandUpdate(req,res,callback)
+    {
+        User.findOneAndUpdate(req,res,(err,data)=>
+        {
+            if(err)
+                callback(err);
+            else
+                callback(null,{message:"Url uploaded",data:data});
+        });
     }
 
     findAll(req,callback){

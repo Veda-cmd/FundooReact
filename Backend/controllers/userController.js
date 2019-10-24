@@ -9,12 +9,14 @@
 *@description Dependencies are installed for execution. 
 */ 
 
+const Busboy = require('busboy');
 const userService = require('../services/userService');
 const userModel = require('../models/userModel');
 const urlService = require('../services/urlService');
 const authentication = require('../auth/auth');
 const mail = require('../services/mailService');
 const cache = require('../services/cacheService');
+const s3 = require('../services/s3Service');
 const logger = require('../services/logService');
 
 class Usercontroller
@@ -248,6 +250,33 @@ class Usercontroller
             response.success = false;
             response.data = error;
             res.status(404).send(response);
+        }
+    }
+
+    async upload(req,res)
+    {
+        // logger.info(req.query);
+        try 
+        {
+            if(!req.file.location && !req.query)
+            {
+                res.status(422).send('No location URL/params found');
+            }
+            else
+            {
+                userModel.findandUpdate({email:req.query.email},{imageUrl:req.file.location},(err,data)=>
+                {
+                    if(err)
+                        res.status(422).send(err);
+                    else
+                        res.status(200).send(data);
+                })
+            }
+            
+        } 
+        catch(error) 
+        {
+            res.status(422).send(error);
         }
     }
 }
