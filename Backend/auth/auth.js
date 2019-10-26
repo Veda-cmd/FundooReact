@@ -88,7 +88,6 @@ checkToken = (req,res,next) =>
     else
     {
         var bearerHeader = req.params.url;
-        // console.log(bearerHeader);
         
         userModel.findOne({urlCode:bearerHeader})
         .then(data=>

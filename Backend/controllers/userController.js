@@ -16,7 +16,6 @@ const urlService = require('../services/urlService');
 const authentication = require('../auth/auth');
 const mail = require('../services/mailService');
 const cache = require('../services/cacheService');
-const s3 = require('../services/s3Service');
 const logger = require('../services/logService');
 
 class Usercontroller
@@ -59,7 +58,6 @@ class Usercontroller
                         /**
                         * @description Verification email is sent using short url. 
                         */
-                    //    console.log(result);
                        
                         mail.sendVerifyLink(result.shortUrl,result.email);
                         res.status(200).send(result)
@@ -258,21 +256,24 @@ class Usercontroller
         // logger.info(req.query);
         try 
         {
-            if(!req.file.location && !req.query)
+            if(!req.file.location && !req.body)
             {
-                res.status(422).send('No location URL/params found');
+                res.status(422).send({'message':'No location URL/params found'});
             }
             else
             {
-                userModel.findandUpdate({email:req.query.email},{imageUrl:req.file.location},(err,data)=>
+                userModel.update({email:req.body.email},{imageUrl:req.file.location},(err,data)=>
                 {
                     if(err)
+                    {
+                        console.log(err);
                         res.status(422).send(err);
+                    }
+                        
                     else
                         res.status(200).send(data);
                 })
-            }
-            
+            }    
         } 
         catch(error) 
         {

@@ -13,7 +13,7 @@ const express = require('express');
 const router = express.Router();
 const userControl = require('../controllers/userController');
 const auth = require('../auth/auth');
-const {profileImage} = require('../services/s3Service');
+const { profileImage } = require('../services/s3Service');
 
 /**
 *@description The particular method is called depending on the route. 

@@ -103,17 +103,6 @@ class Usermodel
         })
     }
 
-    findandUpdate(req,res,callback)
-    {
-        User.findOneAndUpdate(req,res,(err,data)=>
-        {
-            if(err)
-                callback(err);
-            else
-                callback(null,{message:"Url uploaded",data:data});
-        });
-    }
-
     findAll(req,callback){
         User.find({},(err,data)=>
         {

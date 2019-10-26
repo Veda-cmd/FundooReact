@@ -1020,3 +1020,81 @@
 {"message":"Server is listening on port 5000","level":"info"}
 {"message":"Redis client connected","level":"info"}
 {"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572068527 x192sm4544290pfc.109 - gsmtp","level":"info"}
+{"message":"In auth Req --> /hunIvuO3","level":"info"}
+{"message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWQiOiI1ZGIzZGNhYmE5NDBjYTFiOGViNDdhMmIiLCJpYXQiOjE1NzIwNjg1MjMsImV4cCI6MTU3MjExMTcyM30.rLmr1jsd77DmkxfHVkb2J3CsAa1srK-M1Zfl2bBp4Yw","level":"info"}
+{"message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWQiOiI1ZGIzZGNhYmE5NDBjYTFiOGViNDdhMmIiLCJpYXQiOjE1NzIwNjg1MjMsImV4cCI6MTU3MjExMTcyM30.rLmr1jsd77DmkxfHVkb2J3CsAa1srK-M1Zfl2bBp4Yw","level":"info"}
+{"message":"Reset Tokens matched","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572068861 b17sm5180901pfr.17 - gsmtp","level":"info"}
+{"message":"In auth Req --> /lNwbdgh8","level":"info"}
+{"message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWQiOiI1ZGIzZGRmYWE5NDBjYTFiOGViNDdhMmMiLCJpYXQiOjE1NzIwNjg4NTgsImV4cCI6MTU3MjExMjA1OH0.1k92qPcQhkZBslkwT1FdhWJSuDshGyEACnsIV5G5wN4","level":"info"}
+{"message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWQiOiI1ZGIzZGRmYWE5NDBjYTFiOGViNDdhMmMiLCJpYXQiOjE1NzIwNjg4NTgsImV4cCI6MTU3MjExMjA1OH0.1k92qPcQhkZBslkwT1FdhWJSuDshGyEACnsIV5G5wN4","level":"info"}
+{"message":"Reset Tokens matched","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
