@@ -9,7 +9,6 @@
 *@description Dependencies are installed for execution. 
 */ 
 
-const Busboy = require('busboy');
 const userService = require('../services/userService');
 const userModel = require('../models/userModel');
 const urlService = require('../services/urlService');
@@ -39,7 +38,15 @@ class Usercontroller
             req.check('password','Invalid password').notEmpty().isLength({ min: 6 });
             const errors = await req.validationErrors();
             if(errors)
+            {
                 return res.status(422).json({ errors: errors });
+            }
+
+            /**
+            *@description Register service is called. If success, it returns data which contains
+            *email of the user and it sends a verification link to the user using short url.
+            */
+
             userService.register(req.body)
             .then(data=>
             {   
@@ -48,6 +55,12 @@ class Usercontroller
                     email:data.email,
                     url:'http://localhost:5000/'
                 }
+
+                /**
+                * @description url shortener service is called. If success, it sends a mail to
+                * the user using Nodemailer.
+                */
+
                 urlService.shortenUrl(request,(err,result)=>
                 {   
                     
@@ -93,16 +106,52 @@ class Usercontroller
             req.checkBody('email','Invalid email').notEmpty().isEmail();
             req.checkBody('password','Invalid password').notEmpty().isLength({ min: 6 });
             const errors = await req.validationErrors();
-
             if(errors)
+            {
                 return res.status(422).json({ errors: errors });
-             
+            }    
+    
+            /**
+            *@description Login service is called.If success, response is sent using status 200.
+            */
+
             userService.login(req.body,(err,data)=>
             {
-                if(err)   
-                    res.status(422).send(err); 
+                if(err)
+                {   
+                    res.status(422).send(err);
+                }      
                 else
-                    res.status(200).send(data); 
+                {
+                    let key = data.email+'login';
+                    let payload = {
+                        id: data.id,
+                        email:data.email
+                    }
+
+                    let token = authentication.generateToken(payload);
+                    
+                    cache.set(key,token,(error,success)=>
+                    {
+                        if(error)
+                        {
+                            logger.error(error);
+                        }
+                        else
+                        {
+                            logger.info(success);
+                        }
+                    });
+
+                    let result = {
+                        response:{
+                            data: data.message
+                        },
+                        session_id:token
+                    }
+
+                    res.status(200).send(result);
+                } 
             });
         } 
         catch(error) 
@@ -142,6 +191,10 @@ class Usercontroller
                 let id = data.id+'forgot';
                 let payload = {email:data.email,id:data.id};
                 let token = authentication.generateToken(payload); 
+
+                /**
+                * @description Redis set method is used for storing forgot token.
+                */
 
                 cache.set(id,token,(error,response)=>
                 {
@@ -194,7 +247,6 @@ class Usercontroller
             * @description express-validator is used for validation of input. 
             */
 
-            req.check('old_password','Invalid password').notEmpty().isLength({ min: 6 });
             req.check('new_password','Invalid password').notEmpty().isLength({ min: 6 });
             const errors = await req.validationErrors();
 
@@ -203,7 +255,6 @@ class Usercontroller
             
             let request={
                 token:req.headers.token,
-                old_password:req.body.old_password,
                 new_password:req.body.new_password
             }
             userService.reset(request)
@@ -251,18 +302,27 @@ class Usercontroller
         }
     }
 
+    /**
+    * @description Upload api is used for uploading images to AWS S3. If success, image Url is 
+    * stored in database corresponding to the particular user.
+    */
+
     async upload(req,res)
     {
         // logger.info(req.query);
         try 
         {
-            if(!req.file.location && !req.body)
+            /**
+            * @description If file content/body of request is empty, error message is sent out.
+            */
+
+            if(!req.file.location && !req.decoded)
             {
                 res.status(422).send({'message':'No location URL/params found'});
             }
             else
             {
-                userModel.update({email:req.body.email},{imageUrl:req.file.location},(err,data)=>
+                userModel.update({email:req.decoded.email},{imageUrl:req.file.location},(err,data)=>
                 {
                     if(err)
                     {

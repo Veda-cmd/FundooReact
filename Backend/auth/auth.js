@@ -26,8 +26,7 @@ generateToken = (payload) =>
 
 checkToken = (req,res,next) =>
 {   
-    logger.info(`In auth Req --> ${req.originalUrl}`);
-    if(req.originalUrl == '/reset')
+    if(req._parsedUrl.pathname == '/reset')
     {
         var bearerHeader = req.headers.token;
         req.authenticated = false;
@@ -85,10 +84,63 @@ checkToken = (req,res,next) =>
             res.status(422).send({"message":"Token not found"});
         }
     }
+    else if(req._parsedUrl.pathname == '/api/upload')
+    {      
+        let bearerHeader = req.query.token;
+        jwt.verify(bearerHeader,'secret',(err,decoded)=>
+        {
+            if(err)
+            {
+                logger.error('Error',err);
+                req.authenticated = false;
+                req.decoded = null;
+                res.status(422).send(err);
+            }
+            else
+            {
+                cache.exist(decoded.email+'login',(fail,success)=>
+                {
+                    if(fail)
+                    {
+                        logger.error(fail);
+                        let failure = {
+                            error:fail,
+                            message:'Token does not exist'
+                        }
+                        res.status(422).send(failure);
+                    }     
+                    else
+                    {
+                        cache.get(decoded.email+'login',(error,reply)=>
+                        {
+                            if(error)
+                            {
+                                logger.error(error);
+                                res.status(422).send(error);
+                            }
+                            else
+                            {
+                                let keyToken = reply;
+                                // logger.info(`Reply,${keyToken}`);
+                                // logger.info(`${bearerHeader}`);
+                                if(keyToken == bearerHeader)
+                                {
+                                    logger.info('User authorized');
+                                    req.decoded = decoded;
+                                    req.authenticated = true;
+                                    next();
+                                }
+                            }
+                        });
+                    }                                  
+                })
+            }
+        })
+
+    }
     else
     {
-        var bearerHeader = req.params.url;
-        
+        let bearerHeader = req.params.url;
         userModel.findOne({urlCode:bearerHeader})
         .then(data=>
         {   
@@ -117,7 +169,6 @@ checkToken = (req,res,next) =>
                         }     
                         else
                         {
-                            // console.log('Success',success); 
                             cache.get(decoded.id+'verify',(error,reply)=>
                             {
                                 if(error)
@@ -128,11 +179,11 @@ checkToken = (req,res,next) =>
                                 else
                                 {
                                     let keyToken = reply;
-                                    logger.info(keyToken);
-                                    logger.info(url);
+                                    // logger.info(keyToken);
+                                    // logger.info(url);
                                     if(keyToken == url)
                                     {
-                                        logger.info('Reset Tokens matched');
+                                        logger.info('Verification Tokens matched');
                                         req.decoded = decoded;
                                         req.authenticated = true;
                                         next();

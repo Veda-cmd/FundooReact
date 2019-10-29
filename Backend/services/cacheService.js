@@ -1,6 +1,22 @@
+/**
+* @description: 
+* @file: cacheService.js
+* @author: Vedant Nare
+* @version: 1.0
+*/
+
+/**
+*@description Dependencies are installed for execution. 
+*/
+
 const redis = require('redis');
 const redisClient = redis.createClient();
 const logger = require('./logService');
+
+/**
+*@description Redis connection is initialized. Redis is an open source (BSD licensed), 
+* in-memory data structure store, used as a database, cache and message broker. 
+*/
 
 redisClient.on('connect',()=>
 {
@@ -13,6 +29,10 @@ redisClient.on('error',(err)=>
 
 class cacheService
 {
+    /**
+    *@description Key value pair is set in Redis.
+    */ 
+
     set(key,value,callback)
     {
         redisClient.set(key,value,(err,result)=>
@@ -23,6 +43,10 @@ class cacheService
                 callback(null,result);
         })
     }
+
+    /**
+    *@description Key value pair is retreived from Redis.
+    */
 
     get(key,callback)
     {
@@ -35,6 +59,10 @@ class cacheService
         });
     }
 
+    /**
+    *@description Key is deleted from Redis.
+    */
+
     delete(key,callback)
     {
         redisClient.del(key,(err,result)=>
@@ -45,6 +73,10 @@ class cacheService
                 callback(null,result);
         });
     }
+
+    /**
+    *@description To see if a key exists in redis or not.
+    */
 
     exist(key,callback)
     {

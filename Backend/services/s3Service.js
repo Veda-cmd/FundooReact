@@ -1,3 +1,14 @@
+/**
+* @description: 
+* @file: s3Service.js
+* @author: Vedant Nare
+* @version: 1.0
+*/
+
+/**
+*@description Dependencies are installed for execution. 
+*/
+
 require('dotenv').config();
 const AWS = require('aws-sdk');
 const multer = require('multer');

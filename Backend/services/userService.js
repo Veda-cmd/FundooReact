@@ -145,39 +145,26 @@ class Userservice
             .then(data=>
             {
                 // logger.error(data);
-                
-                util.comparePassword(req.old_password,data.password,(err,result)=>
+                let hash = util.hashPassword(req.new_password);
+                hash.then(res=>
                 {
-                    if(err)
-                        reject(err)
-                    else if(result)
-                    {
-                        let hash = util.hashPassword(req.new_password);
-                        hash.then(res=>
-                        {
-                            let request = {
-                                _id:data._id,
-                                password:res
-                            }
-                            userModel.reset(request)
-                            .then(response=>
-                            {
-                                resolve(response)
-                            })
-                            .catch(err=>
-                            {
-                                reject(err)
-                            })
-                        })
-                        .catch(err=>
-                        {
-                            reject(err)
-                        })
+                    let request = {
+                        _id:data._id,
+                        password:res
                     }
-                    else
+                    userModel.reset(request)
+                    .then(response=>
                     {
-                        reject({message:'Wrong password entered'});
-                    }
+                        resolve(response);
+                    })
+                    .catch(err=>
+                    {
+                        reject(err);
+                    })
+                })
+                .catch(err=>
+                {
+                    reject(err);
                 })
             })
             .catch(err=>

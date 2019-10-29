@@ -1,3 +1,14 @@
+/**
+* @description: 
+* @file: logService.js
+* @author: Vedant Nare
+* @version: 1.0
+*/
+
+/**
+*@description Dependencies are installed for execution. 
+*/
+
 const winston = require('winston');
 
 let logConfiguration = {

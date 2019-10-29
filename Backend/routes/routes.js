@@ -24,6 +24,6 @@ router.post('/login', userControl.login);
 router.post('/forgot',userControl.forgot);
 router.post('/reset',auth.checkToken,userControl.reset);
 router.post('/:url',auth.checkToken,userControl.verifyMail);
-router.post('/api/upload',profileImage.single('element1'),userControl.upload);
+router.post('/api/upload',auth.checkToken,profileImage.single('element1'),userControl.upload);
 
 module.exports = router;
