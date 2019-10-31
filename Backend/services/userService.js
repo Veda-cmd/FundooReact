@@ -56,8 +56,8 @@ class Userservice
             {
                 logger.error('Err',err);
                 reject(err);
-            })
-        })
+            });
+        });
     }
 
     login(req,callback)

@@ -12,6 +12,7 @@
 const express = require('express');
 const router = express.Router();
 const userControl = require('../controllers/userController');
+const noteController = require('../controllers/noteController');
 const auth = require('../auth/auth');
 const { profileImage } = require('../services/s3Service');
 
@@ -25,5 +26,8 @@ router.post('/forgot',userControl.forgot);
 router.post('/reset',auth.checkToken,userControl.reset);
 router.post('/:url',auth.checkToken,userControl.verifyMail);
 router.post('/api/upload',auth.checkToken,profileImage.single('element1'),userControl.upload);
+router.post('/note/addNote', noteController.addNote);
+router.get('/note/getNote',noteController.getNotes);
+
 
 module.exports = router;

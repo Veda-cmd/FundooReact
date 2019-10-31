@@ -26,6 +26,7 @@ generateToken = (payload) =>
 
 checkToken = (req,res,next) =>
 {   
+    
     if(req._parsedUrl.pathname == '/reset')
     {
         var bearerHeader = req.headers.token;

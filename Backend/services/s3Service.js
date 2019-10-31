@@ -21,6 +21,7 @@ const s3Config = new AWS.S3({
   });
 
 const fileFilter = (req, file, cb) => {
+  // console.log(file,req);
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') 
   {
     cb(null, true) 
@@ -37,8 +38,8 @@ const multerS3Config = multerS3({
   metadata: function (req, file, cb) {
     cb(null, { fieldName: file.fieldname });
   },
-  key: function (req, file, callback) {
-    // console.log(file);
+  key: function (req, file, callback) 
+  {
     callback(null, new Date().toISOString() + '-' + file.originalname)
   },  
 });

@@ -147,7 +147,7 @@ class Usercontroller
                         response:{
                             data: data.message
                         },
-                        session_id:token
+                        session:token
                     }
 
                     res.status(200).send(result);
@@ -308,15 +308,14 @@ class Usercontroller
     */
 
     async upload(req,res)
-    {
-        // logger.info(req.query);
+    {   
         try 
         {
             /**
             * @description If file content/body of request is empty, error message is sent out.
             */
-
-            if(!req.file.location && !req.decoded)
+           
+            if(!(req.file == undefined && !req.decoded))
             {
                 res.status(422).send({'message':'No location URL/params found'});
             }
@@ -328,10 +327,13 @@ class Usercontroller
                     {
                         console.log(err);
                         res.status(422).send(err);
-                    }
-                        
+                    }    
                     else
+                    {
+                        console.log('DATA',data);
                         res.status(200).send(data);
+                    }
+                       
                 })
             }    
         } 

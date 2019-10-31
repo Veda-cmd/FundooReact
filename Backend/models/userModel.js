@@ -11,7 +11,6 @@
 
 const mongoose = require('mongoose');
 const logger = require('../services/logService');
-mongoose.set('useFindAndModify',false);
 
 const userSchema = mongoose.Schema({
     firstName: {
@@ -32,6 +31,7 @@ const userSchema = mongoose.Schema({
     },
     isVerified:{
         type: Boolean,
+        default:false,
         required:false
     },
     imageUrl:{
