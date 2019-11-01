@@ -40,31 +40,48 @@ class NoteController
 
     getNotes(req,res)
     {   
-        let obj;
-        if('isTrash' in req.query)
+
+        if('isTrash' in req.query || 'isArchived' in req.query || 'reminder' in req.query)
         {
-            obj = req.query;
-        }
-        else if('isArchived' in req.query)
-        {
-            obj = req.query;
+            noteService.getNotes(req.query,(err,data)=>
+            {
+                if(err)
+                {
+                    res.status(422).send(err);
+                }
+                else
+                {
+                    res.status(200).send(data);
+                }
+            });
         }
         else
         {
-            obj = req.query;
+            return res.status(422).send({message:"No params found in url"});
         }
         
-        noteService.getNotes(obj,(err,data)=>
+    }
+
+    searchNotes(req,res)
+    {
+        if('title' in req.body || 'description' in req.body || 'reminder' in req.body || 'color' in req.body)
         {
-            if(err)
+            noteService.search(req.body,(err,result)=>
             {
-                res.status(422).send(err);
-            }
-            else
-            {
-                res.status(200).send(data);
-            }
-        });
+                if(err)
+                {
+                    res.status(422).send(err);
+                }
+                else
+                {
+                    res.status(200).send(result);
+                }
+            });
+        }
+        else
+        {
+            return res.status(422).send({message:"No params found in url"});
+        }
     }
 
 }

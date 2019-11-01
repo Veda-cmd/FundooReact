@@ -15,7 +15,7 @@ const bcrypt = require('bcrypt');
 *@description hashPassword is used for encrypting password using SHA-256 algorithm.
 */
 
-hashPassword = (req) =>
+let hashPassword = (req) =>
 {
     return new Promise((resolve,reject)=>
     {
@@ -30,8 +30,7 @@ hashPassword = (req) =>
         })
     })
 }
-
-comparePassword = (req,data,callback) =>
+let comparePassword = (req,data,callback) =>
 {
     bcrypt.compare(req,data,(err,result)=>
     {

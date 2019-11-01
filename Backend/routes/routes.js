@@ -28,6 +28,7 @@ router.post('/:url',auth.checkToken,userControl.verifyMail);
 router.post('/api/upload',auth.checkToken,profileImage.single('element1'),userControl.upload);
 router.post('/note/addNote', noteController.addNote);
 router.get('/note/getNote',noteController.getNotes);
+router.post('/note/searchNote',noteController.searchNotes);
 
 
 module.exports = router;

@@ -251,7 +251,9 @@ class Usercontroller
             const errors = await req.validationErrors();
 
             if(errors)
+            {
                 return res.status(422).json({ errors: errors });
+            }
             
             let request={
                 token:req.headers.token,

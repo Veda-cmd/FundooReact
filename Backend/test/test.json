@@ -71,21 +71,18 @@
         "email": "vedant.nare04"
     },
     "resetSuccess": {
-        "old_password": "vedant",
         "new_password": "vedant123"
     },
     "resetIncomplete":{
         "old_password":"vedant"
     },
     "resetWithoutToken":{
-        "old_password":"vedant",
         "new_password": "vedant123"
     },
     "resetWithToken":{
         "headers":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWF0IjoxNTcxNDY3NjQ1LCJleHAiOjE1NzE0NzEyNDV9.vUn44ht1kqMVAQOlQB4o8M1F_PZ0BkvAG3_1Tb30t9c"
     },
     "resetPassword":{
-        "old_password":"ved",
         "new_password": "vedant12"
     }
 }

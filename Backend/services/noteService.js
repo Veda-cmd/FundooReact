@@ -44,6 +44,22 @@ class noteService
                 callback(null,res)
         });
     }
+
+    search(req,callback)
+    {
+        noteModel.findAll(req,(err,res)=>
+        {
+            if(err)
+            {
+                callback(err);
+            }
+            else
+            {
+                callback(null,res);
+            }
+
+        });
+    }
 }
 
 module.exports = new noteService();

@@ -14,7 +14,7 @@ const logger = require('../services/logService');
 * @description generateToken is used for generating a json web token.
 */
 
-generateToken = (payload) =>
+let generateToken = (payload) =>
 {
   let token = jwt.sign(payload, 'secret',{ expiresIn: '12h'});
   return token;
@@ -24,7 +24,7 @@ generateToken = (payload) =>
 * @description checkToken is used for verifying a json web token.
 */
 
-checkToken = (req,res,next) =>
+let checkToken = (req,res,next) =>
 {   
     
     if(req._parsedUrl.pathname == '/reset')

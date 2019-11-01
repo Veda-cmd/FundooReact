@@ -15,7 +15,7 @@ const noteSchema = mongoose.Schema({
         required:true
     },
     reminder:{
-        type:Date,
+        type:Array,
         required:false
     },
     color:{
@@ -59,9 +59,12 @@ class noteModel
         Note.find(req,(err,data)=>
         {
             if(err)
+            {
                 callback(err);
+            }   
             else
             {
+                console.log(data);
                 callback(null,data);
             }        
         });
@@ -107,6 +110,7 @@ class noteModel
             }
         });
     }
+
 }
 
 module.exports = new noteModel();

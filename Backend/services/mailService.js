@@ -17,7 +17,7 @@ const logger = require('./logService');
 *@description Nodemailer is used for sending mail. 
 */
 
-sendForgotLink = (url,req) =>
+let sendForgotLink = (url,req) =>
 {   
     /**
     *@description SMTP is the main transport in Nodemailer for delivering messages. 
@@ -55,7 +55,7 @@ sendForgotLink = (url,req) =>
     });
 }
 
-sendVerifyLink = (url,req) =>
+let sendVerifyLink = (url,req) =>
 {   
     var transporter = nodemailer.createTransport({
         service: 'gmail',
