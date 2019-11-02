@@ -19,7 +19,6 @@ chai.use(chaiHttp);
 
 describe('Reset Password',()=>
 {
-
     it('Reset password successful',(done)=>
     {
         let person = data.resetSuccess;
@@ -32,7 +31,7 @@ describe('Reset Password',()=>
             res.should.be.a('object');
             res.body.should.have.property('message');
         done();
-        })
+        });
     });
 
     it('Reset error due to missing fields',(done)=>
@@ -48,23 +47,7 @@ describe('Reset Password',()=>
             res.body.errors[0].should.have.property('param');
             res.body.errors[0].should.have.property('msg');
         done();
-        })
-    });
-
-    it('Password fields should be valid',(done)=>
-    {
-        let person = data.resetPassword;
-        chai.request(server)
-        .post('/reset')
-        .set('token',data.resetWithToken.headers)
-        .send(person)
-        .end((err, res) => {
-            res.should.have.status(422);
-            res.should.be.a('object');
-            res.body.errors[0].should.have.property('param');
-            res.body.errors[0].should.have.property('msg');
-        done();
-        })
+        });
     });
 
     it('Reset password should have token in headers',(done)=>
@@ -74,11 +57,11 @@ describe('Reset Password',()=>
         .post('/reset')
         .send(person)
         .end((err, res) => {
-            res.should.have.status(400);
+            res.should.have.status(422);
             res.should.be.a('object');
             res.body.should.have.property('message');
             done();
-        })
+        });
     });
 
     it('Reset password contains only token',(done)=>
@@ -94,6 +77,6 @@ describe('Reset Password',()=>
             res.body.errors[0].should.have.property('param');
             res.body.errors[0].should.have.property('msg');
             done();
-        })
+        });
     });
-})
+});

@@ -26,93 +26,36 @@ let generateToken = (payload) =>
 
 let checkToken = (req,res,next) =>
 {   
-    
-    if(req._parsedUrl.pathname == '/reset')
+    if(req.headers.token == undefined)
     {
-        var bearerHeader = req.headers.token;
-        req.authenticated = false;
-        if (bearerHeader)
-        {
-            jwt.verify(bearerHeader, 'secret', function (err, decoded)
-            {
-                if (err)
-                {
-                    logger.error('Error',err);
-                    req.authenticated = false;
-                    req.decoded = null;
-                    res.status(422).send(err);
-                } 
-                else 
-                {
-                    cache.exist(decoded.id+'forgot',(fail,success)=>
-                    {
-                        if(fail)
-                        {
-                            logger.error(fail);
-                            res.status(422).send(fail);
-                        }     
-                        else
-                        {
-                            // console.log('Success',success); 
-                            cache.get(decoded.id+'forgot',(error,reply)=>
-                            {
-                                if(error)
-                                {
-                                    logger.error(error);
-                                    res.status(422).send(error);
-                                }
-                                else
-                                {
-                                    let keyToken = reply;
-                                    // logger.info(keyToken);
-                                    // logger.info(bearerHeader);
-                                    if(keyToken == bearerHeader)
-                                    {
-                                        logger.info('Reset Tokens matched');
-                                        req.decoded = decoded;
-                                        req.authenticated = true;
-                                        next();
-                                    }
-                                }
-                            });
-                        }                                  
-                    });
-                }
-            });
-        }
-        else
-        {
-            res.status(422).send({"message":"Token not found"});
-        }
+        return res.status(422).send({message:"No token found"});
     }
-    else if(req._parsedUrl.pathname == '/api/upload')
-    {      
-        let bearerHeader = req.query.token;
-        jwt.verify(bearerHeader,'secret',(err,decoded)=>
+    else
+    {
+        let path = req._parsedUrl.pathname.slice(1);
+        let bearerHeader = req.headers.token;
+        req.authenticated = false;
+        jwt.verify(bearerHeader, 'secret', function (err, decoded)
         {
-            if(err)
+            if (err)
             {
                 logger.error('Error',err);
                 req.authenticated = false;
                 req.decoded = null;
                 res.status(422).send(err);
-            }
-            else
+            } 
+            else 
             {
-                cache.exist(decoded.email+'login',(fail,success)=>
+                cache.exist(decoded.id+path,(fail,success)=>
                 {
                     if(fail)
                     {
                         logger.error(fail);
-                        let failure = {
-                            error:fail,
-                            message:'Token does not exist'
-                        }
-                        res.status(422).send(failure);
+                        res.status(422).send(fail);
                     }     
                     else
                     {
-                        cache.get(decoded.email+'login',(error,reply)=>
+                        cache.get(decoded.id+path,(error,reply)=>
                         {
                             if(error)
                             {
@@ -122,11 +65,11 @@ let checkToken = (req,res,next) =>
                             else
                             {
                                 let keyToken = reply;
-                                // logger.info(`Reply,${keyToken}`);
-                                // logger.info(`${bearerHeader}`);
+                                // logger.info(keyToken);
+                                // logger.info(bearerHeader);
                                 if(keyToken == bearerHeader)
                                 {
-                                    logger.info('User authorized');
+                                    logger.info('Tokens matched');
                                     req.decoded = decoded;
                                     req.authenticated = true;
                                     next();
@@ -134,17 +77,29 @@ let checkToken = (req,res,next) =>
                             }
                         });
                     }                                  
-                })
+                });
             }
-        })
+        });
+    }   
+}
 
-    }
-    else
-    {
-        let bearerHeader = req.params.url;
-        userModel.findOne({urlCode:bearerHeader})
-        .then(data=>
-        {   
+/**
+* @description verificationToken is used for verifying email verification web token.
+*/
+
+let verificationToken = (req,res,next) =>
+{  
+    let bearerHeader = req.params.url;
+    userModel.findOne({urlCode:bearerHeader})
+    .then(data=>
+    {   
+        if(data === null)
+        {
+            let response = {message:"No data found"};
+            res.status(422).send(response);
+        }
+        else
+        {
             let url = data.longUrl.slice(22);
             jwt.verify(url, 'secret', (err, decoded)=>
             {
@@ -166,7 +121,7 @@ let checkToken = (req,res,next) =>
                                 error:fail,
                                 message:'Token does not exist'
                             }
-                            res.status(422).send(failure);
+                            return res.status(422).send(failure);
                         }     
                         else
                         {
@@ -194,13 +149,14 @@ let checkToken = (req,res,next) =>
                         }                                  
                     })
                 } 
-            });    
-        })
-        .catch(err=>
-        {
-            res.status(422).send(err);
-        })    
-    }
-    
+            }); 
+        }
+           
+    })
+    .catch(err=>
+    {
+        res.status(422).send(err);
+    })        
 }
-module.exports={checkToken,generateToken}
+
+module.exports={checkToken,generateToken,verificationToken}

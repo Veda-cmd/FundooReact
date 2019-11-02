@@ -80,9 +80,45 @@
         "new_password": "vedant123"
     },
     "resetWithToken":{
-        "headers":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWF0IjoxNTcxNDY3NjQ1LCJleHAiOjE1NzE0NzEyNDV9.vUn44ht1kqMVAQOlQB4o8M1F_PZ0BkvAG3_1Tb30t9c"
+        "headers":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWQiOiI1ZGJkNjhhY2YzMDgxNjBmMjQzNDEzYmEiLCJpYXQiOjE1NzI2OTQ0NTQsImV4cCI6MTU3MjczNzY1NH0.kkciXYIudqpk9hVKw2dUj6crZCzFM-r7WqQzcwKo5mA"
     },
-    "resetPassword":{
-        "new_password": "vedant12"
+    "noteSuccess":{
+        "note_id":6,
+        "title":"Sixth Note",
+        "description":"This is my sixth note",
+        "reminder":"01-11-2019",
+        "color":"yellow"
+    },
+    "noteIncomplete":{
+        "note_id":6,
+        "title":"Sixth Note",
+        "description":"This is my sixth note",
+        "reminder":"01-11-2019"
+    },
+    "noteTitle":{
+        "note_id":6,
+        "description":"This is my sixth note",
+        "reminder":"01-11-2019",
+        "color":"yellow"
+    },
+    "notePresent":{
+        "note_id":6,
+        "title":"Sixth Note",
+        "description":"This is my sixth note",
+        "reminder":"01-11-2019",
+        "color":"yellow"
+    },
+    "noteId":{
+        "note_id":"ABC",
+        "title":"Sixth Note",
+        "description":"This is my sixth note",
+        "reminder":"01-11-2019",
+        "color":"yellow"
+    },
+    "searchNoteSuccess":{
+        "title":"First Note"
+    },
+    "searchNoteEmpty":{
+        "title":""
     }
 }

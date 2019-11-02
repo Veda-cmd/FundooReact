@@ -10,7 +10,7 @@ class noteService
         {
             if(data)
             {
-                callback('Note already present with same id');
+                callback({message:'Note already present with same note id'});
             }
             else
             {

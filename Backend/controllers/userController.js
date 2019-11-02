@@ -21,7 +21,7 @@ class Usercontroller
 {
 
     /**
-    *@description Register function is used for user registration. 
+    *@description Register API is used for user registration. 
     */
 
     async register(req,res)
@@ -65,7 +65,9 @@ class Usercontroller
                 {   
                     
                     if(err)
-                        res.status(422).send(err)
+                    {
+                        res.status(422).send(err);
+                    }  
                     else
                     { 
                         /**
@@ -92,7 +94,7 @@ class Usercontroller
     }
 
     /**
-    *@description Login function is used for user login. 
+    *@description Login API is used for user login. 
     */
 
     async login(req,res)
@@ -123,7 +125,7 @@ class Usercontroller
                 }      
                 else
                 {
-                    let key = data.email+'login';
+                    let key = data.id+'upload';
                     let payload = {
                         id: data.id,
                         email:data.email
@@ -164,7 +166,7 @@ class Usercontroller
     }
 
     /**
-    *@description Forgot Password api is used for resetting user password. 
+    *@description Forgot Password API is used for resetting user password. 
     */
 
     async forgot(req,res)
@@ -188,7 +190,7 @@ class Usercontroller
                 * @description Token is generated and stored in a variable.
                 */
 
-                let id = data.id+'forgot';
+                let id = data.id+'reset';
                 let payload = {email:data.email,id:data.id};
                 let token = authentication.generateToken(payload); 
 
@@ -236,7 +238,7 @@ class Usercontroller
     }
 
     /**
-    *@description Reset Password api is used for storing new password. 
+    *@description Reset Password API is used for storing new password. 
     */
 
     async reset(req,res)
@@ -266,6 +268,8 @@ class Usercontroller
             })
             .catch(err=>
             {
+                console.log(err);
+                
                 logger.error(err); 
                 res.status(422).send(err);
             })    
@@ -280,7 +284,7 @@ class Usercontroller
     }
 
     /**
-    *@description Email verification api is used for validation of user email
+    *@description Email verification API is used for validation of user email.
     */
 
     async verifyMail(req,res)
@@ -305,7 +309,7 @@ class Usercontroller
     }
 
     /**
-    * @description Upload api is used for uploading images to AWS S3. If success, image Url is 
+    * @description Upload API is used for uploading images to AWS S3. If success, image Url is 
     * stored in database corresponding to the particular user.
     */
 
@@ -314,12 +318,12 @@ class Usercontroller
         try 
         {
             /**
-            * @description If file content/body of request is empty, error message is sent out.
+            * @description If file content/body of request is undefined, error message is sent out.
             */
-           
-            if(!(req.file == undefined && !req.decoded))
+            
+            if(req.file == undefined || req.decoded.email == undefined)
             {
-                res.status(422).send({'message':'No location URL/params found'});
+                return res.status(422).send({'message':'No location URL/params found'});
             }
             else
             {
@@ -327,16 +331,14 @@ class Usercontroller
                 {
                     if(err)
                     {
-                        console.log(err);
+                        logger.error(err);
                         res.status(422).send(err);
                     }    
                     else
                     {
-                        console.log('DATA',data);
                         res.status(200).send(data);
-                    }
-                       
-                })
+                    }    
+                });
             }    
         } 
         catch(error) 

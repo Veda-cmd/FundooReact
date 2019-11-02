@@ -34,54 +34,77 @@ class NoteController
         }
         catch(err)
         {
-            console.log("err", err);
+            let response = {};
+            response.success = false;
+            response.data = error;
+            res.status(404).send(response);
         }
     }
 
     getNotes(req,res)
     {   
-
-        if('isTrash' in req.query || 'isArchived' in req.query || 'reminder' in req.query)
+        try 
         {
-            noteService.getNotes(req.query,(err,data)=>
+            if('isTrash' in req.query || 'isArchived' in req.query || 'reminder' in req.query)
             {
-                if(err)
+                noteService.getNotes(req.query,(err,data)=>
                 {
-                    res.status(422).send(err);
-                }
-                else
-                {
-                    res.status(200).send(data);
-                }
-            });
-        }
-        else
+                    if(err)
+                    {
+                        res.status(422).send(err);
+                    }
+                    else
+                    {
+                        res.status(200).send(data);
+                    }
+                });
+            }
+            else
+            {
+                return res.status(422).send({message:"No params found in url"});
+            }    
+        } 
+        catch (error) 
         {
-            return res.status(422).send({message:"No params found in url"});
-        }
+            let response = {};
+            response.success = false;
+            response.data = error;
+            res.status(404).send(response);
+        } 
         
     }
 
     searchNotes(req,res)
     {
-        if('title' in req.body || 'description' in req.body || 'reminder' in req.body || 'color' in req.body)
+        try 
         {
-            noteService.search(req.body,(err,result)=>
+            if('title' in req.body || 'description' in req.body || 'reminder' in req.body || 'color' in req.body)
             {
-                if(err)
+                noteService.search(req.body,(err,result)=>
                 {
-                    res.status(422).send(err);
-                }
-                else
-                {
-                    res.status(200).send(result);
-                }
-            });
-        }
-        else
+                    if(err)
+                    {
+                        res.status(422).send(err);
+                    }
+                    else
+                    {
+                        res.status(200).send(result);
+                    }
+                });
+            }
+            else
+            {
+                return res.status(422).send({message:"No params found in body of request"});
+            }
+        } 
+        catch (error) 
         {
-            return res.status(422).send({message:"No params found in url"});
+            let response = {};
+            response.success = false;
+            response.data = error;
+            res.status(404).send(response);
         }
+
     }
 
 }

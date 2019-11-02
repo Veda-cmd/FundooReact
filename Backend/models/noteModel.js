@@ -63,9 +63,15 @@ class noteModel
                 callback(err);
             }   
             else
-            {
-                console.log(data);
-                callback(null,data);
+            {    
+                if(data.length != 0)
+                {
+                    callback(null,data);
+                }
+                else
+                {
+                    callback({message:"No data found"});
+                }    
             }        
         });
     }
@@ -106,7 +112,12 @@ class noteModel
             }
             else
             {
-                callback(null,data);
+                let res ={
+                    id:data._id,
+                    title:note.title,
+                    message:"Successfully created note"
+                }
+                callback(null,res);
             }
         });
     }
