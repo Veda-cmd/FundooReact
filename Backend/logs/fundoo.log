@@ -130,330 +130,6 @@
 {"message":"Redis client connected","level":"info"}
 {"message":"Successfully connected to the database","level":"info"}
 {"message":"Server is listening on port 5000","level":"info"}
-{"message":"Something went wrong Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379","level":"error"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Something went wrong Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379","level":"error"}
-{"message":"Something went wrong Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379","level":"error"}
-{"message":"Something went wrong Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379","level":"error"}
-{"message":"Something went wrong Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379","level":"error"}
-{"message":"Something went wrong Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379","level":"error"}
-{"message":"Something went wrong Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379","level":"error"}
-{"message":"Something went wrong Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379","level":"error"}
-{"message":"Something went wrong Error: Redis connection to 127.0.0.1:6379 failed - connect ECONNREFUSED 127.0.0.1:6379","level":"error"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"OK","level":"info"}
-{"message":"Email sent: 250 2.0.0 OK  1571892900 d11sm23842156pfo.104 - gsmtp","level":"info"}
-{"level":"info","message":"Req"}
-{"message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRvbmdyZS55YXNoZWUuMjhAZ21haWwuY29tIiwiaWQiOiI1ZGIxMmVhMDIwMzA5OTE4NmI0OGJhZGEiLCJpYXQiOjE1NzE4OTI4OTcsImV4cCI6MTU3MTkzNjA5N30.YK6-LdKuL30vOAYOk5_LRcxqUwOoH32bcZbMU_EkuWM","level":"info"}
-{"message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRvbmdyZS55YXNoZWUuMjhAZ21haWwuY29tIiwiaWQiOiI1ZGIxMmVhMDIwMzA5OTE4NmI0OGJhZGEiLCJpYXQiOjE1NzE4OTI4OTcsImV4cCI6MTU3MTkzNjA5N30.YK6-LdKuL30vOAYOk5_LRcxqUwOoH32bcZbMU_EkuWM","level":"info"}
-{"message":"Reset Tokens matched","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"OK","level":"info"}
-{"message":"Email sent: 250 2.0.0 OK  1571893785 i7sm842869pjs.1 - gsmtp","level":"info"}
-{"message":"Req /reset","level":"info"}
-{"message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWQiOiI1ZGIwMjJjZWIwMjRmMTA3NTY3NTBkNzQiLCJpYXQiOjE1NzE4OTM3ODEsImV4cCI6MTU3MTkzNjk4MX0.n8UCgfs74DRlMhbV-KjJG8jTKUSkMLjiabC8ccgnOvo","level":"info"}
-{"message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWQiOiI1ZGIwMjJjZWIwMjRmMTA3NTY3NTBkNzQiLCJpYXQiOjE1NzE4OTM3ODEsImV4cCI6MTU3MTkzNjk4MX0.n8UCgfs74DRlMhbV-KjJG8jTKUSkMLjiabC8ccgnOvo","level":"info"}
-{"message":"Reset Tokens matched","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Req --> /reset","level":"info"}
-{"message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWQiOiI1ZGIwMjJjZWIwMjRmMTA3NTY3NTBkNzQiLCJpYXQiOjE1NzE4OTM3ODEsImV4cCI6MTU3MTkzNjk4MX0.n8UCgfs74DRlMhbV-KjJG8jTKUSkMLjiabC8ccgnOvo","level":"info"}
-{"message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWQiOiI1ZGIwMjJjZWIwMjRmMTA3NTY3NTBkNzQiLCJpYXQiOjE1NzE4OTM3ODEsImV4cCI6MTU3MTkzNjk4MX0.n8UCgfs74DRlMhbV-KjJG8jTKUSkMLjiabC8ccgnOvo","level":"info"}
-{"message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWQiOiI1ZGIwMjJjZWIwMjRmMTA3NTY3NTBkNzQiLCJpYXQiOjE1NzE4OTM3ODEsImV4cCI6MTU3MTkzNjk4MX0.n8UCgfs74DRlMhbV-KjJG8jTKUSkMLjiabC8ccgnOvo","level":"info"}
-{"message":"Reset Tokens matched","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Req --> /reset","level":"info"}
-{"message":"Reply eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWQiOiI1ZGIwMjJjZWIwMjRmMTA3NTY3NTBkNzQiLCJpYXQiOjE1NzE4OTM3ODEsImV4cCI6MTU3MTkzNjk4MX0.n8UCgfs74DRlMhbV-KjJG8jTKUSkMLjiabC8ccgnOvo","level":"info"}
-{"message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWQiOiI1ZGIwMjJjZWIwMjRmMTA3NTY3NTBkNzQiLCJpYXQiOjE1NzE4OTM3ODEsImV4cCI6MTU3MTkzNjk4MX0.n8UCgfs74DRlMhbV-KjJG8jTKUSkMLjiabC8ccgnOvo","level":"info"}
-{"message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZlZGFudC5uYXJlMDRAZ21haWwuY29tIiwiaWQiOiI1ZGIwMjJjZWIwMjRmMTA3NTY3NTBkNzQiLCJpYXQiOjE1NzE4OTM3ODEsImV4cCI6MTU3MTkzNjk4MX0.n8UCgfs74DRlMhbV-KjJG8jTKUSkMLjiabC8ccgnOvo","level":"info"}
-{"message":"Reset Tokens matched","level":"info"}
-{"message":"Wrong password entered","level":"error"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Req --> /api","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Req --> /api","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"In auth Req --> /api","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
-{"message":"Redis client connected","level":"info"}
-{"message":"Successfully connected to the database","level":"info"}
-{"message":"Server is listening on port 5000","level":"info"}
 {"message":"Redis client connected","level":"info"}
 {"message":"Successfully connected to the database","level":"info"}
 {"message":"Server is listening on port 5000","level":"info"}
@@ -4285,3 +3961,672 @@
 {"message":"Server is listening on port 5000","level":"info"}
 {"message":"Redis client connected","level":"info"}
 {"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572841890 h8sm22413334pjp.1 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"message":"Login failed","level":"error"}
+{"message":"OK","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572842109 g19sm6303120pfi.65 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572842110 39sm17350265pjo.7 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Login failed","level":"error"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572842448 i123sm15798013pfe.145 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Verification Tokens matched","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"message":"OK","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572842831 s11sm7193566pgo.85 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572842831 c12sm16059764pfp.67 - gsmtp","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"message":"OK","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572843035 65sm15666548pfv.50 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572843037 e26sm17945122pgb.48 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"message":"OK","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572843263 o191sm12813123pfg.64 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572843263 p189sm13693335pfp.163 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"message":"OK","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572843469 y144sm13845159pfb.188 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572843470 a6sm17552211pja.30 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"message":"OK","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572843674 e26sm18041157pgb.48 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572843674 f7sm15706240pfa.150 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572848316 v16sm5236621pje.1 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572849817 w2sm16933952pgm.18 - gsmtp","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"This password has been used before. Please try again","level":"error"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"This password has been used before. Please try again","level":"error"}
+{"message":"Server is listening on port 5000","level":"info"}
+
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"level":"error"}
+{"message":"OK","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572851048 f33sm13878340pgl.33 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572851048 39sm18683245pjo.7 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"level":"error"}
+{"message":"OK","level":"info"}
+{"message":" reset Tokens matched","level":"info"}
+{"message":"This password has been used before. Please try again","level":"error"}
+{"message":" reset Tokens matched","level":"info"}
+{"message":" reset Tokens matched","level":"info"}
+{"message":" reset Tokens matched","level":"info"}
+{"message":"This password has been used before. Please try again","level":"error"}
+{"message":" upload Tokens matched","level":"info"}
+{"message":" upload Tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572851447 w26sm23690517pfj.123 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572851448 d127sm16979510pfc.28 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572853677 r4sm17440554pfl.61 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"level":"error"}
+{"message":"OK","level":"info"}
+{"message":" reset Tokens matched","level":"info"}
+{"message":" reset Tokens matched","level":"info"}
+{"message":" reset Tokens matched","level":"info"}
+{"message":" reset Tokens matched","level":"info"}
+{"message":" upload Tokens matched","level":"info"}
+{"message":" upload Tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572853766 j126sm21842844pfg.4 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572853766 f8sm4802235pgd.64 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572853816 z62sm17892064pfz.135 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"level":"error"}
+{"message":"OK","level":"info"}
+{"message":" reset Tokens matched","level":"info"}
+{"message":" reset Tokens matched","level":"info"}
+{"message":" reset Tokens matched","level":"info"}
+{"message":" reset Tokens matched","level":"info"}
+{"message":" upload Tokens matched","level":"info"}
+{"message":" upload Tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572853883 v17sm18583795pfc.41 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572853883 137sm20521670pfu.173 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"reset Tokens matched","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"level":"error","message":"ErrnoteModel.addO is not a function","stack":"TypeError: noteModel.addO is not a function\n    at noteModel.findOne.then.data (/home/admin1/Desktop/FundooApp/Backend/services/noteService.js:37:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"level":"error","message":"ErrnoteModel.addO is not a function","stack":"TypeError: noteModel.addO is not a function\n    at noteModel.findOne.then.data (/home/admin1/Desktop/FundooApp/Backend/services/noteService.js:37:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"level":"error","message":"Errnote.saveO is not a function","stack":"TypeError: note.saveO is not a function\n    at noteModel.add (/home/admin1/Desktop/FundooApp/Backend/models/noteModel.js:134:14)\n    at noteModel.findOne.then.data (/home/admin1/Desktop/FundooApp/Backend/services/noteService.js:37:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"level":"error","message":"Errnote.saveO is not a function","stack":"TypeError: note.saveO is not a function\n    at noteModel.add (/home/admin1/Desktop/FundooApp/Backend/models/noteModel.js:134:14)\n    at noteModel.findOne.then.data (/home/admin1/Desktop/FundooApp/Backend/services/noteService.js:37:27)\n    at process._tickCallback (internal/process/next_tick.js:68:7)"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"level":"error"}
+{"message":"OK","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572860299 w2sm19092683pgm.18 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572860300 p5sm14303108pgb.14 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572860499 y3sm4133785pgl.78 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"level":"error"}
+{"message":"OK","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572860613 l11sm18540336pgr.77 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572860613 x190sm17771748pfc.89 - gsmtp","level":"info"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"level":"error"}
+{"message":"OK","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572860839 r13sm19226216pfg.3 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572860840 a6sm21529034pja.30 - gsmtp","level":"info"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"level":"error"}
+{"message":"OK","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"name":"TokenExpiredError","message":"Errorjwt expired","expiredAt":"2019-11-02T23:34:14.000Z","level":"error","stack":"TokenExpiredError: jwt expired\n    at /home/admin1/Desktop/FundooApp/Backend/node_modules/jsonwebtoken/verify.js:152:21\n    at getSecret (/home/admin1/Desktop/FundooApp/Backend/node_modules/jsonwebtoken/verify.js:90:14)\n    at Object.module.exports [as verify] (/home/admin1/Desktop/FundooApp/Backend/node_modules/jsonwebtoken/verify.js:94:10)\n    at checkToken (/home/admin1/Desktop/FundooApp/Backend/auth/auth.js:10:469)\n    at Layer.handle [as handle_request] (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/layer.js:95:5)\n    at next (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/route.js:137:13)\n    at Route.dispatch (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/route.js:112:3)\n    at Layer.handle [as handle_request] (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/layer.js:95:5)\n    at /home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/index.js:281:22\n    at Function.process_params (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/index.js:335:12)\n    at next (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/index.js:275:10)\n    at Function.handle (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/index.js:174:3)\n    at router (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/index.js:47:12)\n    at Layer.handle [as handle_request] (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/index.js:317:13)\n    at /home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/index.js:284:7\n    at Function.process_params (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/index.js:335:12)\n    at next (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/index.js:275:10)\n    at /home/admin1/Desktop/FundooApp/Backend/node_modules/express-validator/lib/express_validator.js:250:5\n    at Layer.handle [as handle_request] (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/index.js:317:13)\n    at /home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/index.js:284:7\n    at Function.process_params (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/index.js:335:12)\n    at next (/home/admin1/Desktop/FundooApp/Backend/node_modules/express/lib/router/index.js:275:10)\n    at /home/admin1/Desktop/FundooApp/Backend/node_modules/body-parser/lib/read.js:130:5\n    at invokeCallback (/home/admin1/Desktop/FundooApp/Backend/node_modules/raw-body/index.js:224:16)\n    at done (/home/admin1/Desktop/FundooApp/Backend/node_modules/raw-body/index.js:213:7)\n    at IncomingMessage.onEnd (/home/admin1/Desktop/FundooApp/Backend/node_modules/raw-body/index.js:273:7)\n    at IncomingMessage.emit (events.js:203:15)\n    at IncomingMessage.EventEmitter.emit (domain.js:448:20)\n    at endReadableNT (_stream_readable.js:1145:12)\n    at process._tickCallback (internal/process/next_tick.js:63:19)"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572861109 z13sm21227369pgz.42 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572861109 e59sm16458279pjk.28 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572861886 v2sm17332305pgf.39 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"level":"error"}
+{"message":"OK","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens not matched","level":"error"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572861975 q1sm10593145pgr.92 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572861976 b17sm17086126pfr.17 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572865138 s24sm4223815pfh.108 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572865381 i71sm17509397pfe.103 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572865504 q184sm16738804pfc.111 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"level":"error"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens not matched","level":"error"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"Verification Tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572865553 o7sm27047397pjo.7 - gsmtp","level":"info"}
+{"message":"Server is listening on port 5000","level":"info"}
+{"message":"Redis client connected","level":"info"}
+{"message":"Successfully connected to the database","level":"info"}
+{"message":"Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error"}
+{"message":"ErrCast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"","name":"CastError","stringValue":"\"ABC\"","kind":"number","value":"ABC","path":"note_id","level":"error","stack":"CastError: Cast to number failed for value \"ABC\" at path \"note_id\" for model \"note\"\n    at new CastError (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/error/cast.js:29:11)\n    at SchemaNumber.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:315:11)\n    at SchemaNumber.SchemaType.applySetters (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:969:12)\n    at SchemaNumber.SchemaType._castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1383:15)\n    at SchemaNumber.castForQuery (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schema/number.js:367:14)\n    at SchemaNumber.SchemaType.castForQueryWrapper (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/schematype.js:1352:15)\n    at cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/cast.js:313:32)\n    at model.Query.Query.cast (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:4644:12)\n    at model.Query.Query._castConditions (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:1842:10)\n    at model.Query.<anonymous> (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/query.js:2097:8)\n    at model.Query._wrappedThunk [as _findOne] (/home/admin1/Desktop/FundooApp/Backend/node_modules/mongoose/lib/helpers/query/wrapThunk.js:16:8)\n    at process.nextTick (/home/admin1/Desktop/FundooApp/Backend/node_modules/kareem/index.js:369:33)\n    at process._tickCallback (internal/process/next_tick.js:61:11)"}
+{"message":"OK","level":"info"}
+{"message":"OK","level":"info"}
+{"message":"Login failed","level":"error"}
+{"level":"error"}
+{"message":"OK","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens matched","level":"info"}
+{"message":"reset tokens not matched","level":"error"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"upload tokens matched","level":"info"}
+{"message":"Verification Tokens matched","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572865670 e26sm19593439pgb.48 - gsmtp","level":"info"}
+{"message":"Email sent: 250 2.0.0 OK  1572865671 z18sm19465424pgv.90 - gsmtp","level":"info"}

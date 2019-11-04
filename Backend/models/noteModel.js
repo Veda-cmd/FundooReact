@@ -1,5 +1,20 @@
+/**
+* @description: 
+* @file: noteModel.js
+* @author: Vedant Nare
+* @version: 1.0
+*/ 
+
+/**
+*@description Dependencies are installed for execution. 
+*/
+
 const mongoose = require('mongoose');
 const logger = require('../services/logService');
+
+/**
+*@description User schema is defined for storing data in database.
+*/
 
 const noteSchema = mongoose.Schema({
     note_id:{
@@ -32,10 +47,22 @@ const noteSchema = mongoose.Schema({
     }
 });
 
+/**
+*@description Note Model is defined for storing object in database. 
+*/
+
 const Note = mongoose.model('note',noteSchema);
 
 class noteModel
 {
+    /**
+    *@description UserModel has the following functions:
+    * findOne: for finding a particular record from database. It takes a single parameter.
+    * findAll: for retrieving list of existing records from database.
+    * update: for updating user field in database.
+    * add: for saving note object in note collection. 
+    */
+
     findOne(req)
     {
         return new Promise((resolve,reject)=>

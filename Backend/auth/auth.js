@@ -39,7 +39,7 @@ let checkToken = (req,res,next) =>
         {
             if (err)
             {
-                logger.error('Error',err);
+                // logger.error('Error',err);
                 req.authenticated = false;
                 req.decoded = null;
                 res.status(422).send(err);
@@ -69,10 +69,15 @@ let checkToken = (req,res,next) =>
                                 // logger.info(bearerHeader);
                                 if(keyToken == bearerHeader)
                                 {
-                                    logger.info('Tokens matched');
+                                    logger.info(`${path} tokens matched`);
                                     req.decoded = decoded;
                                     req.authenticated = true;
                                     next();
+                                }
+                                else
+                                {
+                                    logger.error(`${path} tokens not matched`);
+                                    return res.status(422).send({message:`${path} tokens not matched`});
                                 }
                             }
                         });
@@ -105,7 +110,7 @@ let verificationToken = (req,res,next) =>
             {
                 if (err)
                 {
-                    logger.error('Error',err);
+                    // logger.error('Error',err);
                     req.authenticated = false;
                     req.decoded = null;
                     res.status(422).send(err);
@@ -116,7 +121,7 @@ let verificationToken = (req,res,next) =>
                     {
                         if(fail)
                         {
-                            logger.error(fail);
+                            // logger.error(fail);
                             let failure = {
                                 error:fail,
                                 message:'Token does not exist'
@@ -129,7 +134,7 @@ let verificationToken = (req,res,next) =>
                             {
                                 if(error)
                                 {
-                                    logger.error(error);
+                                    // logger.error(error);
                                     res.status(422).send(error);
                                 }
                                 else
@@ -143,6 +148,11 @@ let verificationToken = (req,res,next) =>
                                         req.decoded = decoded;
                                         req.authenticated = true;
                                         next();
+                                    }
+                                    else
+                                    {
+                                        logger.error(`${path} tokens not matched`);
+                                        return res.status(422).send({message:`${path} tokens not matched`});
                                     }
                                 }
                             });

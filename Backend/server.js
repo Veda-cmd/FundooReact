@@ -51,7 +51,7 @@ mongoose.connect(config.url, {
 
 // define a simple route
 app.get('/', (req, res) => {
-    res.status(200).send({message:"Hi there!"})
+    // res.status(200).send({message:"Hi there!"})
 });
 
 

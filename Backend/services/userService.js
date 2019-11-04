@@ -15,6 +15,10 @@ const logger = require('./logService');
 
 class Userservice
 { 
+    /**
+    *@description Register service returns a promise which is either resolved/rejected. 
+    */
+
     register(req)
     {
         return new Promise((resolve,reject)=>
@@ -23,11 +27,19 @@ class Userservice
             .then(data=>
             {
                 // logger.info(data);
-                
+
+                /**
+                *@description If data is found, reject method is called.
+                */
+
                 if(data)
                     reject({message:"Email already registered"});
                 else
                 {
+                    /**
+                    *@description Password is hashed using bcrypt.
+                    */
+
                     let hash = util.hashPassword(req.password)
                     hash
                     .then(data=>
@@ -60,6 +72,10 @@ class Userservice
         });
     }
 
+    /**
+    *@description Login service issues a callback to the calling function. 
+    */
+
     login(req,callback)
     {   
         userModel.findOne({email:req.email})
@@ -68,12 +84,22 @@ class Userservice
             // logger.info(data);
             // logger.info('data',data.verify_value);
             
+            /**
+            *@description If isVerified property is true, then further operation are performed.
+            */
+
             if(data.isVerified)
             {
+                /**
+                *@description Bcrypt compare password is used for matching input and output passwords
+                */
+
                 util.comparePassword(req.password,data.password,(err,result)=>
                 {
                     if(err)
-                        callback(err)
+                    {
+                        callback(err);
+                    }    
                     else if(result)
                     {
                         userModel.login(data,(err,res)=>
@@ -99,11 +125,15 @@ class Userservice
         })
         .catch(err=>
         {
-            console.log(err);
+            logger.error(err);
             callback({message:'User not found'})
         })
         
     }
+
+    /**
+    *@description Forgot service returns a promise which is either resolved/rejected. 
+    */
 
     forgot(req)
     {
@@ -112,6 +142,10 @@ class Userservice
             userModel.findOne({email:req.email})
             .then(data=>
             { 
+                /**
+                 *@description If isVerified property is true, then further operation are performed.
+                */
+
                 if(data.isVerified == true)
                 {
                     let result={
@@ -137,6 +171,10 @@ class Userservice
         })
     }
 
+    /**
+    *@description Reset service returns a promise which is either resolved/rejected. 
+    */
+
     reset(req)
     {
         return new Promise((resolve,reject)=>
@@ -144,28 +182,47 @@ class Userservice
             userModel.findOne({forgot_token:req.token})
             .then(data=>
             {
-                // logger.error(data);
-                let hash = util.hashPassword(req.new_password);
-                hash.then(res=>
-                {
-                    let request = {
-                        _id:data._id,
-                        password:res
+
+                /**
+                *@description Bcrypt compare password is used for matching input and output passwords
+                */
+
+                util.comparePassword(req.new_password,data.password,(fail,success)=>
+                {                   
+                    if(success)
+                    {
+                        reject({message:"This password has been used before. Please try again"})
                     }
-                    userModel.reset(request)
-                    .then(response=>
+                    else
                     {
-                        resolve(response);
-                    })
-                    .catch(err=>
-                    {
-                        reject(err);
-                    })
-                })
-                .catch(err=>
-                {
-                    reject(err);
-                })
+                        /**
+                        *@description Password is hashed using bcrypt.
+                        */
+
+                        let hash = util.hashPassword(req.new_password);
+                        hash.then(res=>
+                        {
+                            let request = {
+                                _id:data._id,
+                                password:res
+                            }
+                            userModel.reset(request)
+                            .then(response=>
+                            {
+                                resolve(response);
+                            })
+                            .catch(err=>
+                            {
+                                reject(err);
+                            })
+                        })
+                        .catch(err=>
+                        {
+                            reject(err);
+                        });
+                    }
+                });
+                
             })
             .catch(err=>
             {

@@ -268,9 +268,7 @@ class Usercontroller
             })
             .catch(err=>
             {
-                console.log(err);
-                
-                logger.error(err); 
+                // logger.error(err); 
                 res.status(422).send(err);
             })    
         } 
@@ -288,10 +286,10 @@ class Usercontroller
     */
 
     async verifyMail(req,res)
-    {
+    {   
         try 
         {
-            urlService.verifyUrl(req,(err,data)=>
+            urlService.verifyUrl(req.decoded,(err,data)=>
             {
                 if(err)
                     res.status(422).send(err);

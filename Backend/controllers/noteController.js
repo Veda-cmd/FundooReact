@@ -1,3 +1,14 @@
+/**
+* @description: 
+* @file: noteController.js
+* @author: Vedant Nare
+* @version: 1.0
+*/ 
+
+/**
+*@description Dependencies are installed for execution. 
+*/ 
+
 const noteService = require('../services/noteService');
 const authentication = require('../auth/auth');
 const mail = require('../services/mailService');
@@ -5,11 +16,18 @@ const logger = require('../services/logService');
 
 class NoteController
 { 
-   
+    /**
+    *@description addNote API is used for creation of new note.
+    */
+
     async addNote(req,res)
     {
         try
         {
+            /**
+            * @description express-validator is used for validation of input. 
+            */
+
             req.check('note_id','Note id should have a number').notEmpty();
             req.check('title','Title cannot be empty').notEmpty();
             req.check('description','Description cannot be empty').notEmpty();
@@ -20,6 +38,11 @@ class NoteController
             {
                 return res.status(422).json({ errors: errors });
             }
+
+            /**
+            *@description note Service is called. If success, positive response is sent to client.
+            */
+
             noteService.add(req.body,(err,success)=>
             {
                 if(err)
@@ -41,12 +64,24 @@ class NoteController
         }
     }
 
+    /**
+    *@description getNote API is used for retrieving notes through params.
+    */
+
     getNotes(req,res)
     {   
         try 
         {
+            /**
+            *@description If params are not present in req.query, it goes to else part.
+            */
+            
             if('isTrash' in req.query || 'isArchived' in req.query || 'reminder' in req.query)
             {
+                /**
+                *@description note Service is called. If success, positive response is sent to client.
+                */
+
                 noteService.getNotes(req.query,(err,data)=>
                 {
                     if(err)
@@ -74,12 +109,24 @@ class NoteController
         
     }
 
+    /**
+    *@description searchNotes API is used for searching notes.
+    */
+
     searchNotes(req,res)
     {
         try 
         {
+            /**
+            *@description If params are not present in req.body, it goes to else part.
+            */
+
             if('title' in req.body || 'description' in req.body || 'reminder' in req.body || 'color' in req.body)
             {
+                /**
+                *@description note Service is called. If success, positive response is sent to client.
+                */
+               
                 noteService.search(req.body,(err,result)=>
                 {
                     if(err)

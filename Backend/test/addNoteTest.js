@@ -25,10 +25,19 @@ describe("Creation of Notes --> Positive Test",()=>
         .post('/note/addNote')
         .send(data.noteSuccess)
         .end((err, res) => {
-            res.should.have.status(200);
-            res.should.be.a('object');
-            res.body.should.have.property('title');
-            res.body.should.have.property('message');
+            if(err)
+            {
+                res.should.have.status(422);
+                res.should.be.a('object');
+            }
+            else
+            {
+                res.should.have.status(200);
+                res.should.be.a('object');
+                res.body.should.have.property('title');
+                res.body.should.have.property('message');
+            }
+            
         done();
         });
     });

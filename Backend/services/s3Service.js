@@ -14,11 +14,19 @@ const AWS = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 
+/**
+*@description AWS S3 configuration is specified for connection.
+*/
+
 const s3Config = new AWS.S3({
-    accessKeyId: process.env.IAM_USER_KEY,
-    secretAccessKey: process.env.IAM_USER_SECRET,
-    Bucket: process.env.BUCKET_NAME
-  });
+  accessKeyId: process.env.IAM_USER_KEY,
+  secretAccessKey: process.env.IAM_USER_SECRET,
+  Bucket: process.env.BUCKET_NAME
+});
+
+/**
+*@description fileFilter is used for checking whether the given filetype is image or not.
+*/
 
 const fileFilter = (req, file, cb) => {
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') 

@@ -22,8 +22,8 @@ describe('Image upload test',()=>
     it('Image upload successful',(done)=>
     {
         chai.request(server)
-        .post('/api/upload')
-        .set("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYmE4YTNkOTM3YWY4NDgzMDQ2ZDRlZiIsImVtYWlsIjoidmVkYW50Lm5hcmUwNEBnbWFpbC5jb20iLCJpYXQiOjE1NzI2ODY5OTAsImV4cCI6MTU3MjczMDE5MH0.DDQL-bK23yHUh1WykH_kvSjIKpelqvccXa4bmGni1uM")
+        .post('/upload')
+        .set("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYmQ2OGFjZjMwODE2MGYyNDM0MTNiYSIsImVtYWlsIjoidmVkYW50Lm5hcmUwNEBnbWFpbC5jb20iLCJpYXQiOjE1NzI4NTEzODYsImV4cCI6MTU3Mjg5NDU4Nn0.6KYvlQFBPV6VFxuLPKWlA6EenxDwprRxQ2bZXQBSi10")
         .attach('image',fs.readFileSync(__dirname+'/cool.jpeg'),'cool.jpeg')
         .end((err,res)=>
         {
@@ -36,8 +36,8 @@ describe('Image upload test',()=>
     it('Image should be jpeg or png type',(done)=>
     {
         chai.request(server)
-        .post('/api/upload')
-        .set("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYmE4YTNkOTM3YWY4NDgzMDQ2ZDRlZiIsImVtYWlsIjoidmVkYW50Lm5hcmUwNEBnbWFpbC5jb20iLCJpYXQiOjE1NzI2ODY5OTAsImV4cCI6MTU3MjczMDE5MH0.DDQL-bK23yHUh1WykH_kvSjIKpelqvccXa4bmGni1uM")
+        .post('/upload')
+        .set("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYmQ2OGFjZjMwODE2MGYyNDM0MTNiYSIsImVtYWlsIjoidmVkYW50Lm5hcmUwNEBnbWFpbC5jb20iLCJpYXQiOjE1NzI4NTEzODYsImV4cCI6MTU3Mjg5NDU4Nn0.6KYvlQFBPV6VFxuLPKWlA6EenxDwprRxQ2bZXQBSi10")
         .attach('image',fs.readFileSync(__dirname+'/token.txt'),'token.txt')
         .end((err,res)=>
         {

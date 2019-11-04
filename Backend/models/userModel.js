@@ -12,6 +12,10 @@
 const mongoose = require('mongoose');
 const logger = require('../services/logService');
 
+/**
+*@description User schema is defined for storing data in database.
+*/
+
 const userSchema = mongoose.Schema({
     firstName: {
         type: String,
@@ -66,7 +70,7 @@ const userSchema = mongoose.Schema({
 });
 
 /**
-*@description Schema is defined for storing object in database. 
+*@description User Model is defined for storing object in database. 
 */
 
 const User =  mongoose.model('user',userSchema);
@@ -74,12 +78,10 @@ const User =  mongoose.model('user',userSchema);
 /**
 *@description UserModel has the following functions:
 * findOne: for finding a particular record from database. It takes a single parameter.
-* findAll: for retriving list of existing records from database.
-* updateToken: for updating user token in database.
-* updateFlag: for setting flag to true for a particular record.
-* register: for storing user object in database. bcrypt hash method is used for hashing password. 
-* login: for checking user credentials are valid or not. bcrypt compare method is used for verifying hashed password.
-* forgot : for checking whether user exists or not. UpdateToken is used for storing token if user exists.
+* findAll: for retrieving list of existing records from database.
+* update: for updating user field in database.
+* register: for saving user object in user collection. 
+* login: for checking user credentials are valid or not. If success, response is sent.
 * reset: for storing new password in database.
 */
 
@@ -100,16 +102,6 @@ class Usermodel
                 logger.error(err);
                 reject(err);
             })
-        })
-    }
-
-    findAll(req,callback){
-        User.find({},(err,data)=>
-        {
-            if(err)
-                callback(err);
-            else
-                callback(null,data);
         })
     }
 

@@ -95,25 +95,19 @@ class urlService
 
     verifyUrl(req,callback)
     {   
-        userModel.findOne({urlCode:req.params.url})
-        .then(data=>
+        
+        userModel.update({email:req.email},{isVerified:true},(error,result)=>
         {
-            userModel.update({email:data.email},{isVerified:true},(error,result)=>
+            if(error)
             {
-                if(error)
-                    callback(error);
-                else
-                {
-                    let res={message:'Updated Flag Value'}
-                    callback(null,res);
-                }        
-            });
-        })
-        .catch(err=>
-        {
-            callback(err)
-        })
-
+                callback(error);
+            } 
+            else
+            {
+                let res={message:'Updated Flag Value'}
+                callback(null,res);
+            }        
+        });
     }
 }
 
