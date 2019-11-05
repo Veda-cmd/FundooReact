@@ -28,7 +28,7 @@ let checkToken = (req,res,next) =>
 {   
     if(req.headers.token == undefined)
     {
-        return res.status(422).send({message:"No token found"});
+        res.status(422).send({message:"No token found"});
     }
     else
     {
@@ -169,4 +169,66 @@ let verificationToken = (req,res,next) =>
     })        
 }
 
-module.exports={checkToken,generateToken,verificationToken}
+let loginToken = (req,res,next) =>
+{
+    if(req.headers.token == undefined)
+    {
+        res.status(422).send({message:"No token found"});
+    }
+    else
+    {
+        let bearerHeader = req.headers.token;
+        req.authenticated = false;
+        jwt.verify(bearerHeader, 'secret', function (err, decoded)
+        {
+            if (err)
+            {
+                // logger.error('Error',err);
+                req.authenticated = false;
+                req.decoded = null;
+                res.status(422).send(err);
+            } 
+            else 
+            {
+                cache.exist(decoded.id+'loginSuccess',(fail,success)=>
+                {
+                    if(fail)
+                    {
+                        logger.error(fail);
+                        res.status(422).send(fail);
+                    }     
+                    else
+                    {
+                        cache.get(decoded.id+'loginSuccess',(error,reply)=>
+                        {
+                            if(error)
+                            {
+                                logger.error(error);
+                                res.status(422).send(error);
+                            }
+                            else
+                            {
+                                // logger.info(keyToken);
+                                // logger.info(bearerHeader);
+                                if(reply == bearerHeader)
+                                {
+                                    logger.info(`tokens matched`);
+                                    req.decoded = decoded;
+                                    req.authenticated = true;
+                                    next();
+                                }
+                                else
+                                {
+                                    logger.error(`tokens not matched`);
+                                    return res.status(422).send({message:`tokens not matched`});
+                                }
+                            }
+                        });
+                    }                                  
+                });
+            }
+        });
+    }
+}
+
+module.exports={checkToken,generateToken,verificationToken,loginToken}

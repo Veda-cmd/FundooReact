@@ -11,6 +11,7 @@
 
 const noteService = require('../services/noteService');
 const authentication = require('../auth/auth');
+const redis = require('../services/cacheService');
 const mail = require('../services/mailService');
 const logger = require('../services/logService');
 
@@ -43,7 +44,18 @@ class NoteController
             *@description note Service is called. If success, positive response is sent to client.
             */
 
-            noteService.add(req.body,(err,success)=>
+            let request = {
+                note_id:req.body.note_id,
+                title:req.body.title,
+                description:req.body.description,
+                reminder:req.body.reminder,
+                color:req.body.color,
+                label:req.body.label,
+                isTrash:req.body.isTrash,
+                isArchived:req.body.isArchived,
+                user_id: req.decoded.email,
+            }
+            noteService.add(request,(err,success)=>
             {
                 if(err)
                 {
@@ -76,28 +88,34 @@ class NoteController
             *@description If params are not present in req.query, it goes to else part.
             */
             
-            if('isTrash' in req.query || 'isArchived' in req.query || 'reminder' in req.query)
+            if('isTrash' in req.query || 'isArchived' in req.query || 'reminder' in req.query && 'email' in req.decoded)
             {
+                let request = Object.keys(req.query)[0] === 'isTrash'? {user_id:req.decoded.email,isTrash:true}:
+                Object.keys(req.query)[0] === 'isArchived'? {user_id:req.decoded.email,isArchived:true}:
+                Object.keys(req.query)[0] === 'reminder'? {user_id:req.decoded.email,reminder:req.query.reminder}:
+                new Error("Undefined request");
+
                 /**
                 *@description note Service is called. If success, positive response is sent to client.
                 */
-
-                noteService.getNotes(req.query,(err,data)=>
+               
+                // console.log(request);
+                noteService.getNotes(request,(err,data)=>
                 {
                     if(err)
                     {
                         res.status(422).send(err);
                     }
                     else
-                    {
+                    {    
                         res.status(200).send(data);
                     }
-                });
+                });   
             }
             else
             {
                 return res.status(422).send({message:"No params found in url"});
-            }    
+            }
         } 
         catch (error) 
         {
@@ -121,13 +139,19 @@ class NoteController
             *@description If params are not present in req.body, it goes to else part.
             */
 
-            if('title' in req.body || 'description' in req.body || 'reminder' in req.body || 'color' in req.body)
+            if('title' in req.body || 'description' in req.body || 'reminder' in req.body || 'color' in req.body && 'email' in req.decoded)
             {
+                let request = Object.keys(req.body)[0] === 'title'? {user_id:req.decoded.email,title:req.body.title}:
+                    Object.keys(req.body)[0] === 'description'? {user_id:req.decoded.email,description:req.body.description}:
+                    Object.keys(req.body)[0] === 'color'? {user_id:req.decoded.email,description:req.body.color}:
+                    Object.keys(req.body)[0] === 'reminder'? {user_id:req.decoded.email,reminder:req.body.reminder}:
+                    new Error("Undefined request");
+
                 /**
                 *@description note Service is called. If success, positive response is sent to client.
                 */
                
-                noteService.search(req.body,(err,result)=>
+                noteService.search(request,(err,result)=>
                 {
                     if(err)
                     {
@@ -157,5 +181,3 @@ class NoteController
 }
 
 module.exports=new NoteController();
-
-

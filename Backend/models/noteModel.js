@@ -13,10 +13,14 @@ const mongoose = require('mongoose');
 const logger = require('../services/logService');
 
 /**
-*@description User schema is defined for storing data in database.
+*@description Note schema is defined for storing notes in database.
 */
 
 const noteSchema = mongoose.Schema({
+    user_id:{
+        type:String,
+        required:true
+    },
     note_id:{
         type:Number,
         required:true
@@ -29,8 +33,9 @@ const noteSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    label:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Label' }],
     reminder:{
-        type:Array,
+        type:String,
         required:false
     },
     color:{
@@ -59,7 +64,7 @@ class noteModel
     *@description UserModel has the following functions:
     * findOne: for finding a particular record from database. It takes a single parameter.
     * findAll: for retrieving list of existing records from database.
-    * update: for updating user field in database.
+    * update: for updating note field in database.
     * add: for saving note object in note collection. 
     */
 
@@ -123,6 +128,7 @@ class noteModel
     add(req,callback)
     {
         const note = new Note({
+            user_id:req.user_id,
             note_id:req.note_id,
             title:req.title,
             description:req.description,
@@ -142,9 +148,9 @@ class noteModel
                 let res ={
                     id:data._id,
                     title:note.title,
-                    message:"Successfully created note"
+                    message:"Note created successfully"
                 }
-                callback(null,res);
+                callback(null,data);
             }
         });
     }

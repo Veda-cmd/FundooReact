@@ -23,6 +23,7 @@ describe("Creation of Notes --> Positive Test",()=>
     {
         chai.request(server)
         .post('/note/addNote')
+        .set("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYmQ2OGFjZjMwODE2MGYyNDM0MTNiYSIsImVtYWlsIjoidmVkYW50Lm5hcmUwNEBnbWFpbC5jb20iLCJpYXQiOjE1NzI5MzQ1ODYsImV4cCI6MTU3Mjk3Nzc4Nn0.9g22js28RKuvF80rN1SnXyjthA_7tHUYZbqXfKwrGAI")
         .send(data.noteSuccess)
         .end((err, res) => {
             if(err)
@@ -49,6 +50,7 @@ describe("Creation of Notes --> Negative Test",()=>
     {
         chai.request(server)
         .post('/note/addNote')
+        .set("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYmQ2OGFjZjMwODE2MGYyNDM0MTNiYSIsImVtYWlsIjoidmVkYW50Lm5hcmUwNEBnbWFpbC5jb20iLCJpYXQiOjE1NzI5MzQ1ODYsImV4cCI6MTU3Mjk3Nzc4Nn0.9g22js28RKuvF80rN1SnXyjthA_7tHUYZbqXfKwrGAI")
         .send(data.noteIncomplete)
         .end((err, res) => {
             res.should.have.status(422);
@@ -63,6 +65,7 @@ describe("Creation of Notes --> Negative Test",()=>
     {
         chai.request(server)
         .post('/note/addNote')
+        .set("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYmQ2OGFjZjMwODE2MGYyNDM0MTNiYSIsImVtYWlsIjoidmVkYW50Lm5hcmUwNEBnbWFpbC5jb20iLCJpYXQiOjE1NzI5MzQ1ODYsImV4cCI6MTU3Mjk3Nzc4Nn0.9g22js28RKuvF80rN1SnXyjthA_7tHUYZbqXfKwrGAI")
         .send(data.noteTitle)
         .end((err, res) => {
             res.should.have.status(422);
@@ -77,6 +80,7 @@ describe("Creation of Notes --> Negative Test",()=>
     {
         chai.request(server)
         .post('/note/addNote')
+        .set("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYmQ2OGFjZjMwODE2MGYyNDM0MTNiYSIsImVtYWlsIjoidmVkYW50Lm5hcmUwNEBnbWFpbC5jb20iLCJpYXQiOjE1NzI5MzQ1ODYsImV4cCI6MTU3Mjk3Nzc4Nn0.9g22js28RKuvF80rN1SnXyjthA_7tHUYZbqXfKwrGAI")
         .send(data.notePresent)
         .end((err, res) => {
             res.should.have.status(422);
@@ -90,6 +94,7 @@ describe("Creation of Notes --> Negative Test",()=>
     {
         chai.request(server)
         .post('/note/addNote')
+        .set("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYmQ2OGFjZjMwODE2MGYyNDM0MTNiYSIsImVtYWlsIjoidmVkYW50Lm5hcmUwNEBnbWFpbC5jb20iLCJpYXQiOjE1NzI5MzQ1ODYsImV4cCI6MTU3Mjk3Nzc4Nn0.9g22js28RKuvF80rN1SnXyjthA_7tHUYZbqXfKwrGAI")
         .send(data.noteId)
         .end((err, res) => {
             res.should.have.status(422);

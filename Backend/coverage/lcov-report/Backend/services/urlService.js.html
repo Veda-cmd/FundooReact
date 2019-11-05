@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">62.16% </span>
+        <span class="strong">77.14% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>23/37</span>
+        <span class='fraction'>27/35</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">37.5% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>3/8</span>
+        <span class='fraction'>4/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">44.44% </span>
+        <span class="strong">85.71% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/9</span>
+        <span class='fraction'>6/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">62.16% </span>
+        <span class="strong">77.14% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>23/37</span>
+        <span class='fraction'>27/35</span>
       </div>
     </div>
     <p class="quiet">
@@ -159,13 +159,7 @@
 <a name='L111'></a><a href='#L111'>111</a>
 <a name='L112'></a><a href='#L112'>112</a>
 <a name='L113'></a><a href='#L113'>113</a>
-<a name='L114'></a><a href='#L114'>114</a>
-<a name='L115'></a><a href='#L115'>115</a>
-<a name='L116'></a><a href='#L116'>116</a>
-<a name='L117'></a><a href='#L117'>117</a>
-<a name='L118'></a><a href='#L118'>118</a>
-<a name='L119'></a><a href='#L119'>119</a>
-<a name='L120'></a><a href='#L120'>120</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L114'></a><a href='#L114'>114</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -262,23 +256,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -379,27 +367,21 @@ class urlService
     *@description User is verified and flag is set to true for the particular user in User database. 
     */
 &nbsp;
-<span class="fstat-no" title="function not covered" >    ve</span>rifyUrl(req,callback)
+    verifyUrl(req,callback)
     {   
-<span class="cstat-no" title="statement not covered" >        userModel.findOne({urlCode:req.params.url})</span>
-        .then(<span class="fstat-no" title="function not covered" >da</span>ta=&gt;
+        
+        userModel.update({email:req.email},{isVerified:true},(error,result)=&gt;
         {
-<span class="cstat-no" title="statement not covered" >            userModel.update({email:data.email},{isVerified:true},<span class="fstat-no" title="function not covered" >(e</span>rror,result)=&gt;</span>
+            <span class="missing-if-branch" title="if path not taken" >I</span>if(error)
             {
-<span class="cstat-no" title="statement not covered" >                if(error)</span>
-<span class="cstat-no" title="statement not covered" >                    callback(error);</span>
-                else
-                {
-                    let res=<span class="cstat-no" title="statement not covered" >{message:'Updated Flag Value'}</span>
-<span class="cstat-no" title="statement not covered" >                    callback(null,res);</span>
-                }        
-            });
-        })
-        .catch(<span class="fstat-no" title="function not covered" >er</span>r=&gt;
-        {
-<span class="cstat-no" title="statement not covered" >            callback(err)</span>
-        })
-&nbsp;
+<span class="cstat-no" title="statement not covered" >                callback(error);</span>
+            } 
+            else
+            {
+                let res={message:'Updated Flag Value'}
+                callback(null,res);
+            }        
+        });
     }
 }
 &nbsp;
@@ -409,7 +391,7 @@ module.exports=new urlService();</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 04 2019 15:19:17 GMT+0530 (India Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 04 2019 19:13:00 GMT+0530 (India Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -10,6 +10,7 @@
 */
 
 const noteModel = require('../models/noteModel');
+const labelService = require('./labelService');
 const logger = require('../services/logService');
 
 class noteService
@@ -28,7 +29,7 @@ class noteService
             *is called.
             */
 
-            if(data)
+            if(data != null)
             {
                 callback({message:'Note already present with same note id'});
             }
@@ -42,7 +43,42 @@ class noteService
                     }
                     else
                     {
-                        callback(null,res);
+                        for(let i=0;i<req.label.length;i++)
+                        {   
+                            
+                            labelService.add({label_name:req.label[i]},(err,result)=>
+                            {
+                                if(result.id!=null)
+                                {
+                                   let labelID = [];
+                                   labelID.push(result.id);
+                                   let label = {
+                                       $addToSet:{
+                                           label:labelID
+                                       }
+                                   }
+                                   noteModel.update({note_id:req.note_id},label,(error,success)=>
+                                   {
+                                        if(error)
+                                        {
+                                            callback(error);
+                                        }
+                                        else
+                                        {
+                                            callback(null,success);
+                                        }
+                                   });
+                                }
+                                else if(err)
+                                {
+                                    callback(err);
+                                }
+                                else
+                                {
+                                    callback({message:"id not found"});
+                                }
+                            });
+                        }
                     }
                 });
             }
