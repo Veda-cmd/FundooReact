@@ -86,34 +86,17 @@
         "headers":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRvbmdyZS55YXNoZWUuMjhAZ21haWwuY29tIiwiaWQiOiI1ZGIxMmVhMDIwMzA5OTE4NmI0OGJhZGEiLCJpYXQiOjE1NzI4NTM4MTMsImV4cCI6MTU3Mjg5NzAxM30.LUj1IbTgOM6xHkumT9E5WoS7s62fOqvtFcG5TReol70"
     },
     "noteSuccess":{
-        "note_id":6,
         "title":"Sixth Note",
         "description":"This is my sixth note",
         "reminder":"01-11-2019",
         "color":"yellow"
     },
     "noteIncomplete":{
-        "note_id":6,
         "title":"Sixth Note",
         "description":"This is my sixth note",
         "reminder":"01-11-2019"
     },
     "noteTitle":{
-        "note_id":6,
-        "description":"This is my sixth note",
-        "reminder":"01-11-2019",
-        "color":"yellow"
-    },
-    "notePresent":{
-        "note_id":6,
-        "title":"Sixth Note",
-        "description":"This is my sixth note",
-        "reminder":"01-11-2019",
-        "color":"yellow"
-    },
-    "noteId":{
-        "note_id":"ABC",
-        "title":"Sixth Note",
         "description":"This is my sixth note",
         "reminder":"01-11-2019",
         "color":"yellow"

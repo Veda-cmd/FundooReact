@@ -1,6 +1,7 @@
 
 const labelModel = require('../models/labelModel');
 const logger = require('./logService');
+const noteModel = require('../models/noteModel');
 
 class labelService
 {
@@ -46,6 +47,24 @@ class labelService
             {
                 callback(null,data)
             }
+        });
+    }
+
+    search(req,res)
+    {
+        return new Promise((resolve,reject)=>
+        {
+            noteModel.findAndPopulate(req,res,(err,data)=>
+            {
+                if(err)
+                {
+                    reject(err);
+                }
+                else
+                {
+                    resolve(data);
+                }
+            }) 
         });
     }
 }

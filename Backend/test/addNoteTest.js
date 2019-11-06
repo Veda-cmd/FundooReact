@@ -76,32 +76,4 @@ describe("Creation of Notes --> Negative Test",()=>
         });
     });
 
-    it("Note ID should be unique",(done)=>
-    {
-        chai.request(server)
-        .post('/note/addNote')
-        .set("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYmQ2OGFjZjMwODE2MGYyNDM0MTNiYSIsImVtYWlsIjoidmVkYW50Lm5hcmUwNEBnbWFpbC5jb20iLCJpYXQiOjE1NzI5MzQ1ODYsImV4cCI6MTU3Mjk3Nzc4Nn0.9g22js28RKuvF80rN1SnXyjthA_7tHUYZbqXfKwrGAI")
-        .send(data.notePresent)
-        .end((err, res) => {
-            res.should.have.status(422);
-            res.should.be.a('object');
-            res.body.should.have.property('message');
-        done();
-        });
-    });
-
-    it("Note ID should be an number",(done)=>
-    {
-        chai.request(server)
-        .post('/note/addNote')
-        .set("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkYmQ2OGFjZjMwODE2MGYyNDM0MTNiYSIsImVtYWlsIjoidmVkYW50Lm5hcmUwNEBnbWFpbC5jb20iLCJpYXQiOjE1NzI5MzQ1ODYsImV4cCI6MTU3Mjk3Nzc4Nn0.9g22js28RKuvF80rN1SnXyjthA_7tHUYZbqXfKwrGAI")
-        .send(data.noteId)
-        .end((err, res) => {
-            res.should.have.status(422);
-            res.should.be.a('object');
-            res.body.should.have.property('message');
-            res.body.should.have.property('name','CastError');
-        done();
-        });
-    });
 });

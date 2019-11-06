@@ -29,7 +29,6 @@ class NoteController
             * @description express-validator is used for validation of input. 
             */
 
-            req.check('note_id','Note id should have a number').notEmpty();
             req.check('title','Title cannot be empty').notEmpty();
             req.check('description','Description cannot be empty').notEmpty();
             req.check('reminder','Reminder cannot be empty').notEmpty();
@@ -45,7 +44,6 @@ class NoteController
             */
 
             let request = {
-                note_id:req.body.note_id,
                 title:req.body.title,
                 description:req.body.description,
                 reminder:req.body.reminder,
@@ -53,6 +51,7 @@ class NoteController
                 label:req.body.label,
                 isTrash:req.body.isTrash,
                 isArchived:req.body.isArchived,
+                isPinned:req.body.isPinned,
                 user_id: req.decoded.email,
             }
             noteService.add(request,(err,success)=>
@@ -88,10 +87,11 @@ class NoteController
             *@description If params are not present in req.query, it goes to else part.
             */
             
-            if('isTrash' in req.query || 'isArchived' in req.query || 'reminder' in req.query && 'email' in req.decoded)
+            if('isTrash' in req.query || 'isArchived' in req.query || 'isPinned' in req.query || 'reminder' in req.query && 'email' in req.decoded)
             {
                 let request = Object.keys(req.query)[0] === 'isTrash'? {user_id:req.decoded.email,isTrash:true}:
                 Object.keys(req.query)[0] === 'isArchived'? {user_id:req.decoded.email,isArchived:true}:
+                Object.keys(req.query)[0] === 'isPinned'? {user_id:req.decoded.email,isPinned:true}:
                 Object.keys(req.query)[0] === 'reminder'? {user_id:req.decoded.email,reminder:req.query.reminder}:
                 new Error("Undefined request");
 
@@ -139,14 +139,19 @@ class NoteController
             *@description If params are not present in req.body, it goes to else part.
             */
 
-            if('title' in req.body || 'description' in req.body || 'reminder' in req.body || 'color' in req.body && 'email' in req.decoded)
+            if('search' in req.body && 'email' in req.decoded)
             {
-                let request = Object.keys(req.body)[0] === 'title'? {user_id:req.decoded.email,title:req.body.title}:
-                    Object.keys(req.body)[0] === 'description'? {user_id:req.decoded.email,description:req.body.description}:
-                    Object.keys(req.body)[0] === 'color'? {user_id:req.decoded.email,description:req.body.color}:
-                    Object.keys(req.body)[0] === 'reminder'? {user_id:req.decoded.email,reminder:req.body.reminder}:
-                    new Error("Undefined request");
-
+                req.check('search','Search content cannot be empty').notEmpty();
+                const errors = req.validationErrors();
+                if(errors)
+                {
+                    return res.status(422).json({ errors: errors });
+                }
+                let request = {
+                    email:req.decoded.email,
+                    search:req.body.search
+                }
+        
                 /**
                 *@description note Service is called. If success, positive response is sent to client.
                 */
@@ -178,6 +183,69 @@ class NoteController
 
     }
 
+    deleteLabelFromNote(req,res)
+    {
+        try 
+        {
+            req.checkBody('note_id','Note id cannot be empty').notEmpty();
+            req.checkBody('label_id','Label id cannot be empty').notEmpty();
+            noteService.deleteLabelFromNote(req.body)
+            .then(data=>
+            {
+                res.status(200).send(data);
+            })
+            .catch(err=>
+            {
+                logger.error(err);
+            });
+        } 
+        catch(error) 
+        {
+            logger.error("Operation unsuccessful");
+        }
+    }
+
+    updateNote(req,res)
+    {
+        try 
+        {
+            req.checkBody('note_id','Note id cannot be empty').notEmpty();
+            if('title' in req.body || 'description' in req.body || 'color' in req.body || 
+            'reminder' in req.body || 'isArchived' in req.body || 'isPinned' in req.body
+            && 'email' in req.decoded)
+            {      
+               noteService.updateNote(req.body)
+               .then(data=>
+                {
+                    res.status(200).send(data);
+                })
+                .catch(err=>
+                {
+                    res.status(422).send(err);
+                })
+            }    
+        } 
+        catch(error) 
+        {
+            logger.error("Operation failed");
+        }
+    }
+
+    deleteNote(req,res)
+    {
+        req.checkBody('note_id','Note id cannot be empty').notEmpty();
+        noteService.deleteNote(req.body,(err,data)=>
+        {
+            if(err)
+            {
+                res.status(422).send(err);
+            }
+            else
+            {
+                res.status(200).send(data);
+            }
+        })
+    }
 }
 
 module.exports=new NoteController();

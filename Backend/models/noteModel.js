@@ -21,10 +21,6 @@ const noteSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    note_id:{
-        type:Number,
-        required:true
-    },
     title:{
         type:String,
         required:true
@@ -33,13 +29,17 @@ const noteSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    label:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Label' }],
+    label:[{ type: mongoose.Schema.Types.ObjectId, ref: 'label' }],
     reminder:{
         type:String,
         required:false
     },
     color:{
         type:String,
+        required:false
+    },
+    isPinned: {
+        type:Boolean,
         required:false
     },
     isArchived: {
@@ -95,47 +95,56 @@ class noteModel
                 callback(err);
             }   
             else
-            {    
-                if(data.length != 0)
-                {
-                    callback(null,data);
-                }
-                else
-                {
-                    callback({message:"No data found"});
-                }    
+            {     
+                callback(null,data);  
             }        
+        });
+    }
+
+    findAndPopulate(req,res,callback)
+    {
+        Note.find(req).populate({path:'label',match:{label_name:res.search}})
+        .exec((err,data)=>
+        {
+            if(err)
+            {
+                callback(err);
+            }
+            else
+            {
+                let result =  data.filter((item)=>                
+                {
+                    return item.label.length!=0;
+                });
+                callback(null,result);
+            }
         });
     }
 
     update(req,res,callback)
     {   
-        // logger.info(req,res);
-        
         Note.updateOne(req,res)
         .then(data=>
         {
-            // logger.info(data);
             callback(null,data);
         })
         .catch(err=>
         {
             callback(err);
         });
-    
     }
 
     add(req,callback)
     {
         const note = new Note({
             user_id:req.user_id,
-            note_id:req.note_id,
             title:req.title,
             description:req.description,
             reminder:req.reminder,
             color:req.color,
             isArchived:req.isArchived,
-            isTrash:req.isTrash
+            isTrash:req.isTrash,
+            isPinned:req.isPinned
         });
         note.save((err,data)=>
         {

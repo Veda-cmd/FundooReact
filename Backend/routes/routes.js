@@ -30,6 +30,9 @@ router.post('/upload',auth.loginToken,profileImage.single('image'),userControl.u
 router.post('/:url',auth.verificationToken,userControl.verifyMail);
 router.post('/note/addNote',auth.loginToken,noteController.addNote);
 router.get('/note/getNote',auth.loginToken,noteController.getNotes);
+router.post('/note/deleteLabel',noteController.deleteLabelFromNote);
+router.post('/note/updateNote',noteController.updateNote);
+router.post('/note/deleteNote',noteController.deleteNote);
 router.post('/note/searchNote',auth.loginToken,noteController.searchNotes);
 router.post('/label/add',labelController.addLabel);
 router.post('/label/update',labelController.updateLabel);
