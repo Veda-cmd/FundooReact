@@ -80,7 +80,7 @@ class noteModel
             })
             .catch(err=>
             {
-                logger.error(err);
+                logger.error("Error in find");
                 reject(err);
             });
         });
@@ -121,11 +121,26 @@ class noteModel
         });
     }
 
-    update(req,res,callback)
-    {   
+    updateOne(req,res,callback)
+    { 
         Note.updateOne(req,res)
         .then(data=>
         {
+            console.log('data',data);
+            callback(null,data);
+        })
+        .catch(err=>
+        {
+            callback(err);
+        });
+    }
+
+    updateMany(req,res,callback)
+    { 
+        Note.updateMany(req,res)
+        .then(data=>
+        {
+            console.log('data',data);
             callback(null,data);
         })
         .catch(err=>

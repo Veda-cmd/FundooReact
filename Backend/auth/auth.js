@@ -7,7 +7,7 @@
 
 var jwt = require('jsonwebtoken');
 var cache = require('../services/cacheService');
-var userModel = require('../models/userModel');
+var userModel = require('../models/user');
 const logger = require('../services/logService');
 
 /**

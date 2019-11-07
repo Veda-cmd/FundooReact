@@ -1,12 +1,13 @@
 
-const labelModel = require('../models/labelModel');
+const labelModel = require('../models/label');
+const note = require('./note');
 const logger = require('./logService');
-const noteModel = require('../models/noteModel');
+const noteModel = require('../models/note');
 
 class labelService
 {
     add(req,callback)
-    {
+    {   
         labelModel.findOne({label_name:req.label_name})
         .then(data=>
         {
@@ -65,6 +66,37 @@ class labelService
                     resolve(data);
                 }
             }) 
+        });
+    }
+
+    delete(req,callback)
+    {
+        labelModel.delete(req,(err,data)=>
+        {
+            if(err)
+            {
+                callback(err);
+            }
+            else
+            {
+                let request = {
+                    $pull:{
+                        label:data._id
+                    }
+                }
+                
+                note.updateLabel(request,(error,success)=>
+                {
+                    if(error)
+                    {
+                        callback(error);
+                    }
+                    else
+                    {
+                        callback(null,success);
+                    }
+                })
+            }
         });
     }
 }

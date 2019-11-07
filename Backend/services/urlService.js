@@ -12,7 +12,7 @@
 const validUrl = require('valid-url');
 const shortid = require('shortid');
 const auth = require('../auth/auth');
-const userModel = require('../models/userModel');
+const userModel = require('../models/user');
 const cache = require('./cacheService');
 const logger = require('./logService');
 

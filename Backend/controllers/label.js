@@ -1,4 +1,4 @@
-const labelService = require('../services/labelService');
+const labelService = require('../services/label');
 const logger = require('../services/logService');
 
 class labelController
@@ -29,7 +29,7 @@ class labelController
         {
             let response = {};
             response.success = false;
-            response.data = error;
+            response.message= 'Operation failed';
             res.status(404).send(response);
         }
     }
@@ -62,9 +62,41 @@ class labelController
         {
             let response = {};
             response.success = false;
-            response.data = error;
+            response.message= 'Operation failed';
             res.status(404).send(response);
         }   
+    }
+
+    async deleteLabel(req,res)
+    {
+        try 
+        {
+            req.checkBody('label_name','Label Name cannot be empty').notEmpty();
+            const errors = await req.validationErrors();
+            if(errors)
+            {
+                return res.status(422).json({ errors: errors });
+            }
+
+            labelService.delete(req.body,(err,data)=>
+            {
+                if(err)
+                {
+                    res.status(422).send(err);
+                }
+                else
+                {
+                    res.status(200).send(data);
+                }
+            });
+        } 
+        catch (error) 
+        {
+            let response = {};
+            response.success = false;
+            response.message= 'Operation failed';
+            res.status(404).send(response);
+        }
     }
 }
 

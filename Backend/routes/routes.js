@@ -11,11 +11,11 @@
 
 const express = require('express');
 const router = express.Router();
-const userControl = require('../controllers/userController');
-const noteController = require('../controllers/noteController');
+const userControl = require('../controllers/user');
+const noteController = require('../controllers/note');
 const auth = require('../auth/auth');
 const { profileImage } = require('../services/s3Service');
-const labelController = require('../controllers/labelController');
+const labelController = require('../controllers/label');
 
 
 /**
@@ -30,12 +30,14 @@ router.post('/upload',auth.loginToken,profileImage.single('image'),userControl.u
 router.post('/:url',auth.verificationToken,userControl.verifyMail);
 router.post('/note/addNote',auth.loginToken,noteController.addNote);
 router.get('/note/getNote',auth.loginToken,noteController.getNotes);
+router.post('/note/addLabel',noteController.addLabelToNote);
 router.post('/note/deleteLabel',noteController.deleteLabelFromNote);
 router.post('/note/updateNote',noteController.updateNote);
 router.post('/note/deleteNote',noteController.deleteNote);
 router.post('/note/searchNote',auth.loginToken,noteController.searchNotes);
 router.post('/label/add',labelController.addLabel);
 router.post('/label/update',labelController.updateLabel);
+router.post('/label/delete',labelController.deleteLabel);
 
 
 module.exports = router;

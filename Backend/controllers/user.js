@@ -10,7 +10,7 @@
 */ 
 
 const userService = require('../services/userService');
-const userModel = require('../models/userModel');
+const userModel = require('../models/user');
 const urlService = require('../services/urlService');
 const authentication = require('../auth/auth');
 const mail = require('../services/mailService');

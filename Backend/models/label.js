@@ -96,6 +96,21 @@ class labelModel
     
     }
 
+    delete(req,callback)
+    {
+        Label.findOneAndDelete(req,(err,data)=>
+        {
+            if(err)
+            {
+                callback(err);
+            }
+            else
+            {
+                callback(null,data);
+            }
+        })
+    }
+
     addLabel(req,callback)
     {
         const label = new Label({

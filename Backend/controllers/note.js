@@ -9,7 +9,7 @@
 *@description Dependencies are installed for execution. 
 */ 
 
-const noteService = require('../services/noteService');
+const noteService = require('../services/note');
 const authentication = require('../auth/auth');
 const redis = require('../services/cacheService');
 const mail = require('../services/mailService');
@@ -54,6 +54,7 @@ class NoteController
                 isPinned:req.body.isPinned,
                 user_id: req.decoded.email,
             }
+            
             noteService.add(request,(err,success)=>
             {
                 if(err)
@@ -66,7 +67,7 @@ class NoteController
                 }
             });
         }
-        catch(err)
+        catch(error)
         {
             let response = {};
             response.success = false;
@@ -147,6 +148,7 @@ class NoteController
                 {
                     return res.status(422).json({ errors: errors });
                 }
+
                 let request = {
                     email:req.decoded.email,
                     search:req.body.search
@@ -184,32 +186,6 @@ class NoteController
     }
 
     /**
-    *@description deleteLabelFromNote API is used for deleting label from notes.
-    */
-
-    deleteLabelFromNote(req,res)
-    {
-        try 
-        {
-            req.checkBody('note_id','Note id cannot be empty').notEmpty();
-            req.checkBody('label_id','Label id cannot be empty').notEmpty();
-            noteService.deleteLabelFromNote(req.body)
-            .then(data=>
-            {
-                res.status(200).send(data);
-            })
-            .catch(err=>
-            {
-                logger.error(err);
-            });
-        } 
-        catch(error) 
-        {
-            logger.error("Operation unsuccessful");
-        }
-    }
-
-    /**
     *@description updateNote API is used for updating fields in note.
     */
 
@@ -218,6 +194,12 @@ class NoteController
         try 
         {
             req.checkBody('note_id','Note id cannot be empty').notEmpty();
+            const errors = req.validationErrors();
+            if(errors)
+            {
+                return res.status(422).json({ errors: errors });
+            }
+
             if('title' in req.body || 'description' in req.body || 'color' in req.body || 
             'reminder' in req.body || 'isArchived' in req.body || 'isPinned' in req.body
             && 'email' in req.decoded)
@@ -246,6 +228,11 @@ class NoteController
     deleteNote(req,res)
     {
         req.checkBody('note_id','Note id cannot be empty').notEmpty();
+        const errors = req.validationErrors();
+        if(errors)
+        {
+            return res.status(422).json({ errors: errors });
+        }
         noteService.deleteNote(req.body,(err,data)=>
         {
             if(err)
@@ -257,6 +244,58 @@ class NoteController
                 res.status(200).send(data);
             }
         })
+    }
+
+    addLabelToNote(req,res)
+    {
+        req.checkBody('note_id','Note id cannot be empty').notEmpty();
+        req.checkBody('label_name','Label name cannot be empty').notEmpty();
+        const errors = req.validationErrors();
+        if(errors)
+        {
+            return res.status(422).json({ errors: errors });
+        }
+
+        noteService.addLabelToNote(req.body)
+        .then(data=>
+        {
+            res.status(200).send(data);
+        })
+        .catch(err=>
+        {
+            res.status(422).send(err);
+        });
+    }
+
+    /**
+    *@description deleteLabelFromNote API is used for deleting label from notes.
+    */
+
+    deleteLabelFromNote(req,res)
+    {
+        try 
+        {
+            req.checkBody('note_id','Note id cannot be empty').notEmpty();
+            req.checkBody('label_id','Label id cannot be empty').notEmpty();
+            const errors = req.validationErrors();
+            if(errors)
+            {
+                return res.status(422).json({ errors: errors });
+            }
+            noteService.deleteLabelFromNote(req.body)
+            .then(data=>
+            {
+                res.status(200).send(data);
+            })
+            .catch(err=>
+            {
+                logger.error(err);
+            });
+        } 
+        catch(error) 
+        {
+            logger.error("Operation unsuccessful");
+        }
     }
 }
 

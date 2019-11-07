@@ -9,7 +9,7 @@
 *@description Dependencies are installed for execution. 
 */
 
-const userModel = require('../models/userModel');
+const userModel = require('../models/user');
 const util = require('./utilService');
 const logger = require('./logService');
 
