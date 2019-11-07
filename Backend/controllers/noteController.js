@@ -183,6 +183,10 @@ class NoteController
 
     }
 
+    /**
+    *@description deleteLabelFromNote API is used for deleting label from notes.
+    */
+
     deleteLabelFromNote(req,res)
     {
         try 
@@ -204,6 +208,10 @@ class NoteController
             logger.error("Operation unsuccessful");
         }
     }
+
+    /**
+    *@description updateNote API is used for updating fields in note.
+    */
 
     updateNote(req,res)
     {
@@ -230,6 +238,10 @@ class NoteController
             logger.error("Operation failed");
         }
     }
+
+    /**
+    *@description deleteNote API is used for moving notes to Trash.
+    */
 
     deleteNote(req,res)
     {

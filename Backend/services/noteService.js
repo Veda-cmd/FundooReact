@@ -112,11 +112,10 @@ class noteService
     search(req,callback)
     {
         let enteredData = req.search,
-        noteArray,labelArray,
         query= {
             $and: [{
-                $or: // the $or carries out the optional functionality
-                    [   //options i Case insensitivity to match upper and lower cases. 
+                $or: 
+                    [  
                         { 'title': { $regex: enteredData, $options: 'i' } },
                         { 'description': { $regex: enteredData, $options: 'i' } },
                         { 'reminder': { $regex: enteredData, $options: 'i' } },
@@ -183,6 +182,10 @@ class noteService
         });  
     }
 
+    /**
+    *@description deleteLabelFromNote service returns a promise to the calling function.
+    */
+
     deleteLabelFromNote(req)
     {
         console.log(req);
@@ -207,6 +210,10 @@ class noteService
             });
         });
     }
+
+    /**
+    *@description updateNote service returns a promise to the calling function. 
+    */
 
     updateNote(req)
     {
@@ -243,6 +250,10 @@ class noteService
             });
         })
     }
+
+    /**
+    *@description deleteNote service issues a callback to the calling function.
+    */
 
     deleteNote(req,callback)
     {
