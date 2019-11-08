@@ -16,7 +16,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const route = require('./routes/routes');
-const logger = require('./services/logService');
+const logger = require('./services/log');
 
 //enables CORS
 app.use(cors({
@@ -40,8 +40,10 @@ mongoose.Promise = global.Promise;
 
 // Connecting to the database
 
-mongoose.connect(config.url, {
-    useNewUrlParser: true
+mongoose.connect(config.url,{
+    useNewUrlParser: true,
+    useUnifiedTopology : true,
+    useFindAndModify:false
 }).then(() => {
     logger.info('Successfully connected to the database'); 
 }).catch(err => {

@@ -10,8 +10,8 @@
 */
 
 const userModel = require('../models/user');
-const util = require('./utilService');
-const logger = require('./logService');
+const util = require('./util');
+const logger = require('./log');
 
 class Userservice
 { 

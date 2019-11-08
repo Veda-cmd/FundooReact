@@ -1,5 +1,5 @@
 const labelService = require('../services/label');
-const logger = require('../services/logService');
+const logger = require('../services/log');
 
 class labelController
 {
@@ -38,8 +38,8 @@ class labelController
     {
         try
         {
-            req.checkBody('old_label_name','Name cannot be empty').notEmpty();
-            req.checkBody('new_label_name','Name cannot be empty').notEmpty();
+            req.checkBody('label_id','Label ID cannot be empty').notEmpty();
+            req.checkBody('label_name','Name cannot be empty').notEmpty();
             const errors = await req.validationErrors();
             if(errors)
             {
@@ -71,7 +71,7 @@ class labelController
     {
         try 
         {
-            req.checkBody('label_name','Label Name cannot be empty').notEmpty();
+            req.checkBody('_id','Label id cannot be empty').notEmpty();
             const errors = await req.validationErrors();
             if(errors)
             {

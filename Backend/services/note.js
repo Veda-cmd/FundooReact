@@ -9,9 +9,10 @@
 *@description Dependencies are installed for execution. 
 */
 
+const redis = require('./cache');
 const noteModel = require('../models/note');
 const labelService = require('./label');
-const logger = require('./logService');
+const logger = require('./log');
 
 class noteService
 {
@@ -28,14 +29,14 @@ class noteService
             *@description If data is found, error response is sent. Else add method in model
             *is called.
             */
-
+        
             if(data != null)
             {
                 callback({message:'Note already present with same title'});
             }
             else
             {
-                // add method is used for saving not to database
+                // add method is used for saving note to database
 
                 noteModel.add(req,(error,res)=>
                 {
@@ -45,9 +46,10 @@ class noteService
                     }
                     else
                     {
+                        let count = 0;
                         if(req.label == undefined)
                         {
-                            return callback(null,{message:"Note created successfully"});
+                            return callback(null,res);
                         }
                         
                         for(let i=0;i<req.label.length;i++)
@@ -83,11 +85,18 @@ class noteService
                                         else
                                         {
                                             logger.info('Label updated');
+                                            count++;
+                                            if(count == req.label.length)
+                                            {
+                                                this.getAllNotes({email:req.user_id});
+                                                callback(null,success);
+                                            }
                                         }
                                     });
                                 }
                                 else if(err)
                                 {
+                                    console.log('in else if',err);
                                     callback(err);
                                 }
                                 else
@@ -96,7 +105,6 @@ class noteService
                                 }
                             });
                         }
-                        callback(null,{message:"Note created with labels successfully"});
                     }
                 });
             }
@@ -112,17 +120,60 @@ class noteService
     *@description getNotes service issues a callback to the calling function. 
     */
 
-    getNotes(req,callback)
+    getListings(req)
     {
-        noteModel.findAll(req,(err,res)=>
+        return new Promise((resolve,reject)=>
         {
-            if(err)
-                callback(err)
-            else
+            noteModel.findAll(req,(err,res)=>
             {
-                callback(null,res)
-            }
-               
+                if(err)
+                {
+                    reject(err);
+                }
+                else
+                {
+                    let key = Object.keys(req)[1]+req.user_id;
+                    redis.set(key,JSON.stringify(res),(error,data)=>
+                    {
+                        if(error)
+                        {
+                            logger.error(error);
+                        }
+                        else
+                        {
+                            logger.info(`Success in setting ${Object.keys(req)[1]} key`);
+                        }
+                    });
+                    resolve(res);
+                }   
+            });
+        })
+    }
+
+    getAllNotes(req)
+    {
+        return new Promise((resolve,reject)=>
+        {
+            noteModel.findAll({user_id:req.email},(err,data)=>
+            {
+                if(err)
+                {
+                    reject(err);
+                }
+                else
+                {
+                    let key = req.email + 'getAllNotes';
+                    redis.set(key, JSON.stringify(data), (error, result) => {
+                        if (error) {
+                            logger.error(error);
+                        }
+                        else {
+                            logger.info("Success");
+                        }
+                    });
+                    resolve(data);
+                }
+            });
         });
     }
 
@@ -225,7 +276,7 @@ class noteService
     */
 
     updateNote(req)
-    {
+    {   
         try 
         {
             return new Promise((resolve,reject)=>
@@ -235,15 +286,16 @@ class noteService
                 noteModel.findOne({_id:req.note_id})
                 .then(data=>
                 {
+                
                     let note = {
                         "title": req.title ? req.title : data.title,
                         "description": req.description ? req.description : data.description,
                         "color": req.color ? req.color : data.color,
                         "isArchived": req.isArchived == true ? true : false,
-                        "isPinned": req.isPinned == true ? true : false,
+                        "isPinned": req.isPinned === true ? true : false,
                         "reminder": req.reminder ? req.reminder: data.reminder
                     }
-            
+                    
                     // the new fields are updated according to given data in request.
 
                     noteModel.updateOne({_id:data._id},note,(error,res)=>
@@ -254,7 +306,11 @@ class noteService
                         }
                         else
                         {
+                            console.log(res);
+                            
                             resolve({message:"Note updated successfully"});
+                            let archiveObject = {user_id:res.user_id,isArchived:true};
+                            this.getListings(archiveObject);
                         }
                     });
 

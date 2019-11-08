@@ -10,7 +10,7 @@
 */
 
 const mongoose = require('mongoose');
-const logger = require('../services/logService');
+const logger = require('../services/log');
 
 /**
 *@description Label schema is defined for storing labels in database.
@@ -46,7 +46,7 @@ class labelModel
             Label.findOne(req)
             .then(data=>
             {
-                // logger.info(data); 
+                //logger.info(data); 
                 resolve(data);
             })
             .catch(err=>
@@ -80,10 +80,8 @@ class labelModel
     }
 
     update(req,res,callback)
-    {   
-        // logger.info(req,res);
-        
-        Label.updateOne(req,res)
+    {  
+        Label.findOneAndUpdate(req,res,{new:true})
         .then(data=>
         {
             // logger.info(data);
@@ -106,6 +104,7 @@ class labelModel
             }
             else
             {
+                console.log(data);
                 callback(null,data);
             }
         })

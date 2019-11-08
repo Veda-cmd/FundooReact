@@ -1,22 +1,22 @@
 
 const labelModel = require('../models/label');
 const note = require('./note');
-const logger = require('./logService');
+const logger = require('./log');
 const noteModel = require('../models/note');
 
 class labelService
 {
     add(req,callback)
-    {   
-        labelModel.findOne({label_name:req.label_name})
+    {  
+        labelModel.findOne(req)
         .then(data=>
-        {
+        {   
             if(data != null)
             {
                 callback(null,data);
             }
             else
-            {
+            {   
                 labelModel.addLabel(req,(err,data)=>
                 {
                     if(err)
@@ -38,7 +38,7 @@ class labelService
 
     update(req,callback)
     {
-        labelModel.update({label_name:req.old_label_name},{label_name:req.new_label_name},(err,data)=>
+        labelModel.update({_id:req.label_id},{label_name:req.label_name},(err,data)=>
         {
             if(err)
             {
@@ -84,7 +84,6 @@ class labelService
                         label:data._id
                     }
                 }
-                
                 note.updateLabel(request,(error,success)=>
                 {
                     if(error)

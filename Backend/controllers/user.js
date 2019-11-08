@@ -9,13 +9,13 @@
 *@description Dependencies are installed for execution. 
 */ 
 
-const userService = require('../services/userService');
+const userService = require('../services/user');
 const userModel = require('../models/user');
-const urlService = require('../services/urlService');
+const urlService = require('../services/url');
 const authentication = require('../auth/auth');
-const mail = require('../services/mailService');
-const cache = require('../services/cacheService');
-const logger = require('../services/logService');
+const mail = require('../services/mail');
+const cache = require('../services/cache');
+const logger = require('../services/log');
 
 class Usercontroller
 {
@@ -226,7 +226,7 @@ class Usercontroller
             .catch(err=>
             {
                 res.status(422).send(err);
-            })
+            });
         }
         catch(error) 
         {

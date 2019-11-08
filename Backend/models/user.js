@@ -10,7 +10,7 @@
 */
 
 const mongoose = require('mongoose');
-const logger = require('../services/logService');
+const logger = require('../services/log');
 
 /**
 *@description User schema is defined for storing data in database.

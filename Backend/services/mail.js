@@ -11,7 +11,7 @@
 
 require('dotenv').config();
 const nodemailer = require('nodemailer');
-const logger = require('./logService');
+const logger = require('./log');
 
 /**
 *@description Nodemailer is used for sending mail. 

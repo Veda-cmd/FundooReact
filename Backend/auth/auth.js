@@ -6,9 +6,9 @@
 */ 
 
 var jwt = require('jsonwebtoken');
-var cache = require('../services/cacheService');
+var cache = require('../services/cache');
 var userModel = require('../models/user');
-const logger = require('../services/logService');
+const logger = require('../services/log');
 
 /**
 * @description generateToken is used for generating a json web token.

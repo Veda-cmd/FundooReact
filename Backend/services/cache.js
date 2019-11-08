@@ -11,7 +11,7 @@
 
 const redis = require('redis');
 const redisClient = redis.createClient();
-const logger = require('./logService');
+const logger = require('./log');
 
 /**
 *@description Redis connection is initialized. Redis is an open source (BSD licensed), 

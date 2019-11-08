@@ -13,8 +13,8 @@ const validUrl = require('valid-url');
 const shortid = require('shortid');
 const auth = require('../auth/auth');
 const userModel = require('../models/user');
-const cache = require('./cacheService');
-const logger = require('./logService');
+const cache = require('./cache');
+const logger = require('./log');
 
 class urlService
 {

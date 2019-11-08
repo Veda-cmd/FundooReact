@@ -10,7 +10,7 @@
 */
 
 const mongoose = require('mongoose');
-const logger = require('../services/logService');
+const logger = require('../services/log');
 
 /**
 *@description Note schema is defined for storing notes in database.
@@ -74,7 +74,7 @@ class noteModel
         {
             Note.findOne(req)
             .then(data=>
-            {
+            {           
                 // logger.info(data); 
                 resolve(data);
             })
@@ -123,10 +123,9 @@ class noteModel
 
     updateOne(req,res,callback)
     { 
-        Note.updateOne(req,res)
+        Note.findOneAndUpdate(req,res,{new:true})
         .then(data=>
         {
-            console.log('data',data);
             callback(null,data);
         })
         .catch(err=>
@@ -137,7 +136,7 @@ class noteModel
 
     updateMany(req,res,callback)
     { 
-        Note.updateMany(req,res)
+        Note.updateMany(req,res,{new:true})
         .then(data=>
         {
             console.log('data',data);
