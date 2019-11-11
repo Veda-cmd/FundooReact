@@ -5,7 +5,7 @@ class cacheController
 {
     cacheNotes(req,res,next)
     {
-        let key = req.decoded.email+'getAllNotes';
+        let key = 'getAllNotes'+req.decoded.email;
 
         redis.get(key,(err,data)=>
         {
@@ -30,8 +30,9 @@ class cacheController
     }
 
     cacheListings(req,res,next)
-    {
+    {      
         let key = Object.keys(req.query)[0]+req.decoded.email;
+        console.log(key);
         
         redis.get(key,(err,data)=>
         {

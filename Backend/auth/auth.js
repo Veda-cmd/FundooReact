@@ -16,7 +16,7 @@ const logger = require('../services/log');
 
 let generateToken = (payload) =>
 {
-  let token = jwt.sign(payload, 'secret',{ expiresIn: '300h'});
+  let token = jwt.sign(payload, 'secret');
   return token;
 }
 

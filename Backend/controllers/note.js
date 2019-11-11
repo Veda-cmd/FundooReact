@@ -113,14 +113,18 @@ class NoteController {
     }
 
     getAllNotes(req,res) {
-        
-        noteService.getAllNotes(req.decoded)
+        try {
+            noteService.getAllNotes(req.decoded)
             .then(data => {
                 res.status(200).send(data);
             })
             .catch(err => {
                 logger.error({ message: "Error in finding notes." })
-            })
+            });
+        } 
+        catch (error) {
+            res.status(422).send({message:"Operation failed."});
+        }       
     }
 
     /**
@@ -172,12 +176,11 @@ class NoteController {
     }
 
     /**
-    *@description updateNote API is used for updating fields in note.
+    *@description updateNote API is used for updating one/many fields in a note.
     */
 
     updateNote(req, res) {
-        try {
-           
+        try { 
             req.checkBody('note_id', 'Note id cannot be empty').notEmpty();
             const errors = req.validationErrors();
             if (errors) {
@@ -216,22 +219,31 @@ class NoteController {
     */
 
     deleteNote(req, res) {
-        req.checkBody('note_id', 'Note id cannot be empty').notEmpty();
-        const errors = req.validationErrors();
-        if (errors) {
-            return res.status(422).json({ errors: errors });
+        try {
+            req.checkBody('note_id', 'Note id cannot be empty').notEmpty();
+            const errors = req.validationErrors();
+            if (errors) {
+                return res.status(422).json({ errors: errors });
+            }
+            noteService.deleteNote(req.body, (err, data) => {
+                if (err) {
+                    res.status(422).send(err);
+                }
+                else {
+                    res.status(200).send(data);
+                }
+            })    
+        } 
+        catch (error) {
+            res.status(422).send({message:"Operation failed."});
         }
-        noteService.deleteNote(req.body, (err, data) => {
-            if (err) {
-                res.status(422).send(err);
-            }
-            else {
-                res.status(200).send(data);
-            }
-        })
+        
     }
 
-    
+    /**
+    *@description addLabelToNote API is used for adding labels to an existing note.
+    */
+
     addLabelToNote(req, res) {
         req.checkBody('note_id', 'Note id cannot be empty').notEmpty();
         req.checkBody('label_name', 'Label name cannot be empty').notEmpty();
