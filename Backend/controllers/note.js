@@ -43,7 +43,7 @@ class NoteController {
             let request = {
                 title: req.body.title,
                 description: req.body.description,
-                reminder: req.body.reminder,
+                reminder: new Date(req.body.reminder).toISOString(),
                 color: req.body.color,
                 label: req.body.label,
                 isTrash: req.body.isTrash,
@@ -187,7 +187,17 @@ class NoteController {
             if ('title' in req.body || 'description' in req.body || 'color' in req.body ||
                 'reminder' in req.body || 'isArchived' in req.body || 'isPinned' in req.body
                 && 'email' in req.decoded) {
-                noteService.updateNote(req.body)
+                
+                    let note = {
+                        note_id:req.body.note_id,
+                        title: req.body.title,
+                        description: req.body.description,
+                        color: req.body.color,
+                        isArchived: req.body.isArchived,
+                        isPinned: req.body.isPinned,
+                        reminder: new Date(req.body.reminder).toISOString()
+                    }
+                noteService.updateNote(note)
                 .then(data => {
                     res.status(200).send(data);
                 })
@@ -221,6 +231,7 @@ class NoteController {
         })
     }
 
+    
     addLabelToNote(req, res) {
         req.checkBody('note_id', 'Note id cannot be empty').notEmpty();
         req.checkBody('label_name', 'Label name cannot be empty').notEmpty();

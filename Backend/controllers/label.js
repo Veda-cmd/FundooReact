@@ -1,4 +1,5 @@
 const labelService = require('../services/label');
+const service = require('../services/note')
 const logger = require('../services/log');
 
 class labelController
@@ -86,7 +87,24 @@ class labelController
                 }
                 else
                 {
-                    res.status(200).send(data);
+                    console.log('---->in controller',data);
+                    
+                    let request = {
+                        $pull: {
+                            label: data._id
+                        }
+                    }
+                    console.log('---->in controller1',request);
+                    service.removeLabel(request, (error, success) => {
+                        if (error) {
+                            res.status(422).send(err);
+                        }
+                        else {
+                            console.log('---->in controller success',success);
+                            res.status(200).send(data);
+                        }
+                    })
+                   
                 }
             });
         } 

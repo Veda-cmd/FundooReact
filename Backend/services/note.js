@@ -10,9 +10,11 @@
 */
 
 const redis = require('./cache');
+const cron = require('node-cron')
 const noteModel = require('../models/note');
 const labelService = require('./label');
 const logger = require('./log');
+
 
 class noteService
 {
@@ -26,7 +28,7 @@ class noteService
         .then(data=>
         {
             /**
-            *@description If data is found, error response is sent. Else add method in model
+                *@description If data is found, error response is sent. Else add method in model
             *is called.
             */
         
@@ -59,18 +61,18 @@ class noteService
 
                             labelService.add({label_name:req.label[i]},(err,result)=>
                             {
-       
+        
                                 if(result.id!=null)
                                 {
-                                   let labelID = [];
-                                   labelID.push(result.id);
+                                    let labelID = [];
+                                    labelID.push(result.id);
 
                                     // $addToSet operator adds a value to an array unless the value
                                     // is already present,$addToSet does nothing to that array.
 
-                                   let label = {
-                                       $addToSet:{
-                                           label:labelID
+                                    let label = {
+                                        $addToSet:{
+                                            label:labelID
                                         }
                                     }
                                     
@@ -88,8 +90,8 @@ class noteService
                                             count++;
                                             if(count == req.label.length)
                                             {
-                                                this.getAllNotes({email:req.user_id});
                                                 callback(null,success);
+                                                this.getAllNotes({email:req.user_id});
                                             }
                                         }
                                     });
@@ -206,7 +208,7 @@ class noteService
         {
             if(err)
             {
-               logger.error(err);
+                logger.error(err);
             }
             else
             {
@@ -278,24 +280,25 @@ class noteService
     updateNote(req)
     {   
         try 
-        {
+        {   
             return new Promise((resolve,reject)=>
             {
                 // Note is searched in database and using note_id.
 
+                console.log('in note-->',req);
+                
                 noteModel.findOne({_id:req.note_id})
                 .then(data=>
-                {
-                
+                {                
                     let note = {
                         "title": req.title ? req.title : data.title,
                         "description": req.description ? req.description : data.description,
                         "color": req.color ? req.color : data.color,
                         "isArchived": req.isArchived == true ? true : false,
-                        "isPinned": req.isPinned === true ? true : false,
+                        "isPinned": req.isPinned == true ? true : false,
                         "reminder": req.reminder ? req.reminder: data.reminder
                     }
-                    
+                
                     // the new fields are updated according to given data in request.
 
                     noteModel.updateOne({_id:data._id},note,(error,res)=>
@@ -306,11 +309,13 @@ class noteService
                         }
                         else
                         {
-                            console.log(res);
-                            
                             resolve({message:"Note updated successfully"});
                             let archiveObject = {user_id:res.user_id,isArchived:true};
                             this.getListings(archiveObject);
+                            let trashObject = {user_id:res.user_id,isTrash:true};
+                            this.getListings(trashObject);
+                            let pinnedObject = {user_id:res.user_id,isPinned:true};
+                            this.getListings(pinnedObject);
                         }
                     });
 
@@ -387,8 +392,8 @@ class noteService
                 reject({message:"Error in finding note.Please check note id."});
             })
         });        
-         
-       
+            
+        
     }
 
     /**
@@ -424,20 +429,115 @@ class noteService
         });
     }
 
-    updateLabel(req,callback)
+    removeLabel(req,callback)
     {
         noteModel.updateMany({},req,(err,data)=>
         {
             if(err)
             {
-                callback(err);
+                return callback(err);
             }
             else
             {
-                callback(null,data);
+                return callback(null,data);
             }
         });
     }
+
+    oldNotes()
+    {
+        cron.schedule('* * * * *',()=>
+        {
+            noteModel.findAll({isArchived:false},(err,data)=>
+            {
+                if(err)
+                {
+                    logger.error(err);
+                }
+                else
+                { 
+                    data.forEach(element => {
+                        let updatedDate = new Date(element.updated_at),
+                        currDate = new Date(),
+                        Difference_In_Time = currDate.getTime() - updatedDate.getTime(),
+                        Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+                        Difference_In_Days > 30 ? this.updateNote({ note_id: element._id,isArchived: true }) : new Error("Something went wrong..!")
+                    });
+                }
+            });
+            logger.info("Old Note Schedular Running");
+        });
+    }
+
+    reminderSchedular()
+    {
+        cron.schedule('*/15 * * * * *',()=>
+        {
+            noteModel.findAll({},(err,result)=>
+            {
+                if(err)
+                {
+                    callback(err);
+                }
+                else
+                {
+                    let call = this;
+                    function runOldReminder(data)
+                    {
+                        data.forEach(element => {
+                            if(element.reminder)
+                            {
+                                console.log(new Date(element.reminder) < new Date());
+                                if(new Date(element.reminder) < new Date())
+                                {   
+                                    let note = {note_id:element._id,reminder:"false"};
+                                    
+                                    call.updateNote(note,(error,success)=>
+                                    {
+                                        if(error)
+                                        {
+                                            logger.error(error);
+                                        }
+                                    });
+                                }
+                                else
+                                {
+                                    sortNotesUsingReminder(data);
+                                }
+                            }
+                            else{
+                               return;
+                            }
+                        });
+                    }
+                    runOldReminder(result);
+                    function sortNotesUsingReminder(data)
+                    {
+                        for (let j = 0; j < data.length; j++) {
+                            for (let i = 0; i < data.length - 1; i++) {
+                                let reminderDateOne = new Date(data[i].reminder)
+                                let reminderDateTwo = new Date(data[i + 1].reminder)
+                                let currentDate = new Date()
+                                if ((reminderDateOne.getTime() - currentDate.getTime()) > (reminderDateTwo.getTime() - currentDate.getTime())) {
+                                    let temporary = data[i];
+                                    data[i] = data[i + 1];
+                                    data[i + 1] = temporary;
+                                }
+                            }
+                        }
+                        return data;
+                    }
+                   
+                }
+                
+            });
+        })
+    }
 }
 
+let note = new noteService();
+note.oldNotes();
+note.reminderSchedular();
 module.exports = new noteService();
+
+    

@@ -22,6 +22,7 @@ class cacheController
                 }
                 else
                 {
+                    logger.info('Data found in cache');
                     res.status(200).send(JSON.parse(data));
                 }
             }
