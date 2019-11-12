@@ -29,36 +29,20 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
 app.use(expressValidator())
-// app.use(express.static('../client'))
 
 app.use('/',route)
 
 const config = require('./config/config');
-const mongoose = require('mongoose');
-
-mongoose.Promise = global.Promise;
-
-// Connecting to the database
-
-mongoose.connect(config.url,{
-    useNewUrlParser: true,
-    useUnifiedTopology : true,
-    useFindAndModify:false
-}).then(() => {
-    logger.info('Successfully connected to the database'); 
-}).catch(err => {
-    logger.warn('Could not connect to the database. Exiting now...', err);
-    process.exit(1);
-});
 
 // define a simple route
 app.get('/', (req, res) => {
     // res.status(200).send({message:"Hi there!"})
 });
 
+app.listen(config.dbConnection());
 
 // listen for requests
-app.listen(config.port, () => {
+app.listen(config.port,() => {
     logger.info("Server is listening on port 5000");
 });
 

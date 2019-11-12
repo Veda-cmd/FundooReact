@@ -1,6 +1,6 @@
 /**
 * @description: 
-* @file: noteController.js
+* @file: note.js
 * @author: Vedant Nare
 * @version: 1.0
 */
@@ -10,9 +10,6 @@
 */
 
 const noteService = require('../services/note');
-const authentication = require('../auth/auth');
-const redis = require('../services/cache');
-const mail = require('../services/mail');
 const logger = require('../services/log');
 
 class NoteController {
@@ -54,17 +51,17 @@ class NoteController {
 
             noteService.add(request, (err, success) => {
                 if (err) {
-                    res.status(422).send(err);
+                   return res.status(422).send(err);
                 }
                 else {
-                    res.status(200).send(success);
+                    return res.status(200).send(success);
                 }
             });
         }
         catch (error) {
             let response = {};
             response.success = false;
-            response.data = error;
+            response.message = error.message;
             res.status(404).send(response);
         }
     }
@@ -111,6 +108,10 @@ class NoteController {
         }
 
     }
+
+    /**
+    *@description getAllNotes API is used for retreiving list of all notes stored in database.
+    */
 
     getAllNotes(req,res) {
         try {

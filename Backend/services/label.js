@@ -1,10 +1,24 @@
+/**
+* @description: 
+* @file: label.js
+* @author: Vedant Nare
+* @version: 1.0
+*/
+
+/**
+*@description Dependencies are installed for execution. 
+*/
 
 const labelModel = require('../models/label');
-const service = require('./note');
 const logger = require('./log');
 const noteModel = require('../models/note');
 
 class labelService {
+
+    /**
+    *@description Add service issues a callback to the calling function. 
+    */
+
     add(req, callback) {
         labelModel.findOne(req)
             .then(data => {
@@ -27,6 +41,10 @@ class labelService {
             })
     }
 
+    /**
+    *@description update service issues a callback to the calling function. 
+    */
+
     update(req, callback) {
         labelModel.update({ _id: req.label_id }, { label_name: req.label_name }, (err, data) => {
             if (err) {
@@ -37,6 +55,10 @@ class labelService {
             }
         });
     }
+
+    /**
+    *@description search service returns a promise to the calling function.
+    */
 
     search(req, res) {
         return new Promise((resolve, reject) => {
@@ -51,22 +73,23 @@ class labelService {
         });
     }
 
+    /**
+    *@description delete service issues a callback to the calling function. 
+    */
+
     delete(req, callback) {
         try {
             labelModel.delete(req, (err, data) => {
                 if (err) {
-                    console.log("--->", err)
-                    return callback(err);
+                    callback(err);
                 }
                 else {
-                    console.log("in else -->",data)
-                    return callback(null,data)
+                    callback(null,data);
                 }
             });
         } catch (error) {
-            console.log("catched--->", error)
+            logger.error(error);
         }
-
     }
 }
 

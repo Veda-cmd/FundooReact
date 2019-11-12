@@ -132,12 +132,12 @@ class noteService {
 
     getAllNotes(req) {
         return new Promise((resolve, reject) => {
-            noteModel.findAll({ user_id: req.email }, (err, data) => {
+            noteModel.findAllAndPopulate({ user_id: req.email }, (err, data) => {
                 if (err) {
                     reject(err);
                 }
                 else {
-                    let key = 'getAllNotes'+req.email;
+                    let key = 'getAllNotes' + req.email;
                     redis.set(key, JSON.stringify(data), (error, result) => {
                         if (error) {
                             logger.error(error);
@@ -300,8 +300,13 @@ class noteService {
         });
     }
 
+    /**
+    *@description addLabelToNote service returns a promise to the calling function.
+    */
+
     addLabelToNote(req) {
         return new Promise((resolve, reject) => {
+            // note is retrieved through the given note id.
             noteModel.findOne({ _id: req.note_id })
                 .then(data => {
                     labelService.add(req, (error, success) => {
@@ -314,6 +319,8 @@ class noteService {
                                     label: success.id
                                 }
                             }
+
+                            // Given label is added to the note using updateOne.
                             noteModel.updateOne({ _id: data._id }, result, (errors, response) => {
                                 if (errors) {
                                     reject(errors);
@@ -366,6 +373,7 @@ class noteService {
     */
 
     removeLabel(req, callback) {
+        // updateMany method from note model is called
         noteModel.updateMany({}, req, (err, data) => {
             if (err) {
                 return callback(err);
@@ -402,18 +410,17 @@ class noteService {
     }
 
     reminderSchedular() {
-        cron.schedule('* */15 * * * *', () => {
+        cron.schedule('* 15 * * * *', () => {
             noteModel.findAll({}, (err, result) => {
                 if (err) {
                     callback(err);
                 }
                 else {
-                    let call = this,array = [];
+                    let call = this, array = [];
                     function runOldReminder(data) {
-                       let res = data.filter(item=>
-                        {
-                            return item.reminder!='false';
-                           
+                        let res = data.filter(item => {
+                            return item.reminder != 'false';
+
                         });
                         res.forEach(element => {
                             if (new Date(element.reminder) < new Date()) {
@@ -426,23 +433,23 @@ class noteService {
                             }
                             else {
                                 array.push(element);
-                            }  
+                            }
                         });
                         sortNotesUsingReminder(array);
                     }
                     runOldReminder(result);
                     function sortNotesUsingReminder(sortArray) {
-                        
+
                         for (let k = 0; k < sortArray.length; k++) {
-                            for (let i = k+1; i < sortArray.length; i++) {
+                            for (let i = k + 1; i < sortArray.length; i++) {
                                 let reminderDateOne = new Date(sortArray[k].reminder),
-                                reminderDateTwo = new Date(sortArray[i].reminder),
-                                currentDate = new Date();
+                                    reminderDateTwo = new Date(sortArray[i].reminder),
+                                    currentDate = new Date();
                                 if ((reminderDateOne.getTime() - currentDate.getTime()) > (reminderDateTwo.getTime() - currentDate.getTime())) {
                                     let temporary = sortArray[k];
                                     sortArray[k] = sortArray[i];
                                     sortArray[i] = temporary;
-                                }  
+                                }
                             }
                         }
 
@@ -450,7 +457,7 @@ class noteService {
                             let currentReminder = new Date(sortArray[j].reminder).getDay();
                             let today = new Date().getDay();
                             if (sortArray[j].reminder != 'false' && currentReminder == today) {
-                                console.log(`Upcoming reminders are:\n`,sortArray[j]);
+                                console.log(`Upcoming reminders are:\n`, sortArray[j]);
                             }
                         }
                     }

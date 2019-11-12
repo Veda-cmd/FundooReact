@@ -13,7 +13,7 @@ const mongoose = require('mongoose');
 const logger = require('../services/log');
 
 /**
-*@description Label schema is defined for storing labels in database.
+*@description Label schema is defined for specifying structure of label document.
 */
 
 const labelSchema = mongoose.Schema({
@@ -32,10 +32,11 @@ const Label = mongoose.model('label',labelSchema);
 class labelModel
 {
     /**
-    *@description labelModel has the following functions:
+    *@description Label Model has the following functions:
     * findOne: for finding a particular record from database. It takes a single parameter.
     * findAll: for retrieving list of existing records from database.
     * update: for updating label field in database.
+    * delete: for deleting an given label in database.
     * addLabel: for saving label object in note collection. 
     */
 

@@ -13,7 +13,7 @@ const mongoose = require('mongoose');
 const logger = require('../services/log');
 
 /**
-*@description User schema is defined for storing data in database.
+*@description User schema is defined for specifying structure of user document.
 */
 
 const userSchema = mongoose.Schema({

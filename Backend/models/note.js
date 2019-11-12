@@ -13,7 +13,7 @@ const mongoose = require('mongoose');
 const logger = require('../services/log');
 
 /**
-*@description Note schema is defined for storing notes in database.
+*@description Note schema is defined for specifying structure of note document.
 */
 
 const noteSchema = mongoose.Schema({
@@ -69,10 +69,12 @@ const Note = mongoose.model('note',noteSchema);
 class noteModel
 {
     /**
-    *@description UserModel has the following functions:
+    *@description Note Model has the following functions:
     * findOne: for finding a particular record from database. It takes a single parameter.
     * findAll: for retrieving list of existing records from database.
-    * update: for updating note field in database.
+    * findAndPopulate: for populating objects with fields from other collection.
+    * updateOne: for updating an given note field in database.
+    * updateMany: for updating one or more note fields in database.
     * add: for saving note object in note collection. 
     */
 
@@ -109,9 +111,26 @@ class noteModel
         });
     }
 
-    findAndPopulate(req,res,callback)
+    findAllAndPopulate(updateParam,callback)
     {
-        Note.find(req).populate({path:'label',match:{label_name:res.search}})
+        Note.find(updateParam).populate({path:'label'})
+        .exec((err,data)=>
+        {
+            if(err)
+            {
+                logger.error(`Error in findAllAndPopulate--> ${err}`);
+                callback(err);
+            }
+            else
+            {
+                callback(null,data);
+            }
+        });
+    }
+
+    findAndPopulate(updateParam,query,callback)
+    {
+        Note.find(updateParam).populate({path:'label',match:{label_name:query.search}})
         .exec((err,data)=>
         {
             if(err)
@@ -138,6 +157,7 @@ class noteModel
         })
         .catch(err=>
         {
+            logger.error(`In updateOne error-->${err}`);
             callback(err);
         });
     }
