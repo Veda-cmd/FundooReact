@@ -1,0 +1,21 @@
+.registerCard{
+    background: aqua;
+    width: 500px;
+    height: 450px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.registerTextField{
+    width: 250px;
+    height: 50px;
+}
+
+.registerbutton
+{
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
