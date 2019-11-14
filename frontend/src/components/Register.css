@@ -1,21 +1,99 @@
 .registerCard{
     background: aqua;
-    width: 500px;
-    height: 450px;
-    border: 1px solid black;
+    width: 600px;
+    height: 550px;
+    border: 1px solid lightgray;
     margin-left: auto;
     margin-right: auto;
     
 }
 
-.registerTextField{
-    width: 250px;
-    height: 50px;
+#firstname{
+    width: 200px;
+    height: 15px;
+}
+
+#lastname{
+    width: 200px;
+    height: 15px;
+}
+
+#email{
+    width:475px;
+    height: 15px;
+}
+
+#password{
+    width: 180px;
+    height: 15px;
+}
+
+#confirmpassword{
+    width: 180px;
+    height: 15px;
+}
+
+.heading{
+    float: left;
+    margin-left: 45px;
+    font-family: 'Times New Roman', Times, serif;
+    font-variant: small-caps;
+}
+.title{
+    width: 100px;
+    height: 40px;
+    font-display: inherit;
+    font-family: 'Segoe UI';
+    font-size: 25px;
+    color:orangered;
+    margin-left: 48px;
+    padding: 0;
+}
+
+.login{
+    float: left;
+    margin-top:15px;
+    margin-left: 45px;
+}
+
+.passwordText{
+    float: left;
+    font-size: 15px;
+    margin-left: 48px;
 }
 
 .registerbutton
 {
+    float:left;
+    margin-left: 310px;
+    margin-top:15px;
+}
+
+.first{
+    float: left;
+    margin-left: 48px;
+}
+
+.last{
+    float: left;
+    margin-left: 50px;
+}
+
+.confirm{
+    float: left;
+    margin-left: 20px;
+}
+
+.passwordDiv{
+    float: left;
+    margin-left: 48px;
+}
+
+.showPassword{
+    float: left;
+    margin-left: 20px;
     margin-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
+}
+.heading,.first,.passwordDiv,.passwordText,.login{
+    clear: both;
 }

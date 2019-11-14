@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './Login.css'
+import './Login.css';
+import '../index.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
@@ -48,37 +49,53 @@ class Login extends Component
     render()
     {
         return(
-            <div>
-                <h2>Login Page</h2>
+            <div className='main'>
                     <MuiThemeProvider>
-                    <Card className='card'>
+                    <Card className='loginCard'>
+                        <div className='loginTitle'>
+                            <h3>Fundoo</h3>
+                        </div>
+                        <div className='loginHead'>
+                            <h3>Login into your Fundoo account</h3>
+                        </div>
+                        <form>
+                            <div>
+                                <TextField className='loginTextField' 
+                                        label='Email' 
+                                        name='email'
+                                        margin='normal' 
+                                        autoComplete='off'
+                                        variant='outlined'
+                                        value={this.state.email}
+                                        onChange={(event)=>this.input(event)}>
+                                </TextField>
+                            </div>
+                            <div>
+                                <TextField className='loginTextField'
+                                        label='Password' 
+                                        name='password'
+                                        type='password'
+                                        margin='normal' 
+                                        autoComplete='off'
+                                        variant='outlined'
+                                        value={this.state.password}
+                                        onChange={(event)=>this.input(event)}>
+                                </TextField>
+                            </div>
+                        </form>
+                        
                         <div>
-                            <TextField className='textField' 
-                                       label='Email' 
-                                       name='email'
-                                       margin='normal' 
-                                       variant='outlined'
-                                       value={this.state.email}
-                                       onChange={(event)=>this.input(event)}>
-                            </TextField>
+                            <div className='forgot'>
+                                <a href='/forgot'>Forgot password?</a>
+                            </div>
+                            <div className='loginButton'>
+                                <Button color='primary'
+                                        margin='normal'
+                                        variant='contained'
+                                        onClick={(event)=>this.submit(event)}>Submit</Button>
+                            </div>
                         </div>
-                        <div>
-                            <TextField className='textField'
-                                       label='Password' 
-                                       name='password'
-                                       type='password'
-                                       margin='normal' 
-                                       variant='outlined'
-                                       value={this.state.password}
-                                       onChange={(event)=>this.input(event)}>
-                            </TextField>
-                        </div>
-                        <div className='button'>
-                            <Button color='primary'
-                                    margin='normal'
-                                    variant='contained'
-                                    onClick={(event)=>this.submit(event)}>Submit</Button>
-                        </div>
+                        
                     </Card> 
                     </MuiThemeProvider>
             </div>

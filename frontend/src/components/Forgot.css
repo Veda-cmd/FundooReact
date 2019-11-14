@@ -1,0 +1,20 @@
+.forgotCard{
+    background: aqua;
+    width: 500px;
+    height: 350px;
+    border: 1px solid lightgray;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.forgotTextField{
+    width: 320px;
+    height: 50px;
+}
+
+.forgotButton
+{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}

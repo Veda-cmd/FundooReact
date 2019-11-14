@@ -25,3 +25,27 @@ export function login(request,callback)
         return callback(error);
     })
 }
+
+export function forgot(request,callback)
+{
+    axios.post(baseUrl+'/forgot',request).then(response=>
+    {
+        return callback(null,response);
+    })
+    .catch(error=>
+    {
+        return callback(error);
+    })
+}
+
+export function reset(request,callback)
+{
+    axios.post(baseUrl+'/reset',request,{headers:{token:request.token}}).then(response=>
+    {
+        return callback(null,response);
+    })
+    .catch(error=>
+    {
+        return callback(error);
+    })
+}

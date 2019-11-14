@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './Register.css';
+import '../index.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
-import { Button } from '@material-ui/core';
+import { Button, IconButton } from '@material-ui/core';
 const Service = require('../services/services')
 
 class Register extends Component
@@ -15,7 +18,8 @@ class Register extends Component
           last_name:'',
           email:'',
           password:'',
-          confirm_password:''
+          confirm_password:'',
+          show:false
         }
     }
     
@@ -55,78 +59,119 @@ class Register extends Component
             }
             else
             {   
-                this.props.history.push('/login');
+                this.props.history.push('/');
             }
         })
         
     }
+
+    showPassword(event)
+    {
+        this.setState({
+            show:!this.state.show,
+        })
+    }
+
     render()
     {
         return(
-            <div>
-                <h2>Register Page</h2>
+            <div className='main'>
                     <MuiThemeProvider>
                     <Card className='registerCard'>
-                        <div>
-                            <TextField className='registerTextField' 
-                                       label='First Name' 
-                                       name='first_name'
-                                       margin='normal' 
-                                       variant='outlined'
-                                       value={this.state.first_name}
-                                       onChange={(event)=>this.input(event)}>
-                            </TextField>
+                        <div className='title'>
+                            <h3>Fundoo</h3>
                         </div>
+                        <h2 className='heading'>Create your Fundoo account</h2>
+                        <form>
+
+                        </form>
                         <div>
-                            <TextField className='registerTextField'
-                                       label='Last Name' 
-                                       name='last_name'
-                                       margin='normal' 
-                                       variant='outlined'
-                                       value={this.state.last_name}
-                                       onChange={(event)=>this.input(event)}>
-                            </TextField>
+                            <div className='first'>
+                                <TextField id='firstname' 
+                                        label='First Name' 
+                                        InputLabelProps={{style:{fontSize:15}}}
+                                        name='first_name'
+                                        margin='normal' 
+                                        variant='outlined'
+                                        value={this.state.first_name}
+                                        onChange={(event)=>this.input(event)}>
+                                </TextField>
+                            </div>
+                            <div className='last'>
+                                <TextField id='lastname'
+                                        label='Last Name' 
+                                        name='last_name'
+                                        InputLabelProps={{style:{fontSize:15}}}
+                                        margin='normal' 
+                                        variant='outlined'
+                                        value={this.state.last_name}
+                                        onChange={(event)=>this.input(event)}>
+                                </TextField>
+                            </div>
                         </div>
+                        
                         <div>
-                            <TextField className='textField' 
+                            <TextField id='email'
                                        label='Email'
                                        name='email'
                                        margin='normal' 
+                                       InputLabelProps={{style:{fontSize:15}}}
                                        variant='outlined'
                                        value={this.state.email}
                                        onChange={(event)=>this.input(event)}>
                             </TextField>
                         </div>
-                        <div>
-                            <TextField className='textField' 
-                                        label='Password'
-                                        type='password'
-                                        name='password' 
-                                        margin='normal' 
-                                        variant='outlined'
-                                        value={this.state.password}
-                                        onChange={(event)=>this.input(event)}>
-                            </TextField>
+                        <div className='passwordText'>
+                            <p>You can use letters,symbols and periods</p>
                         </div>
                         <div>
-                            <TextField className='textField' 
-                                        label='Confirm Password'
-                                        name='confirm_password'
-                                        type='password' 
-                                        margin='normal' 
-                                        variant='outlined'
-                                        value={this.state.confirm_password}
-                                        onChange={(event)=>this.input(event)}>
-                            </TextField>
+                            <div className='passwordDiv'>
+                                <TextField  id='password'
+                                            label='Password'
+                                            type={this.state.show?'text':'password'}
+                                            name='password' 
+                                            InputLabelProps={{style:{fontSize:15}}}
+                                            margin='normal' 
+                                            variant='outlined'
+                                            value={this.state.password}
+                                            onChange={(event)=>this.input(event)}>
+                                </TextField>
+                            </div>
+                            <div className='confirm'>
+                                <TextField  id='confirmpassword'
+                                            label='Confirm Password'
+                                            name='confirm_password'
+                                            type={this.state.show?'text':'password'} 
+                                            InputLabelProps={{style:{fontSize:15}}}
+                                            margin='normal' 
+                                            variant='outlined'
+                                            value={this.state.confirm_password}
+                                            onChange={(event)=>this.input(event)}>
+                                </TextField>
+                            </div>
+                            <div className='showPassword'>
+                                <IconButton onClick={(event)=>this.showPassword(event)}>
+                                    {this.state.show?<VisibilityIcon/>:<VisibilityOffIcon/>}
+                                </IconButton>
+                            </div>
                         </div>
-                        <div className='registerbutton'>
-                            <Button color='primary'
+                        <div className='passwordText'>
+                            <p>Use 6 or more characters with a mix of letters, numbers</p>
+                        </div>
+                        <div>
+                            <div className='login'>
+                                <a href='/'>Sign in instead</a>
+                            </div>
+                            <div className='registerbutton' >
+                                <Button 
+                                    color='primary'
                                     margin='normal'
                                     variant='contained'
                                     onClick={(event)=>this.submit(event)}>Submit</Button>
+                            </div>
                         </div>
-                    </Card>
                         
+                    </Card>
                     </MuiThemeProvider>
             </div>
         )
