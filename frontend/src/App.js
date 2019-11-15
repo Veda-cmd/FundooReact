@@ -21,6 +21,7 @@ function App() {
           <Route path='/dashboard' exact component={Dashboard}></Route>
           <Route path='/forgot' exact component={Forgot}></Route>
           <Route path='/reset/:token' exact component={Reset}></Route>
+          <Route path='/dashboard/reminders' exact component={Dashboard}></Route>
         </Switch>
       </Router>
     </div>

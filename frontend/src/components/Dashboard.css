@@ -1,0 +1,15 @@
+.header{
+    font-size: 30px;
+    color: rgb(100,108,108);
+}
+
+.divTitle{
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+}
+
+.anchor{
+outline: none;
+}

@@ -78,7 +78,7 @@ class Register extends Component
             <div className='main'>
                     <MuiThemeProvider>
                     <Card className='registerCard'>
-                        <div className='title'>
+                        <div className='registertitle'>
                             <h3>Fundoo</h3>
                         </div>
                         <h2 className='heading'>Create your Fundoo account</h2>
