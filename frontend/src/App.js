@@ -10,18 +10,21 @@ import Reset from './components/Reset';
 import Dashboard from './components/Dashboard';
 import Login  from './components/Login';
 import './App.css';
+import Reminder from './components/Reminder';
+import Verification from './components/Verification';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route path='/' exact component={Login}></Route>
-          <Route path='/register' exact component={Register}></Route>
-          <Route path='/dashboard' exact component={Dashboard}></Route>
-          <Route path='/forgot' exact component={Forgot}></Route>
-          <Route path='/reset/:token' exact component={Reset}></Route>
-          <Route path='/dashboard/reminders' exact component={Dashboard}></Route>
+          <Route path='/' exact={true} component={Login}></Route>
+          <Route path='/register' exact={true}component={Register}></Route>
+          <Route path='/verify/:url' exact={true}component={Verification}></Route>
+          <Route path='/dashboard' exact={true} component={Dashboard}></Route>
+          <Route path="/dashboard/reminders" exact={true} component={Reminder}></Route>
+          <Route path='/forgot' exact={true} component={Forgot}></Route>
+          <Route path='/reset/:token' exact={true} component={Reset}></Route>
         </Switch>
       </Router>
     </div>

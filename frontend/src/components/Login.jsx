@@ -32,7 +32,7 @@ class Login extends Component
             password:this.state.password
         }
 
-        Service.login(request,(error,response)=>
+        Service.login(request,(error,success)=>
         {
             if(error)
             {
@@ -40,7 +40,8 @@ class Login extends Component
             }
             else
             {   
-                sessionStorage.setItem('token',response.data.session);
+                sessionStorage.setItem('token',success.data.session);
+                sessionStorage.setItem('img',success.data.response.imageUrl);
                 this.props.history.push('/dashboard');
             }
         })
@@ -64,7 +65,6 @@ class Login extends Component
                                         label='Email' 
                                         name='email'
                                         margin='normal' 
-                                        autoComplete='off'
                                         variant='outlined'
                                         value={this.state.email}
                                         onChange={(event)=>this.input(event)}>

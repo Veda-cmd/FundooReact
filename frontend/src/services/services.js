@@ -38,6 +38,18 @@ export function forgot(request,callback)
     })
 }
 
+export function verify(request,callback)
+{
+    axios.post(baseUrl+'/verify',null,{params:{url:request}}).then(response=>
+    {
+        return callback(null,response);
+    })
+    .catch(error=>
+    {
+        return callback(error);
+    })
+}
+
 export function reset(request,callback)
 {
     axios.post(baseUrl+'/reset',request,{headers:{token:request.token}}).then(response=>
