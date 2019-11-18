@@ -1,0 +1,73 @@
+@import '../css/constants/mixin.scss';
+
+.header{
+    font-size: 30px;
+    cursor: default;
+    color: rgb(100,108,108);
+}
+
+.refresh{
+    @include color-field;
+    margin-left: 45px;
+}
+
+.spanTitle{
+    font-weight: 500;
+    font-size: .875rem;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.settings{
+    @include color-field;
+    margin-left: 30px;
+}
+
+.profile{
+    margin-left: 90px;
+}
+
+.refresh:hover,.settings:hover{
+    fill:black
+}
+
+.card{
+    margin-left: 200px;
+    transition: 0.25s;
+    width:300px;
+    height: 100px;
+    margin-top: 100px;
+}
+
+.label{
+    color: #5f6368;
+    font-weight: 900;
+    font-size: 0.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1rem;
+    letter-spacing: 0.07rem;
+    text-transform: uppercase;
+    padding: 15px 24px 10px;
+}
+
+@media screen and (max-width: 680px) {
+    div {
+      width: 10%;
+    }
+    .refresh .settings .profile{
+        margin-left: 0;
+    }
+}
+
+.shift{
+    margin-left: 300px;
+    width: 300px;
+    height: 100px;
+    transition: 0.25s;
+    margin-top: 100px;
+}
+// @media screen and (min-width:1380px) {
+//     .refresh .settings .profile{
+//         margin-left: 0;
+//     }
+// }

@@ -1,11 +1,27 @@
+/**
+ * @description:
+ * @file:Forgot.jsx
+ * @author:Vedant Nare
+ * @version:1.0.0
+*/ 
+
 import React,{Component} from 'react';
-import './Forgot.css';
+import './Forgot.scss';
 import '../index.css';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
 const Service = require('../services/services');
+const theme = createMuiTheme({
+    overrides: {
+        'MuiPaper': {
+            'rounded':{
+                borderRadius:'50px'
+            }
+        },
+    }
+});
 
 class Forgot extends Component{
 
@@ -51,7 +67,7 @@ class Forgot extends Component{
     render(){
         return(
             <div className='main'>
-                <MuiThemeProvider>
+                <MuiThemeProvider theme={theme}>
                     <Card className='forgotCard'>
                         <div className='loginTitle'>
                             <h3>Fundoo</h3>

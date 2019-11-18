@@ -1,17 +1,43 @@
+/**
+ * @description:
+ * @file:Register.jsx
+ * @author:Vedant Nare
+ * @version:1.0.0
+*/ 
+
 import React, { Component } from 'react';
-import './Register.css';
+import './Register.scss';
 import '../index.css';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import { Button, IconButton } from '@material-ui/core';
-const Service = require('../services/services')
+const Service = require('../services/services');
+
+var emailPattern =/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/igm,
+   passwordPattern = /^[a-zA-Z0-9]{6,20}$/;
+
+const theme = createMuiTheme({
+    overrides: {
+        'MuiPaper': {
+            'rounded':{
+                borderRadius:'50px'
+            }
+        },
+    }
+});
 
 class Register extends Component
 {
     constructor(props){
+
+        /** 
+         * @description super(props) would pass props to the parent constructor.
+         * Initial state is set for first name, last name, email, password and show.
+        */
+
         super(props);
         this.state={
           first_name:'',
@@ -32,7 +58,12 @@ class Register extends Component
 
     submit=(event)=>
     {
-        if(this.state.password !== this.state.confirm_password)
+        if(!emailPattern.test(this.state.email) || !passwordPattern.test(this.state.password))
+        {
+            alert('Email or password fields are invalid');
+            return;
+        }
+        else if(this.state.password !== this.state.confirm_password)
         {
             this.setState({
                 password:'',
@@ -41,27 +72,28 @@ class Register extends Component
             console.log('Passwords do not match');
             return;
         }
+        else{
 
-        let value =
-        {
-            firstName:this.state.first_name,
-            lastName:this.state.last_name,
-            email:this.state.email,
-            password:this.state.password
-        }
-
-    
-        Service.register(value,(error,response)=>
-        {
-            if(error)
+            let value =
             {
-                console.log('Error-->',error);
+                firstName:this.state.first_name,
+                lastName:this.state.last_name,
+                email:this.state.email,
+                password:this.state.password
             }
-            else
-            {   
-                this.props.history.push('/');
-            }
-        })
+
+            Service.register(value,(error,response)=>
+            {
+                if(error)
+                {
+                    console.log('Error-->',error);
+                }
+                else
+                {   
+                    this.props.history.push('/');
+                }
+            });
+        }
         
     }
 
@@ -76,15 +108,13 @@ class Register extends Component
     {
         return(
             <div className='main'>
-                    <MuiThemeProvider>
+                    <MuiThemeProvider theme={theme}>
                     <Card className='registerCard'>
                         <div className='registertitle'>
                             <h3>Fundoo</h3>
                         </div>
                         <h2 className='heading'>Create your Fundoo account</h2>
                         <form>
-
-                        </form>
                         <div>
                             <div className='first'>
                                 <TextField id='firstname' 
@@ -109,7 +139,6 @@ class Register extends Component
                                 </TextField>
                             </div>
                         </div>
-                        
                         <div>
                             <TextField id='email'
                                        label='Email'
@@ -128,6 +157,7 @@ class Register extends Component
                             <div className='passwordDiv'>
                                 <TextField  id='password'
                                             label='Password'
+                                            autoComplete='off'
                                             type={this.state.show?'text':'password'}
                                             name='password' 
                                             InputLabelProps={{style:{fontSize:15}}}
@@ -141,6 +171,7 @@ class Register extends Component
                                 <TextField  id='confirmpassword'
                                             label='Confirm Password'
                                             name='confirm_password'
+                                            autoComplete='off'
                                             type={this.state.show?'text':'password'} 
                                             InputLabelProps={{style:{fontSize:15}}}
                                             margin='normal' 
@@ -155,12 +186,13 @@ class Register extends Component
                                 </IconButton>
                             </div>
                         </div>
+                        </form>
                         <div className='passwordText'>
                             <p>Use 6 or more characters with a mix of letters, numbers</p>
                         </div>
                         <div>
                             <div className='login'>
-                                <a href='/'>Sign in instead</a>
+                                <a className='Link' href='/'>Sign in instead</a>
                             </div>
                             <div className='registerbutton' >
                                 <Button 
@@ -170,7 +202,6 @@ class Register extends Component
                                     onClick={(event)=>this.submit(event)}>Submit</Button>
                             </div>
                         </div>
-                        
                     </Card>
                     </MuiThemeProvider>
             </div>

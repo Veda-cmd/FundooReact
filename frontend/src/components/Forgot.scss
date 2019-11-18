@@ -1,10 +1,8 @@
+@import '../css/constants/mixin.scss';
+
 .forgotCard{
-    background: aqua;
-    width: 500px;
+    @include card;
     height: 350px;
-    border: 1px solid lightgray;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .forgotTextField{

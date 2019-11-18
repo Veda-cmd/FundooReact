@@ -1,5 +1,12 @@
+/**
+ * @description:
+ * @file:Dashboard.jsx
+ * @author:Vedant Nare
+ * @version:1.0.0
+*/ 
+
 import React,{Component} from 'react';
-import './Dashboard.css';
+import './Dashboard.scss';
 import {withStyles} from '@material-ui/core/styles';
 import Drawer from './Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,12 +15,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import MenuItem from '@material-ui/core/MenuItem';
-import { createMuiTheme, MuiThemeProvider, Tooltip, Avatar} from "@material-ui/core";
+import { createMuiTheme, MuiThemeProvider, Tooltip, Avatar, Card} from "@material-ui/core";
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { InputAdornment } from '@material-ui/core';
-const Service = require('../services/services');
+// const Service = require('../services/services');
 
 const theme = createMuiTheme({
     overrides: {
@@ -52,7 +59,7 @@ const theme = createMuiTheme({
             }
         }
     }
-})
+});
 
 const useStyles = {
     grow: {
@@ -79,53 +86,48 @@ const useStyles = {
         borderRadius:'10px'
       },
     },
-    inputRoot: {
-      color: 'inherit',
-    },
-    inputInput: {
-      padding: theme.spacing(1, 1, 1, 7),
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('md')]: {
-        width: 200,
-      },
-    },
-    sectionDesktop: {
-      display: 'none',
-      [theme.breakpoints.up('md')]: {
-        display: 'flex',
-      },
-    },
-    sectionMobile: {
-      display: 'flex',
-      [theme.breakpoints.up('md')]: {
-        display: 'none',
-      },
-    },
 };
+
+/** 
+ *@description withStyles is the higher order component that you use to merge in the styles.
+*/
 
 export default withStyles(useStyles)(
     class Dashboard extends Component{
 
         constructor(props)
         {
+            /** 
+             * @description super(props) would pass props to the parent constructor.
+             * Initial state is set for anchorEl,open,openDrawer and src.
+            */ 
+
             super(props)
             this.state={
                 anchorEl:null,
                 open:false,
                 openDrawer:false,
-                openReminder:false,
                 src:sessionStorage.getItem('img')
             }
         }
+
+        /**
+         * @description Popup menu is displayed when handleMenu is triggered.
+         *  anchorEl is the DOM element used to set the position of the menu.
+         * open: If true, menu is visible.
+        */ 
 
         handleMenu = event => {
             this.setState({
                 anchorEl:event.currentTarget,
                 open:true
             })
-          };
+        };
         
+        /**
+         * @description handleClose is used to close the popup menu.
+        */   
+
         handleClose = () => {
             this.setState({
                 anchorEl:null,
@@ -133,15 +135,30 @@ export default withStyles(useStyles)(
             })
         };
 
-        handleSignOut=()=>
+        /**
+         * @description handleSignOut is used to redirect to the user login page.
+        */
+
+        handleSignOut=(event)=>
         {
+            sessionStorage.removeItem('token');
+            sessionStorage.removeItem('img');
             this.props.history.push('/');
         }
+
+        /**
+         * @description handleReload is used to refresh the current page.
+        */
 
         handleReload=()=>
         {
             window.location.reload();
         }
+
+        /**
+         * @description handleDrawerOpen is used to handle drawer navigation on dashboard.
+         * if true, the drawer is displayed else it is closed.
+        */
 
         handleDrawerOpen=(event)=>{
             this.setState({
@@ -226,7 +243,7 @@ export default withStyles(useStyles)(
                                     open={this.state.open}
                                     onClose={this.handleClose}
                                 >
-                                    <MenuItem onClick={this.handleSignOut}>Sign Out</MenuItem>
+                                    <MenuItem onClick={(event)=>this.handleSignOut(event)}>Sign Out</MenuItem>
                                 </Menu>
                                 </div>
                             </Toolbar>
@@ -235,6 +252,11 @@ export default withStyles(useStyles)(
                             <Drawer getValue={this.state.openDrawer}
                                     props={this.props}
                             ></Drawer>
+                        </div>
+                        <div className={this.state.openDrawer?'shift':'card'}>
+                            <Card>
+                                <h1>Hi</h1>
+                            </Card>
                         </div>
                     </MuiThemeProvider> 
                 </div>

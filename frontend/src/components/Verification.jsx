@@ -6,7 +6,6 @@ class Verification extends Component{
     load=()=>
     {
         let request= this.props.match.params.url;
-        console.log(request);
         
         Service.verify(request,(error,response)=>
         {
@@ -24,7 +23,9 @@ class Verification extends Component{
     render()
     {
         return(
-            <div onLoad={this.load()}>Email verified successfully</div>
+            <div onLoad={this.load()}>
+                <h1>Email verified successfully</h1>
+            </div>
         )
     }
 }

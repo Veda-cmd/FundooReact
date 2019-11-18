@@ -1,11 +1,27 @@
+/**
+ * @description:
+ * @file:Reset.jsx
+ * @author:Vedant Nare
+ * @version:1.0.0
+*/ 
+
 import React,{Component} from 'react';
-import './Reset.css'
+import './Reset.scss'
 import '../index.css'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
 const Service = require('../services/services');
+const theme = createMuiTheme({
+    overrides: {
+        'MuiPaper': {
+            'rounded':{
+                borderRadius:'50px'
+            }
+        },
+    }
+});
 
 class Reset extends Component{
     constructor(props){
@@ -51,7 +67,7 @@ class Reset extends Component{
             {   
                console.log(response);
                alert("Password reset successful")
-               this.props.history.push('/');
+               this.props.history.replace('/');
             }
         });
     }
@@ -60,7 +76,7 @@ class Reset extends Component{
     {
         return(
             <div className='main'>
-                <MuiThemeProvider>
+                <MuiThemeProvider theme={theme}>
                     <Card className='resetCard'>
                         <div className='resetTitle'>
                             <h3>Fundoo</h3>

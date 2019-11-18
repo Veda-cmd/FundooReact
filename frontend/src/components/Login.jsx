@@ -1,15 +1,40 @@
+/**
+ * @description:
+ * @file:Login.jsx
+ * @author:Vedant Nare
+ * @version:1.0.0
+*/ 
+
 import React, { Component } from 'react';
-import './Login.css';
+import './Login.scss';
 import '../index.css';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
-const Service = require('../services/services')
+const Service = require('../services/services');
+var emailPattern =/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/igm,
+   passwordPattern = /^[a-zA-Z0-9]{6,20}$/;
+
+const theme = createMuiTheme({
+    overrides: {
+        'MuiPaper': {
+            'rounded':{
+                borderRadius:'50px'
+            }
+        },
+    }
+});
 
 class Login extends Component
 {
     constructor(props){
+
+        /** 
+         * @description super(props) would pass props to the parent constructor.
+         * Initial state is set for email and password.
+        */ 
+       
         super(props);
         this.state={
           email:'',
@@ -26,32 +51,41 @@ class Login extends Component
 
     submit(event)
     {
-        let request =
+    
+        if(!emailPattern.test(this.state.email) || !passwordPattern.test(this.state.password))
         {
-            email:this.state.email,
-            password:this.state.password
+            alert('Email or password fields are invalid');
+            return;
         }
-
-        Service.login(request,(error,success)=>
-        {
-            if(error)
+        else{
+            let request =
             {
-                console.log('Error-->',error);
+                email:this.state.email,
+                password:this.state.password
             }
-            else
-            {   
-                sessionStorage.setItem('token',success.data.session);
-                sessionStorage.setItem('img',success.data.response.imageUrl);
-                this.props.history.push('/dashboard');
-            }
-        })
+    
+            Service.login(request,(error,success)=>
+            {
+                if(error)
+                {
+                    console.log('Error-->',error);
+                }
+                else
+                {   
+                    sessionStorage.setItem('token',success.data.session);
+                    sessionStorage.setItem('img',success.data.response.imageUrl);
+                    this.props.history.replace('/dashboard');
+                }
+            });
+        }
+        
     }
 
     render()
     {
         return(
             <div className='main'>
-                    <MuiThemeProvider>
+                    <MuiThemeProvider theme={theme}>
                     <Card className='loginCard'>
                         <div className='loginTitle'>
                             <h3>Fundoo</h3>
@@ -86,14 +120,19 @@ class Login extends Component
                         
                         <div>
                             <div className='forgot'>
-                                <a href='/forgot'>Forgot password?</a>
+                                <a className='Link' href='/forgot'>Forgot password?</a>
                             </div>
                             <div className='loginButton'>
                                 <Button color='primary'
-                                        margin='normal'
-                                        variant='contained'
-                                        onClick={(event)=>this.submit(event)}>Submit</Button>
+                                    margin='normal'
+                                    variant='contained'
+                                    onClick={(event)=>this.submit(event)}>Submit</Button>
                             </div>
+                        </div>
+
+                        <div className='register'>
+                            <h3>Not registered yet?</h3>
+                            <a className='Link' href='/register'>Create Fundoo Account</a>
                         </div>
                         
                     </Card> 
