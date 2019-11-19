@@ -1,0 +1,31 @@
+@import '../css/constants/mixin.scss';
+
+#main{
+    @include flex;
+    padding: 10px;
+    width: 100%;
+}
+.options{
+    @include flex;
+    justify-content: space-between;
+    width: 60%;
+}
+#button{
+    @include flex;
+    justify-content: flex-end;
+    width:40%
+}
+
+.button{
+    margin-right: 30px;
+    font-size: 15px;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    color: rgba(0,0,0,0.87);
+    line-height: 1.25rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    border: none;
+    background-color: transparent; 
+}
+
+

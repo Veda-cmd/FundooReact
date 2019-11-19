@@ -7,6 +7,7 @@
 
 import React,{Component} from 'react';
 import './Dashboard.scss';
+import Note from './CreateNote';
 import {withStyles} from '@material-ui/core/styles';
 import Drawer from './Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -15,7 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import MenuItem from '@material-ui/core/MenuItem';
-import { createMuiTheme, MuiThemeProvider, Tooltip, Avatar, Card} from "@material-ui/core";
+import { createMuiTheme, MuiThemeProvider, Tooltip, Avatar} from "@material-ui/core";
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -102,11 +103,12 @@ export default withStyles(useStyles)(
              * Initial state is set for anchorEl,open,openDrawer and src.
             */ 
 
-            super(props)
+            super(props);
             this.state={
                 anchorEl:null,
                 open:false,
                 openDrawer:false,
+                openNoteEditor:false,
                 src:sessionStorage.getItem('img')
             }
         }
@@ -164,6 +166,13 @@ export default withStyles(useStyles)(
             this.setState({
                 openDrawer:!this.state.openDrawer
             });
+        }
+
+        handleNoteEditor=()=>
+        {
+            this.setState({
+                openNoteEditor:!this.state.openNoteEditor
+            })
         }
 
         render()
@@ -253,10 +262,10 @@ export default withStyles(useStyles)(
                                     props={this.props}
                             ></Drawer>
                         </div>
-                        <div className={this.state.openDrawer?'shift':'card'}>
-                            <Card>
-                                <h1>Hi</h1>
-                            </Card>
+                        <div className={this.state.openDrawer?'shift':'cardAnimate'}>
+                            
+                          <Note openNoteEditor={this.state.openNoteEditor}
+                                noteEditor={this.handleNoteEditor} />
                         </div>
                     </MuiThemeProvider> 
                 </div>

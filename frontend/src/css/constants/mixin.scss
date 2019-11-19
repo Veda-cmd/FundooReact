@@ -26,3 +26,8 @@
     fill: grey;
     cursor: pointer;
 }
+
+@mixin flex {
+    display: flex;
+    flex-direction: row;
+}

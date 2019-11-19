@@ -31,12 +31,42 @@
     fill:black
 }
 
-.card{
-    margin-left: 200px;
+.cardAnimate{
+    margin-left: 400px;
     transition: 0.25s;
-    width:300px;
-    height: 100px;
     margin-top: 100px;
+}
+
+.shift{
+    margin-left: 450px;
+    transition: 0.25s;
+    margin-top: 100px;
+}
+
+.card{
+    width: 550px;
+    height: 50px;
+    font-family: sans-serif;
+    font-weight: bolder;
+    background-clip: padding-box;
+    background-color: rgba(0,0,0,.2);
+    text-align: initial;
+    border: 1px solid transparent;
+    border-width: 1px 1px 1px 6px;
+    box-shadow: inset 1px 1px 0 rgba(0,0,0,.1), inset 0 -1px 0 rgba(0,0,0,.07);
+}
+
+.cardOpen{
+    width: 500px;
+    height: 150px;
+    font-family: sans-serif;
+    font-weight: bolder;
+    background-clip: padding-box;
+    background-color: rgba(0,0,0,.2);
+    text-align: initial;
+    border: 1px solid transparent;
+    border-width: 1px 1px 1px 6px;
+    box-shadow: inset 1px 1px 0 rgba(0,0,0,.1), inset 0 -1px 0 rgba(0,0,0,.07);
 }
 
 .label{
@@ -59,13 +89,7 @@
     }
 }
 
-.shift{
-    margin-left: 300px;
-    width: 300px;
-    height: 100px;
-    transition: 0.25s;
-    margin-top: 100px;
-}
+
 // @media screen and (min-width:1380px) {
 //     .refresh .settings .profile{
 //         margin-left: 0;

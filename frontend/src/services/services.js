@@ -59,7 +59,20 @@ export function reset(request,callback)
     .catch(error=>
     {
         return callback(error);
+    });
+}
+
+export function createNote(request,callback)
+{
+    axios.post(baseUrl+'/note/addNote',request,{headers:{token:sessionStorage.getItem('token')}})
+    .then(response=>
+    {
+        return callback(null,response);
     })
+    .catch(error=>
+    {
+        return callback(error);
+    });
 }
 
 export const isLogin = () => {

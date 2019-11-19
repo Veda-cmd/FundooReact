@@ -1,0 +1,11 @@
+@import '../css/constants/mixin.scss';
+
+
+
+#more,#color,#archive,#remind{
+    fill: #202124;
+}
+
+#more:hover,#color:hover,#archive:hover,#remind:hover{
+    opacity: .71;
+}
