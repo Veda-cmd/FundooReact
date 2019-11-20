@@ -5,11 +5,11 @@
     padding: 10px;
     width: 100%;
 }
-.options{
-    @include flex;
-    justify-content: space-between;
+
+.icon{
     width: 60%;
 }
+
 #button{
     @include flex;
     justify-content: flex-end;

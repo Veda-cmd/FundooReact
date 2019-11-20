@@ -6,6 +6,21 @@
     color: rgb(100,108,108);
 }
 
+.loader {
+    border: 2px solid #f3f3f3;
+    border-radius: 80%;
+    border-top: 2px solid #3498db;
+    width: 12px;
+    height: 12px;
+    animation: spin 2s linear infinite;
+}
+  
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
 .refresh{
     @include color-field;
     margin-left: 45px;
@@ -32,7 +47,7 @@
 }
 
 .cardAnimate{
-    margin-left: 400px;
+    margin-left: 300px;
     transition: 0.25s;
     margin-top: 100px;
 }
@@ -78,6 +93,14 @@
     letter-spacing: 0.07rem;
     text-transform: uppercase;
     padding: 15px 24px 10px;
+}
+
+.displayCards{
+    width: 1000px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 @media screen and (max-width: 680px) {

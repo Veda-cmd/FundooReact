@@ -75,6 +75,19 @@ export function createNote(request,callback)
     });
 }
 
+export function getNotes(callback)
+{
+    axios.get(baseUrl+'/note/getAllNotes',{headers:{token:sessionStorage.getItem('token')}})
+    .then(response=>
+    {
+        return callback(null,response);
+    })
+    .catch(error=>
+    {
+        return callback(error);
+    });
+}
+
 export const isLogin = () => {
     if (sessionStorage.getItem('token')) {
         return true;

@@ -1,0 +1,34 @@
+.single{
+    width: 300px;
+    height: 150px;
+    margin-left: 5px;
+    margin-top: 10px;
+    transition-property: opacity,box-shadow,transform;
+    transition-timing-function: ease-in;
+    transition-duration: 1s;
+}
+
+.label1{
+    width: 200px;
+    padding: 10px;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    text-align: start;
+    text-overflow: ellipsis;
+}
+
+.icons{
+    width: 90%;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    // display: none;
+}
+
+// .single:hover{
+//     .options{
+//         display: flex;
+//         transition: 0.25s;
+//     }
+// }

@@ -24,7 +24,7 @@ class Note extends Component{
 
     createNote=()=>
     {
-        if(this.state.title !== '' && this.state.description!== ''){
+        if(this.state.title !== ''){
             let request = {
                 title:this.state.title,
                 description:this.state.description
@@ -34,17 +34,28 @@ class Note extends Component{
                 if(error)
                 {
                     console.log(error);
+                    this.setState({
+                        title:'',
+                        description:''
+                    })
                     return;   
                 }
                 else
+                {
+                    this.setState({
+                        title:'',
+                        description:''
+                    })
                     console.log('created',response);
-                
+                    this.props.getAllNotes('req');
+                }
             });
-
+           
             this.props.noteEditor();
         }
         else{
-            console.log('err'); 
+            console.log('err');
+            this.props.noteEditor(); 
         }
     }
 
@@ -74,7 +85,9 @@ class Note extends Component{
                             }} />
                         </div>
                         <div id='main'>
-                            <Icon/>
+                            <div className='icon'>
+                                <Icon />
+                            </div>
                             <div id='button'>
                                 <button onClick={this.createNote} className='button'>Close</button>
                             </div>

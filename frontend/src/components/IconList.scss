@@ -1,6 +1,9 @@
 @import '../css/constants/mixin.scss';
 
-
+.options{
+    @include flex;
+    justify-content: space-between;
+}
 
 #more,#color,#archive,#remind{
     fill: #202124;
