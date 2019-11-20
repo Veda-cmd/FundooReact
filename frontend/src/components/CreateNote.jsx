@@ -65,7 +65,7 @@ class Note extends Component{
             <div>
                 {this.props.openNoteEditor ? 
                     <Card className='cardOpen'>
-                        <div>
+                        <div id='title'>
                             <TextField
                             placeholder='Title'
                             name='title'
@@ -75,7 +75,7 @@ class Note extends Component{
                                 disableUnderline:true
                             }}/>
                         </div>
-                        <div>
+                        <div id='description'>
                             <TextField placeholder='Take a note...'
                             name='description'
                             value={this.state.description}

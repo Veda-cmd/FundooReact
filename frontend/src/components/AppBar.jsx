@@ -13,7 +13,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { InputAdornment } from '@material-ui/core';
 import './Dashboard.scss';
-import { style, display } from '@material-ui/system';
 
 const theme = createMuiTheme({
     overrides: {

@@ -6,6 +6,9 @@
     width: 100%;
 }
 
+#title,#description{
+    text-overflow: ellipsis;
+}
 .icon{
     width: 60%;
 }
