@@ -49,6 +49,11 @@ const theme = createMuiTheme({
                 marginLeft:"10px",
                 fontSize:'1.5rem'
             }
+        },
+        'MuiListItem': {
+            'button': {
+                '&:hover':{'borderRadius':'0 25px 25px 0'}
+            },
         }
     }
 });
@@ -66,7 +71,9 @@ class Dashboard extends Component{
         this.state={
             openDrawer:false,
             openNoteEditor:false,
+            list:false,
             notes:[],
+            labels:[]
         }
     }
 
@@ -78,7 +85,8 @@ class Dashboard extends Component{
 
     handleDrawerOpen=(event)=>{
         this.setState({
-            openDrawer:!this.state.openDrawer
+            openDrawer:!this.state.openDrawer,
+            openNoteEditor:false
         });
     }
 
@@ -93,7 +101,14 @@ class Dashboard extends Component{
         })
     }
 
-    getAllNotes=(str)=>
+    handleList=(event)=>
+    {
+        this.setState({
+            list:!this.state.list
+        })
+    }
+
+    getAllNotes=()=>
     {
         Service.getNotes((err,response)=>
         {
@@ -111,8 +126,24 @@ class Dashboard extends Component{
         })
     }
 
+    getAllLabels=()=>{
+        Service.getAllLabels((err,response)=>{
+            if(err)
+            {
+                console.log('Error',err);
+            }
+            else
+            {
+                this.setState({
+                    labels:response.data,
+                });
+            }
+        })
+    }
+
     UNSAFE_componentWillMount(){
         this.getAllNotes();
+        this.getAllLabels();
     }
 
     render()
@@ -123,9 +154,11 @@ class Dashboard extends Component{
                     <Appbar 
                         handleDrawer={this.handleDrawerOpen}
                         getNotes={this.getAllNotes}
+                        list={this.handleList}
                         props={this.props} />
                     <div>
                         <Drawer getValue={this.state.openDrawer}
+                                labels={this.state.labels}
                                 props={this.props}
                         ></Drawer>
                     </div>
@@ -134,8 +167,8 @@ class Dashboard extends Component{
                             noteEditor={this.handleNoteEditor} 
                             getAllNotes={this.getAllNotes} />
                         <div className='displayCards'>
-                            {this.state.notes.map((item)=>
-                                <DisplayNote note={item} />
+                            {this.state.notes.map((item,index)=>
+                                <DisplayNote key={index} note={item} list={this.state.list} />
                             )}
                         </div>
                     </div>

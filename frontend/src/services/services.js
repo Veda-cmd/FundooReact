@@ -88,6 +88,19 @@ export function getNotes(callback)
     });
 }
 
+export function getAllLabels(callback)
+{
+    axios.get(baseUrl+'/label/getAllLabels',{headers:{token:sessionStorage.getItem('token')}})
+    .then(response=>
+    {
+        return callback(null,response);
+    })
+    .catch(error=>
+    {
+        return callback(error);
+    });
+}
+
 export const isLogin = () => {
     if (sessionStorage.getItem('token')) {
         return true;
