@@ -155,6 +155,7 @@ class Dashboard extends Component{
                         handleDrawer={this.handleDrawerOpen}
                         getNotes={this.getAllNotes}
                         list={this.handleList}
+                        tagChange={this.state.list}
                         props={this.props} />
                     <div>
                         <Drawer getValue={this.state.openDrawer}
@@ -168,7 +169,8 @@ class Dashboard extends Component{
                             getAllNotes={this.getAllNotes} />
                         <div className='displayCards'>
                             {this.state.notes.map((item,index)=>
-                                <DisplayNote key={index} note={item} list={this.state.list} />
+                                <DisplayNote key={index} 
+                                note={item} list={this.state.list} />
                             )}
                         </div>
                     </div>

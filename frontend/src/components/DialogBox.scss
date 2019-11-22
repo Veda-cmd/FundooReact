@@ -1,41 +1,41 @@
 @import '../css/constants/mixin.scss';
 
-#main{
+.mainHead{
     @include flex;
-    padding: 10px;
-    width: 100%;
 }
 
-#title,#description{
+.iconHead{
+    @include flex;
+    padding: 10px;
+}
+
+#dialogTitle,#dialogDesc{
     width:400px;
     margin: 10px;
 }
 
-.createTitle{
-    @include flex;
+#iconList{
+width: 100%;
+margin-left: 20px;
 }
 
-.pinned{
+.pinHead{
     margin-top: 15px;
-    margin-left: 20px;
+    margin-left: 15px;
     fill: grey;
 }
 
-.pinned:hover{
+.pinHead:hover{
     fill:black;
 }
 
-.icon{
-    width: 100%;
-}
-
-#button{
+#buttonHead{
     @include flex;
     justify-content: flex-end;
     width:40%
 }
 
-.button{
+.buttonHead{
     margin-right: 30px;
     font-size: 15px;
     font-family: 'Google Sans',Roboto,Arial,sans-serif;
@@ -46,5 +46,3 @@
     border: none;
     background-color: transparent; 
 }
-
-

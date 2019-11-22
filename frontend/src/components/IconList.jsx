@@ -1,79 +1,98 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import RemindIcon from './RemindIcon';
 import ColorIcon from './Color';
 import ArchiveIcon from './ArchiveIcon';
 import MoreIcon from './MoreIcon';
+import RemindPopper from './RemindPopper';
 import ColorPopper from './ColorPopper';
 import MenuPopper from './MenuPopper';
 import './IconList.scss'
 
-class Icon extends Component{
+class Icon extends Component {
 
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
-        this.state={
-            changeColor:false,
-            menuOpen:false,
-            anchorEl:null
+        this.state = {
+            changeColor: false,
+            menuOpen: false,
+            remind: false,
+            anchorEl: null
         }
     }
 
-    loadColor=(element)=>{
+    loadColor = (element) => {
         this.props.getColor(element);
     }
 
-    changeColour=(event)=>
-    {
+    loadReminder = (event) => {
         this.setState({
-            changeColor:!this.state.changeColor,
-            anchorEl:event.currentTarget  
+            remind: !this.state.remind,
+            anchorEl: event.currentTarget
         })
     }
 
-    menuOpen=(event)=>{
+    closeReminder = () => {
         this.setState({
-            menuOpen:!this.state.menuOpen,
-            anchorEl:event.currentTarget
+            remind: !this.state.remind
         })
     }
 
-    closeColour=()=>
-    {
+    getData = (date, time) => {
+        this.props.getReminder(date, time);
+    }
+
+    changeColour = (event) => {
         this.setState({
-            changeColor:!this.state.changeColor,
-            anchorEl:null  
+            changeColor: !this.state.changeColor,
+            anchorEl: event.currentTarget
         })
     }
 
-    closeMenu=()=>
-    {
+    menuOpen = (event) => {
         this.setState({
-            menuOpen:!this.state.menuOpen,
-            anchorEl:null  
+            menuOpen: !this.state.menuOpen,
+            anchorEl: event.currentTarget
         })
     }
 
-    render(){
-        return(
+    closeColour = () => {
+        this.setState({
+            changeColor: !this.state.changeColor,
+            anchorEl: null
+        })
+    }
+
+    closeMenu = () => {
+        this.setState({
+            menuOpen: !this.state.menuOpen,
+            anchorEl: null
+        })
+    }
+
+    render() {
+        return (
             <div className='options'>
-               
-                <RemindIcon />
-                <ColorIcon setColor={this.changeColour}/>
-                <ArchiveIcon />
-                <MoreIcon openMenu={this.menuOpen}/>
 
-                <div>
-                    <ColorPopper changeColor={this.state.changeColor}
-                        anchorEl={this.state.anchorEl}
-                        colorClose={this.closeColour}
-                        props={this.loadColor}
-                    />
-                </div>
-                <div>
-                    <MenuPopper more={this.props.openNoteEditor} 
+                <RemindIcon openRemind={this.loadReminder} />
+                <ColorIcon setColor={this.changeColour} />
+                <ArchiveIcon />
+                <MoreIcon openMenu={this.menuOpen} />
+
+                {/* <div> */}
+                <ColorPopper changeColor={this.state.changeColor}
+                    anchorEl={this.state.anchorEl}
+                    colorClose={this.closeColour}
+                    props={this.loadColor}
+                />
+                {/* </div> */}
+                {/* <div> */}
+                <MenuPopper more={this.props.openNoteEditor}
                     open={this.state.menuOpen} anchorEl={this.state.anchorEl} />
-                </div>
+                {/* </div> */}
+                {/* <div> */}
+                <RemindPopper getReminder={this.getData} close={this.closeReminder}
+                    open={this.state.remind} anchorEl={this.state.anchorEl} />
+                {/* </div> */}
             </div>
         )
     }

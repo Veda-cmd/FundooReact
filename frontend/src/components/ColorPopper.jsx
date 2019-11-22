@@ -21,12 +21,12 @@ class ColorPopper extends Component{
     render(){
         return(
             <div>
-                <Popper className='pop' open={this.props.changeColor} 
+                <Popper id="xyz" className='pop' open={this.props.changeColor} 
                 anchorEl={this.props.anchorEl}
                 placement='top-start'
                 >
                     {array.map((item,index)=>
-                        <div key={index}>
+                        <div  key={index} >
                             <Tooltip title={item.name}>
                                 <IconButton onClick={()=>this.loadColor(index)} style={{backgroundColor:item.code}}> 
                                 </IconButton>

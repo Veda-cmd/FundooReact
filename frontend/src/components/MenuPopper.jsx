@@ -9,7 +9,8 @@ class MenuPopper extends Component{
         return(
             <div>
                 {this.props.more?
-                <Popper className='menuPop' open={this.props.open} anchorEl={this.props.anchorEl}>
+                <Popper className='menuPop' open={this.props.open} anchorEl={this.props.anchorEl}
+                placement='top-start'>
                     <List className='listText'>
                         <ListItem button>
                             <span>Add Label</span>
@@ -17,7 +18,8 @@ class MenuPopper extends Component{
                     </List>
                 </Popper>
                 :
-                <Popper className='menuPop' open={this.props.open} anchorEl={this.props.anchorEl}>
+                <Popper className='menuPop' open={this.props.open} anchorEl={this.props.anchorEl}
+                placement='top-start'>
                     <List className='listText'>
                         <ListItem button>
                             <span>Delete Note</span>

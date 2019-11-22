@@ -5,7 +5,7 @@ import './IconList.scss';
 class Remind extends Component{
     render(){
         return(
-            <div id='remind'>
+            <div id='remind' onClick={(event)=>this.props.openRemind(event)}>
                 <Tooltip title='Remind me'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
                         <path d="M13 9h-2v2H9v2h2v2h2v-2h2v-2h-2z"/>

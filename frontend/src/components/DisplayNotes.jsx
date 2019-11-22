@@ -2,16 +2,24 @@ import React,{Component} from 'react';
 import { Card, Tooltip} from '@material-ui/core';
 import Icon from './IconList';
 import './DisplayNotes.scss';
+import DialogBox from './DialogBox';
 
 class DisplayNote extends Component{
     constructor(props){
         super(props);
         this.state={
             id:'',
-            color:''
+            color:'',
+            open:false
         }
     }
    
+    handleDialogBox=()=>{
+        this.setState({
+            open:!this.state.open
+        })
+    }
+
     input=(event)=>
     {
         this.setState({
@@ -28,9 +36,9 @@ class DisplayNote extends Component{
     render(){
         return(
             <div>
-                <Card className={this.props.list?'double':'single'} 
+                <Card className={this.props.list?'double':'single'}
                 style={{backgroundColor:this.state.color===''?this.props.note.color:this.state.color}}>
-                    <div className='title'>
+                    <div className='title' onClick={this.handleDialogBox}>
                         <div className='label1'>
                             <label>{this.props.note.title}</label>
                         </div>
@@ -43,14 +51,16 @@ class DisplayNote extends Component{
                             </Tooltip>
                         </div>
                     </div>
-                    <div className='label1'>
+                    <div className='label2'>
                         <label>{this.props.note.description}</label>
                     </div>
                     <div id='icons'>
                         <Icon getColor={this.setColor} /> 
-                    </div>
-                    
+                    </div>  
                 </Card>
+                <div>
+                    <DialogBox open={this.state.open} item={this.props.note} />
+                </div>
             </div>
         )
      

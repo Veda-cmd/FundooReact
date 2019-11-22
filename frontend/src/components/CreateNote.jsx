@@ -12,7 +12,8 @@ class Note extends Component{
         this.state={
             title:'',
             description:'',
-            color:''
+            color:'',
+            reminder:''
         }
     }
 
@@ -21,6 +22,10 @@ class Note extends Component{
         this.setState({
             [event.target.name]: event.target.value
         });
+    }
+
+    getReminderData(date,time){
+        console.log(date,time);
     }
 
     createNote=()=>
@@ -72,8 +77,7 @@ class Note extends Component{
         let color = element.code;
         this.setState({
             color:color
-        })
-        
+        });   
     }
 
     render()
@@ -117,7 +121,8 @@ class Note extends Component{
                         <div id='main'>
                             <div className='icon'>
                                 <Icon openNoteEditor={this.props.openNoteEditor} 
-                                getColor={this.getColor} />
+                                getColor={this.getColor}
+                                getReminder={this.getReminderData} />
                             </div>
                             <div id='button'>
                                 <button onClick={this.createNote} className='button'>Close</button>
