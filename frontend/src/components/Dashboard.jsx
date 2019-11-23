@@ -170,7 +170,8 @@ class Dashboard extends Component{
                         <div className='displayCards'>
                             {this.state.notes.map((item,index)=>
                                 <DisplayNote key={index} 
-                                note={item} list={this.state.list} />
+                                note={item} getNotes={this.getAllNotes}
+                                list={this.state.list} />
                             )}
                         </div>
                     </div>

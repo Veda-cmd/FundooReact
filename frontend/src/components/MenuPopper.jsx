@@ -21,7 +21,7 @@ class MenuPopper extends Component{
                 <Popper className='menuPop' open={this.props.open} anchorEl={this.props.anchorEl}
                 placement='top-start'>
                     <List className='listText'>
-                        <ListItem button>
+                        <ListItem button onClick={this.props.delete}>
                             <span>Delete Note</span>
                         </ListItem>
                         <ListItem button>

@@ -1,6 +1,11 @@
 import React,{Component} from 'react';
-import {Card,TextField, Tooltip} from "@material-ui/core";
+import {Card,TextField, Tooltip, Avatar} from "@material-ui/core";
+import Chip from '@material-ui/core/Chip';
 import './CreateNote.scss';
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import Icon from './IconList';
 const Service = require('../services/services');
 
@@ -13,7 +18,10 @@ class Note extends Component{
             title:'',
             description:'',
             color:'',
-            reminder:''
+            reminder:null,
+            remindFront:null,
+            isArchived:false,
+            open:false
         }
     }
 
@@ -24,8 +32,31 @@ class Note extends Component{
         });
     }
 
-    getReminderData(date,time){
-        console.log(date,time);
+    setArchive=()=>{
+        this.setState({
+            isArchived:true,
+            open:!this.state.open
+        })
+    }
+
+    getReminderData=(date,time)=>{
+
+        let newTime= time.toString().slice(16,25),
+        dateFront=date.toString().slice(3,10);
+        var hours = time.getHours() ; // gives the value in 24 hours format
+        var AmOrPm = hours >= 12 ? 'PM' : 'AM';
+        hours = (hours % 12) || 12;
+        var minutes = time.getMinutes(); 
+        minutes=minutes<10?'0'+minutes:minutes;
+        var finalTime = hours + ":" + minutes + " " + AmOrPm; 
+
+        let remindFront=dateFront+', '+finalTime;
+        let reminder=dateFront+','+date.toString().slice(11,15)+' '+newTime;
+        this.setState({
+            reminder:reminder,
+            remindFront:remindFront
+        })
+
     }
 
     createNote=()=>
@@ -34,7 +65,9 @@ class Note extends Component{
             let request = {
                 title:this.state.title,
                 description:this.state.description,
-                color:this.state.color
+                color:this.state.color,
+                reminder:this.state.reminder,
+                isArchived:this.state.isArchived
             }
             Service.createNote(request,(error,response)=>
             {
@@ -44,7 +77,10 @@ class Note extends Component{
                     this.setState({
                         title:'',
                         description:'',
-                        color:''
+                        color:'',
+                        reminder:null,
+                        remindFront:null,
+                        isArchived:false
                     })
                     return;   
                 }
@@ -53,7 +89,10 @@ class Note extends Component{
                     this.setState({
                         title:'',
                         description:'',
-                        color:''
+                        color:'',
+                        reminder:null,
+                        remindFront:null,
+                        isArchived:false
                     })
                     console.log('created',response);
                     this.props.getAllNotes();
@@ -73,11 +112,21 @@ class Note extends Component{
         }
     }
 
+    handleClose=()=>{
+        this.setState({
+            open:!this.state.open
+        })
+    }
+
     getColor=(element)=>{
         let color = element.code;
         this.setState({
             color:color
         });   
+    }
+
+    handleDelete=()=>{
+        console.log('deleted');
     }
 
     render()
@@ -118,16 +167,50 @@ class Note extends Component{
                                 disableUnderline:true
                             }} />
                         </div>
+                        {this.state.remindFront===null?
+                        null:
+                        <Chip avatar={<Avatar src='data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE4cHgiIHdpZHRoPSIxOHB4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0iIzAwMDAwMCI+CiA8cGF0aCBkPSJtMjMuOTkgNGMtMTEuMDUgMC0xOS45OSA4Ljk1LTE5Ljk5IDIwczguOTQgMjAgMTkuOTkgMjBjMTEuMDUgMCAyMC4wMS04Ljk1IDIwLjAxLTIwcy04Ljk2LTIwLTIwLjAxLTIwem0wLjAxIDM2Yy04Ljg0IDAtMTYtNy4xNi0xNi0xNnM3LjE2LTE2IDE2LTE2IDE2IDcuMTYgMTYgMTYtNy4xNiAxNi0xNiAxNnoiLz4KIDxwYXRoIGQ9Im0wIDBoNDh2NDhoLTQ4eiIgZmlsbD0ibm9uZSIvPgogPHBhdGggZD0ibTI1IDE0aC0zdjEybDEwLjQ5IDYuMyAxLjUxLTIuNDYtOS01LjM0eiIvPgo8L3N2Zz4K'></Avatar>}
+                            label={this.state.remindFront}
+                            onDelete={this.handleDelete}>
+                        </Chip>
+                        }
                         <div id='main'>
                             <div className='icon'>
                                 <Icon openNoteEditor={this.props.openNoteEditor} 
                                 getColor={this.getColor}
+                                setArchive={this.setArchive}
                                 getReminder={this.getReminderData} />
                             </div>
                             <div id='button'>
                                 <button onClick={this.createNote} className='button'>Close</button>
                             </div>
-                        </div> 
+                        </div>
+                        <Snackbar
+                            anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                            }}
+                            open={this.state.open}
+                            autoHideDuration={6000}
+                            onClose={this.handleClose}
+                            ContentProps={{
+                            'aria-describedby': 'message-id',
+                            }}
+                            message={<span id="message-id">Note archived</span>}
+                            action={[
+                            <Button key="undo" color="secondary" size="small" onClick={this.handleClose}>
+                                UNDO
+                            </Button>,
+                            <IconButton
+                                key="close"
+                                aria-label="close"
+                                color="inherit"
+                                onClick={this.handleClose}
+                            >
+                                <CloseIcon />
+                            </IconButton>,
+                            ]}
+                        />
                     </Card>
                     :<Card className='card' onClick={this.props.noteEditor}>
                         <div>

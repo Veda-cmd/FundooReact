@@ -69,30 +69,34 @@ class Icon extends Component {
         })
     }
 
+    delete=()=>{
+        this.props.delete();
+    }
+
     render() {
         return (
             <div className='options'>
 
                 <RemindIcon openRemind={this.loadReminder} />
                 <ColorIcon setColor={this.changeColour} />
-                <ArchiveIcon />
+                <ArchiveIcon setArchive={this.props.setArchive} />
                 <MoreIcon openMenu={this.menuOpen} />
 
-                {/* <div> */}
+               
                 <ColorPopper changeColor={this.state.changeColor}
                     anchorEl={this.state.anchorEl}
                     colorClose={this.closeColour}
                     props={this.loadColor}
                 />
-                {/* </div> */}
-                {/* <div> */}
+                
                 <MenuPopper more={this.props.openNoteEditor}
-                    open={this.state.menuOpen} anchorEl={this.state.anchorEl} />
-                {/* </div> */}
-                {/* <div> */}
+                    delete={this.delete}
+                    open={this.state.menuOpen} anchorEl={this.state.anchorEl} 
+                />
+               
                 <RemindPopper getReminder={this.getData} close={this.closeReminder}
-                    open={this.state.remind} anchorEl={this.state.anchorEl} />
-                {/* </div> */}
+                open={this.state.remind} anchorEl={this.state.anchorEl} />
+               
             </div>
         )
     }

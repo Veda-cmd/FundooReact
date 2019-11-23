@@ -101,6 +101,21 @@ export function getAllLabels(callback)
     });
 }
 
+export function updateNote(request)
+{
+    let response = axios.post(baseUrl+'/note/updateNote',request,{headers:{token:sessionStorage.getItem('token')}})
+
+    return response;
+}
+
+export function deleteNote(request)
+{
+    let response = axios.post(baseUrl+'/note/deleteNote',request,{headers:{token:sessionStorage.getItem('token')}})
+
+    return response;
+}
+
+
 export const isLogin = () => {
     if (sessionStorage.getItem('token')) {
         return true;
