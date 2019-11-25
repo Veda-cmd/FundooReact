@@ -1,8 +1,19 @@
+/**
+ * @description:
+ * @file:Color.jsx
+ * @author:Vedant Nare
+ * @version:1.0.0
+*/
+
 import React,{Component} from 'react';
 import {Tooltip} from "@material-ui/core";
 import './IconList.scss';
 
 class Color extends Component{
+    /**
+     * Color Icon is being returned.
+    */
+
     render(){
         return(
             <div id='color' onClick={(event)=>this.props.setColor(event)}>

@@ -1,7 +1,18 @@
+/**
+ * @description:
+ * @file:ColorPopper.jsx
+ * @author:Vedant Nare
+ * @version:1.0.0
+*/
+
 import React,{Component} from 'react';
 import './IconList.scss';
 import Popper from '@material-ui/core/Popper';
 import { Tooltip, IconButton } from '@material-ui/core';
+
+/**
+ * @description array of colors is declared.
+*/
 
 const array=[{code:'#FDFEFE',name:'White'},
             {code:'#ABEBC6',name:'Green'},
@@ -12,6 +23,11 @@ const array=[{code:'#FDFEFE',name:'White'},
 
 class ColorPopper extends Component{
 
+    /**
+     *@description loadColor is used to return the selected color through index and close
+     * the Color Popper element. 
+    */
+
     loadColor=(index)=>
     {
         this.props.props(array[index]);
@@ -21,7 +37,7 @@ class ColorPopper extends Component{
     render(){
         return(
             <div>
-                <Popper id="xyz" className='pop' open={this.props.changeColor} 
+                <Popper className='pop' open={this.props.changeColor} 
                 anchorEl={this.props.anchorEl}
                 placement='top-start'
                 >

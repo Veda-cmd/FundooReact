@@ -1,3 +1,10 @@
+/**
+ * @description:
+ * @file:AppBar.jsx
+ * @author:Vedant Nare
+ * @version:1.0.0
+*/ 
+
 import React,{Component} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import './Dashboard.scss';
@@ -84,6 +91,7 @@ const useStyles = {
 /** 
  *@description withStyles is the higher order component that you use to merge in the styles.
 */
+
 export default withStyles(useStyles)(
     class AppToolBar extends Component{
 
@@ -91,6 +99,7 @@ export default withStyles(useStyles)(
         {
             /** 
              * @description super(props) would pass props to the parent constructor.
+             * @param anchorEl,open,openDrawer and src
              * Initial state is set for anchorEl,open,openDrawer and src.
             */ 
 

@@ -26,13 +26,25 @@
     justify-content: space-between;
 }
 
-
 .menuPop{
     width: 150px;
     border:1px solid lightgrey;
     border-radius: 10px;
-    z-index: 1800;
+    z-index: 10000;
     background-color: rgb(255, 255, 255);
+}
+
+.labelPop{
+    @extend .menuPop;
+}
+
+.divide{
+    margin-top: 5px;
+}
+
+#label{
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
 .listText{

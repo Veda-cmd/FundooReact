@@ -115,6 +115,13 @@ export function deleteNote(request)
     return response;
 }
 
+export function addLabelToNote(request)
+{
+    let response = axios.post(baseUrl+'/note/addLabel',request,{headers:{token:sessionStorage.getItem('token')}})
+
+    return response;
+}
+
 
 export const isLogin = () => {
     if (sessionStorage.getItem('token')) {

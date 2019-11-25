@@ -1,6 +1,6 @@
 .single{
     width: 300px;
-    height: 400px;
+    min-height: 100px;
     border: 1px solid lightgrey;
     margin-left: 5px;
     margin-top: 10px;
@@ -11,7 +11,7 @@
 
 .double{
     width: 800px;
-    height: 310px;
+    min-height: 50px;
     margin-left: 5px;
     margin-top: 10px;
     transition: 0.3s;
@@ -22,11 +22,13 @@
         width:600px;
         overflow:hidden;
     }
+    .pin{
+        margin-left: 120px;
+    }
 }
 
 .label1{
     width: 230px;
-    height: 80px;
     padding: 10px;
     margin-top: 15px;
     word-wrap: break-word;
@@ -36,7 +38,6 @@
 
 .label2{
     width: 250px;
-    height: 100px;
     padding: 10px;
     margin-top: 15px;
     word-wrap: break-word;
@@ -44,11 +45,11 @@
     text-align: start;
     overflow:hidden ;
 }
+
 .pin{
     fill: grey;
     margin-top: 20px;
     margin-left: 10px;
-    display: none;
 }
 
 .pin:hover{
@@ -66,27 +67,9 @@
     margin-left: 45px;
     justify-content: space-between;
     margin-bottom: 10px;
-    display: none;
+    // display: none;
 }
 
-.single:hover{
-    #icons,.pin{
-        display: block;
-    }
-}
 
-.double:hover{
-    #icons{
-        width: 90%;
-        margin-top: 0;
-        margin-left: 55px;
-        margin-bottom: 18px;
-        display: block;
-    }
 
-    .pin{
-        display: block;
-        margin-left: 110px;
-    }
-}
 

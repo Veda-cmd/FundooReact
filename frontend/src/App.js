@@ -1,3 +1,10 @@
+/**
+ * @description:
+ * @file:App.js
+ * @author:Vedant Nare
+ * @version:1.0.0
+*/ 
+
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -14,10 +21,13 @@ import Reminder from './components/Reminder';
 import Verification from './components/Verification';
 import PrivateRoute from './components/PrivateRoute';
 
-function App(props) {
+function App() {
   return (
     <div className="App">
       <Router>
+        {/* A <Switch> looks through all its children <Route>
+          elements and renders the first one whose path
+          matches the current URL. */}
         <Switch>
           <Route path='/' exact={true} component={Login}></Route>
           <Route path='/register' exact={true}component={Register}></Route>

@@ -1,3 +1,10 @@
+/**
+ * @description:
+ * @file:CreateNote.jsx
+ * @author:Vedant Nare
+ * @version:1.0.0
+*/ 
+
 import React,{Component} from 'react';
 import {Card,TextField, Tooltip, Avatar} from "@material-ui/core";
 import Chip from '@material-ui/core/Chip';
@@ -13,6 +20,11 @@ class Note extends Component{
     
     constructor(props)
     {
+        /** 
+         * @description super(props) would pass props to the parent constructor.
+         * @param title,description,color,reminder,remindFront,isArchived,open
+        */ 
+
         super(props);
         this.state={
             title:'',
@@ -25,6 +37,10 @@ class Note extends Component{
         }
     }
 
+    /**
+     *@description input function is used to assign target value to target name. 
+    */ 
+
     input=(event)=>
     {
         this.setState({
@@ -32,12 +48,21 @@ class Note extends Component{
         });
     }
 
+    /**
+     *@description setArchive is called when an note is archived.
+    */
+
     setArchive=()=>{
         this.setState({
             isArchived:true,
             open:!this.state.open
         })
     }
+
+    /**
+     *@description getReminderData is used for setting reminder in both client and server
+     * side. The data is filtered for representation on frontend and stored in remindFront.
+    */
 
     getReminderData=(date,time)=>{
 
@@ -52,12 +77,18 @@ class Note extends Component{
 
         let remindFront=dateFront+', '+finalTime;
         let reminder=dateFront+','+date.toString().slice(11,15)+' '+newTime;
+
         this.setState({
             reminder:reminder,
             remindFront:remindFront
         })
 
     }
+
+    /**
+     *@description createNote function is used for creation of a new note. Title is mandatory 
+     *while creating a note. createNote service is called and it returns error or success response.  
+    */
 
     createNote=()=>
     {
@@ -98,7 +129,6 @@ class Note extends Component{
                     this.props.getAllNotes();
                 }
             });
-           
             this.props.noteEditor();
         }
         else{
@@ -112,11 +142,19 @@ class Note extends Component{
         }
     }
 
+    /**
+     *@description handleClose is used to manage the state of Snackbar.
+    */
+
     handleClose=()=>{
         this.setState({
             open:!this.state.open
         })
     }
+
+    /**
+     *@description getColor is used for setting the selected color as background of the note. 
+    */
 
     getColor=(element)=>{
         let color = element.code;
@@ -125,8 +163,16 @@ class Note extends Component{
         });   
     }
 
+    /**
+     *@description handleDelete is used for deletion of Chip.
+    */
+
     handleDelete=()=>{
         console.log('deleted');
+    }
+
+    getLabel=()=>{
+        
     }
 
     render()

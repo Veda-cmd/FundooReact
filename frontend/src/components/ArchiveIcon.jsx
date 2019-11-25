@@ -1,8 +1,19 @@
+/**
+ * @description:
+ * @file:ArchiveIcon.jsx
+ * @author:Vedant Nare
+ * @version:1.0.0
+*/ 
+
 import React,{Component} from 'react';
 import {Tooltip} from "@material-ui/core";
 import './IconList.scss';
 
 class Archive extends Component{
+    /**
+     * Archive Icon is being returned.
+    */
+   
     render(){
         return(
             <div id='archive' onClick={this.props.setArchive}>

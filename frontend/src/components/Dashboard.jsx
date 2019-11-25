@@ -54,6 +54,11 @@ const theme = createMuiTheme({
             'button': {
                 '&:hover':{'borderRadius':'0 25px 25px 0'}
             },
+        },
+        'MuiChip':{
+            'root':{
+                marginLeft:'10px'
+            }
         }
     }
 });
@@ -91,7 +96,7 @@ class Dashboard extends Component{
     }
 
     /**
-     * @description handleReload is used to refresh the current page.
+     * @description handleNoteEditor is used for managing open/close state of note editor.
     */
 
     handleNoteEditor=()=>
@@ -110,6 +115,7 @@ class Dashboard extends Component{
 
     getAllNotes=()=>
     {
+
         Service.getNotes((err,response)=>
         {
             if(err)
@@ -148,15 +154,19 @@ class Dashboard extends Component{
 
     render()
     {
+        console.log(this.state.notes);
+        
         return(
             <div>
                 <MuiThemeProvider theme={theme}>
+                    <div>
                     <Appbar 
                         handleDrawer={this.handleDrawerOpen}
                         getNotes={this.getAllNotes}
                         list={this.handleList}
                         tagChange={this.state.list}
                         props={this.props} />
+                    </div>
                     <div>
                         <Drawer getValue={this.state.openDrawer}
                                 labels={this.state.labels}
@@ -169,9 +179,11 @@ class Dashboard extends Component{
                             getAllNotes={this.getAllNotes} />
                         <div className='displayCards'>
                             {this.state.notes.map((item,index)=>
-                                <DisplayNote key={index} 
+                                <div key={index} >
+                                <DisplayNote 
                                 note={item} getNotes={this.getAllNotes}
                                 list={this.state.list} />
+                                </div>
                             )}
                         </div>
                     </div>

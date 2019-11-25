@@ -65,12 +65,12 @@ class Icon extends Component {
     closeMenu = () => {
         this.setState({
             menuOpen: !this.state.menuOpen,
-            anchorEl: null
         })
     }
 
     delete=()=>{
         this.props.delete();
+        this.closeMenu();
     }
 
     render() {
@@ -89,9 +89,13 @@ class Icon extends Component {
                     props={this.loadColor}
                 />
                 
-                <MenuPopper more={this.props.openNoteEditor}
+                <MenuPopper  getNotes={this.props.getNotes}
+                    note={this.props.note} 
+                    more={this.props.openNoteEditor}
                     delete={this.delete}
-                    open={this.state.menuOpen} anchorEl={this.state.anchorEl} 
+                    open={this.state.menuOpen}
+                    closeMenu={this.closeMenu}
+                    anchorEl={this.state.anchorEl} 
                 />
                
                 <RemindPopper getReminder={this.getData} close={this.closeReminder}

@@ -1,19 +1,37 @@
+/**
+ * @description:
+ * @file:DialogBox.jsx
+ * @author:Vedant Nare
+ * @version:1.0.0
+*/ 
+
 import React, { Component } from 'react';
 import Dialog from '@material-ui/core/Dialog';
-import { TextField, Tooltip } from '@material-ui/core';
+import { TextField, Tooltip, Chip } from '@material-ui/core';
 import Icon from './IconList';
 import './DialogBox.scss';
 const Service = require('../services/services');
 
 class DialogBox extends Component {
     constructor(props) {
+
+        /** 
+         * @description super(props) would pass props to the parent constructor.
+         * @param title,description,color
+        */
+
         super(props);
         this.state = {
             color: '',
             title: this.props.item.title,
-            description: this.props.item.description
+            description: this.props.item.description,
+            reminder:this.props.item.reminder
         }
     }
+
+    /**
+     *@description input function is used to assign target value to target name. 
+    */
 
     input = (event) => {
         this.setState({
@@ -21,17 +39,22 @@ class DialogBox extends Component {
         });
     }
 
+    /** 
+     * handleClose is used to update the note when Dialog box is closed.
+     * getNotes props is called to get updated Notes.
+     * handleBox props is used to handle state of dialog box.
+    */ 
+
     handleClose = (event) => {
 
         let request = {
-            note_id: this.props.item._id,
+            note_id: this.props.item.id,
             title: this.state.title,
             description: this.state.description,
             color: this.state.color
         }
 
         Service.updateNote(request).then(response => {
-            console.log(response);
             this.props.getNotes();
             this.props.handleBox();
         }).catch((err) => {
@@ -39,9 +62,13 @@ class DialogBox extends Component {
         })
     }
 
-    componentWillReceiveProps() {
+    UNSAFE_componentWillReceiveProps() {
         this.setState({ color: this.props.item.color })
     }
+
+    /**
+     *@description updateColor is used for setting the selected color as background of the note. 
+    */
 
     updateColor = (element) => {
         let color = element.code;
@@ -91,6 +118,10 @@ class DialogBox extends Component {
                             InputProps={{
                                 disableUnderline: true
                             }} />
+                    </div>
+                    <div>
+                        {this.state.reminder===null?null:
+                        <Chip label={this.state.reminder}></Chip>}
                     </div>
                     <div className='iconHead'>
                         <div id='iconList'>
