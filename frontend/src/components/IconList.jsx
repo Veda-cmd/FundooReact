@@ -74,6 +74,7 @@ class Icon extends Component {
     }
 
     render() {
+        
         return (
             <div className='options'>
 
@@ -89,7 +90,9 @@ class Icon extends Component {
                     props={this.loadColor}
                 />
                 
-                <MenuPopper  getNotes={this.props.getNotes}
+                <MenuPopper dialog={this.props.dialog} 
+                    getLabel={this.props.getLabel}  
+                    getNotes={this.props.getNotes}
                     note={this.props.note} 
                     more={this.props.openNoteEditor}
                     delete={this.delete}

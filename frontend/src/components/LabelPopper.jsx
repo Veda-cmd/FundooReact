@@ -9,12 +9,18 @@ class LabelPoppper extends Component{
         super(props);
         this.state={
             labels:[],
-            currentLabel:''
+            noteLabels:this.props.note
         }
     }
 
     UNSAFE_componentWillMount(){
         this.getAllLabels();
+    }
+
+    UNSAFE_componentWillReceiveProps(){
+        this.setState({
+            noteLabels:this.props.note
+        })
     }
 
     getAllLabels=()=>{
@@ -31,20 +37,95 @@ class LabelPoppper extends Component{
     }
 
     loadLabel=(event,item)=>{
-        let request={
-            note_id:this.props.note.id,
-            label_name:item.label_name
+        
+        if(this.props.more){
+            this.props.getLabel(item);
+            return;
         }
+        else if(this.props.dialog){
+            if(event.target.checked === false){
+                for(let i=0;i<this.state.noteLabels.label.length;i++){
+                    if(this.state.noteLabels.label[i]._id===item._id){
+                        this.state.noteLabels.label.splice(i,1);
+                        this.setState({
+                            noteLabels:this.state.noteLabels
+                        });
+                    }
+                }
+    
+                let request={
+                    note_id:this.state.noteLabels.id,
+                    label_id:item._id
+                }
+                Service.deleteLabelFromNote(request)
+                .then(response=>{
+                    // console.log(response);
+                   this.props.getLabel(item)
+                })
+                .catch(err=>{
+                    console.log(err);
+                    
+                });
+            }
+            else{
+                let request={
+                    note_id:this.state.noteLabels.id,
+                    label_name:item.label_name
+                }
+    
+                Service.addLabelToNote(request)
+                .then(response=>{
+                    this.props.getLabel(item);
+                })
+                .catch(err=>{
+                    console.log(err);
+                    
+                });
+            }
+        }
+        else{
+            if(event.target.checked === false){
+                for(let i=0;i<this.state.noteLabels.label.length;i++){
+                    if(this.state.noteLabels.label[i]._id===item._id){
+                        this.state.noteLabels.label.splice(i,1);
+                        this.setState({
+                            noteLabels:this.state.noteLabels
+                        });
+                    }
+                }
 
-        Service.addLabelToNote(request)
-        .then(response=>{
-            console.log(response);
-            this.props.getNotes();
-        })
-        .catch(err=>{
-            console.log(err);
-            
-        })
+                let request={
+                    note_id:this.state.noteLabels.id,
+                    label_id:item._id
+                }
+                Service.deleteLabelFromNote(request)
+                .then(response=>{
+                    // console.log(response);
+                    
+                    this.props.getNotes();
+                })
+                .catch(err=>{
+                    console.log(err);
+                    
+                });
+            }
+            else{
+                let request={
+                    note_id:this.state.noteLabels.id,
+                    label_name:item.label_name
+                }
+
+                Service.addLabelToNote(request)
+                .then(response=>{
+                    // console.log(response);
+                    this.props.getNotes();
+                })
+                .catch(err=>{
+                    console.log(err);
+                    
+                });
+            }
+        }
     }
   
 
@@ -62,7 +143,8 @@ class LabelPoppper extends Component{
                     <div>
                         {this.state.labels.map((item,index)=>
                          <div key={index} >
-                            <Checkbox value={this.state.checked}
+                            <Checkbox
+                            checked={this.state.noteLabels.label.find((choice)=>choice._id===item._id)}
                             onChange={(event)=>this.loadLabel(event,item)} />
                             <span>{item.label_name}</span>
                          </div>

@@ -70,6 +70,20 @@
     // display: none;
 }
 
+.reminder{
+    text-align: initial;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+// @media screen and (max-width: 680px) {
+//     .single{
+//         display: flex;
+//         flex-direction: row;
+//         flex-wrap: wrap;
+//     }
+// }
 
 
 

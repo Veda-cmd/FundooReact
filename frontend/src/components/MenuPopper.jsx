@@ -48,7 +48,10 @@ class MenuPopper extends Component{
                 </Popper>}
                 </div>
                 <div>
-                    <LabelPopper note={this.props.note} 
+                    <LabelPopper dialog={this.props.dialog} 
+                    more={this.props.more}
+                    getLabel={this.props.getLabel} 
+                    note={this.props.note} 
                     open={this.state.open} 
                     getNotes={this.props.getNotes}
                     anchorEl={this.props.anchorEl} />

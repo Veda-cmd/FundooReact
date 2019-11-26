@@ -3,7 +3,7 @@
 #main{
     @include flex;
     padding: 10px;
-    width: 100%;
+    max-width: 100%;
 }
 
 #title,#description{
@@ -37,7 +37,7 @@
 }
 
 .card{
-    width: 550px;
+    max-width: 550px;
     height: 50px;
     font-family: sans-serif;
     font-weight: bolder;
@@ -50,7 +50,7 @@
 }
 
 .cardOpen{
-    width: 500px;
+    max-width: 500px;
     font-family: sans-serif;
     font-weight: bolder;
     background-color: rgba(0,0,0,.2);
@@ -71,4 +71,7 @@
     background-color: transparent; 
 }
 
+.labelDiv{
+    display: flex;
+}
 

@@ -15,6 +15,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Icon from './IconList';
 const Service = require('../services/services');
+let array =[],value=[];
 
 class Note extends Component{
     
@@ -30,10 +31,14 @@ class Note extends Component{
             title:'',
             description:'',
             color:'',
+            label:[],
             reminder:null,
             remindFront:null,
             isArchived:false,
-            open:false
+            open:false,
+            labels:{
+                label:[]
+            }
         }
     }
 
@@ -82,7 +87,19 @@ class Note extends Component{
             reminder:reminder,
             remindFront:remindFront
         })
+    }
 
+    getLabelData=(data)=>{
+        array.push(data.label_name);
+        value.push(data);
+        let req={
+            label:value
+        }
+       
+        this.setState({
+            label:array,
+            labels:req
+        })
     }
 
     /**
@@ -98,8 +115,11 @@ class Note extends Component{
                 description:this.state.description,
                 color:this.state.color,
                 reminder:this.state.reminder,
-                isArchived:this.state.isArchived
+                isArchived:this.state.isArchived,
+                label:this.state.label
             }
+            console.log(request);
+            
             Service.createNote(request,(error,response)=>
             {
                 if(error)
@@ -111,8 +131,10 @@ class Note extends Component{
                         color:'',
                         reminder:null,
                         remindFront:null,
-                        isArchived:false
+                        isArchived:false,
+                        label:[]
                     })
+                    array=[];
                     return;   
                 }
                 else
@@ -123,8 +145,13 @@ class Note extends Component{
                         color:'',
                         reminder:null,
                         remindFront:null,
-                        isArchived:false
+                        isArchived:false,
+                        label:[],
+                        labels:{
+                            label:[]
+                        }  
                     })
+                    array=[];
                     console.log('created',response);
                     this.props.getAllNotes();
                 }
@@ -171,12 +198,10 @@ class Note extends Component{
         console.log('deleted');
     }
 
-    getLabel=()=>{
-        
-    }
-
     render()
     {
+        // console.log(this.state.labels);
+        
         return(
             <div>
                 {this.props.openNoteEditor ? 
@@ -213,16 +238,29 @@ class Note extends Component{
                                 disableUnderline:true
                             }} />
                         </div>
-                        {this.state.remindFront===null?
-                        null:
-                        <Chip avatar={<Avatar src='data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE4cHgiIHdpZHRoPSIxOHB4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0iIzAwMDAwMCI+CiA8cGF0aCBkPSJtMjMuOTkgNGMtMTEuMDUgMC0xOS45OSA4Ljk1LTE5Ljk5IDIwczguOTQgMjAgMTkuOTkgMjBjMTEuMDUgMCAyMC4wMS04Ljk1IDIwLjAxLTIwcy04Ljk2LTIwLTIwLjAxLTIwem0wLjAxIDM2Yy04Ljg0IDAtMTYtNy4xNi0xNi0xNnM3LjE2LTE2IDE2LTE2IDE2IDcuMTYgMTYgMTYtNy4xNiAxNi0xNiAxNnoiLz4KIDxwYXRoIGQ9Im0wIDBoNDh2NDhoLTQ4eiIgZmlsbD0ibm9uZSIvPgogPHBhdGggZD0ibTI1IDE0aC0zdjEybDEwLjQ5IDYuMyAxLjUxLTIuNDYtOS01LjM0eiIvPgo8L3N2Zz4K'></Avatar>}
-                            label={this.state.remindFront}
-                            onDelete={this.handleDelete}>
-                        </Chip>
-                        }
+                        <div className='labelDiv'>
+                            {this.state.remindFront===null?
+                            null:
+                            <Chip avatar={<Avatar src='data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE4cHgiIHdpZHRoPSIxOHB4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0iIzAwMDAwMCI+CiA8cGF0aCBkPSJtMjMuOTkgNGMtMTEuMDUgMC0xOS45OSA4Ljk1LTE5Ljk5IDIwczguOTQgMjAgMTkuOTkgMjBjMTEuMDUgMCAyMC4wMS04Ljk1IDIwLjAxLTIwcy04Ljk2LTIwLTIwLjAxLTIwem0wLjAxIDM2Yy04Ljg0IDAtMTYtNy4xNi0xNi0xNnM3LjE2LTE2IDE2LTE2IDE2IDcuMTYgMTYgMTYtNy4xNiAxNi0xNiAxNnoiLz4KIDxwYXRoIGQ9Im0wIDBoNDh2NDhoLTQ4eiIgZmlsbD0ibm9uZSIvPgogPHBhdGggZD0ibTI1IDE0aC0zdjEybDEwLjQ5IDYuMyAxLjUxLTIuNDYtOS01LjM0eiIvPgo8L3N2Zz4K'></Avatar>}
+                                label={this.state.remindFront}
+                                onDelete={this.handleDelete}>
+                            </Chip>
+                            }
+                            {this.state.label.length===0?
+                            null:this.state.label.map((item,index)=>
+                            <div key={index}>
+                                <Chip
+                                label={item}
+                                onDelete={this.handleDelete}>
+                                </Chip>
+                            </div>)
+                            }
+                        </div>
                         <div id='main'>
                             <div className='icon'>
-                                <Icon openNoteEditor={this.props.openNoteEditor} 
+                                <Icon note={this.state.labels} 
+                                getLabel={this.getLabelData}
+                                openNoteEditor={this.props.openNoteEditor} 
                                 getColor={this.getColor}
                                 setArchive={this.setArchive}
                                 getReminder={this.getReminderData} />

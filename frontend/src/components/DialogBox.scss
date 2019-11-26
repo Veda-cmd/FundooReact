@@ -19,9 +19,19 @@ width: 100%;
 margin-left: 20px;
 }
 
+#dialog{
+    opacity: 1;
+    animation: fade 2s linear;
+}
+
+@keyframes fade {
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
+}
+
 .pinHead{
     margin-top: 15px;
-    margin-left: 15px;
+    margin-right: 10px;
     fill: grey;
 }
 
@@ -45,4 +55,9 @@ margin-left: 20px;
     white-space: nowrap;
     border: none;
     background-color: transparent; 
+}
+
+.reminderBox{
+    text-align: initial;
+    display: flex;
 }

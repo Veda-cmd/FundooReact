@@ -8,6 +8,7 @@
 import React,{Component} from 'react';
 import './Dashboard.scss';
 import Appbar from './AppBar';
+import Masonry from 'react-masonry-component';
 import Note from './CreateNote';
 import Drawer from './Drawer';
 import DisplayNote from './DisplayNotes';
@@ -57,7 +58,8 @@ const theme = createMuiTheme({
         },
         'MuiChip':{
             'root':{
-                marginLeft:'10px'
+                marginLeft:'10px',
+                marginTop:'10px'
             }
         }
     }
@@ -78,11 +80,11 @@ class Dashboard extends Component{
             openNoteEditor:false,
             list:false,
             notes:[],
-            labels:[]
+            labels:[],
+            labelsNote:[]
         }
     }
-
-    
+ 
     /**
      * @description handleDrawerOpen is used to handle drawer navigation on dashboard.
      * if true, the drawer is displayed else it is closed.
@@ -140,8 +142,12 @@ class Dashboard extends Component{
             }
             else
             {
+                let request={
+                    label:[]
+                }
                 this.setState({
                     labels:response.data,
+                    labelsNote:request
                 });
             }
         })
@@ -154,10 +160,8 @@ class Dashboard extends Component{
 
     render()
     {
-        console.log(this.state.notes);
-        
         return(
-            <div>
+            <div className='dashboard'>
                 <MuiThemeProvider theme={theme}>
                     <div>
                     <Appbar 
@@ -174,10 +178,12 @@ class Dashboard extends Component{
                         ></Drawer>
                     </div>
                     <div className={this.state.openDrawer?'shift':'cardAnimate'}>
-                        <Note openNoteEditor={this.state.openNoteEditor}
+                        <Note labels={this.state.labelsNote} 
+                            openNoteEditor={this.state.openNoteEditor}
                             noteEditor={this.handleNoteEditor} 
                             getAllNotes={this.getAllNotes} />
-                        <div className='displayCards'>
+                        <div>
+                            <Masonry className='displayCards'>
                             {this.state.notes.map((item,index)=>
                                 <div key={index} >
                                 <DisplayNote 
@@ -185,6 +191,7 @@ class Dashboard extends Component{
                                 list={this.state.list} />
                                 </div>
                             )}
+                            </Masonry>
                         </div>
                     </div>
                 </MuiThemeProvider> 

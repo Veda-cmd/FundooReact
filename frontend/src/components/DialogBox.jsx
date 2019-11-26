@@ -22,10 +22,13 @@ class DialogBox extends Component {
 
         super(props);
         this.state = {
+            remind:false,
             color: '',
             title: this.props.item.title,
             description: this.props.item.description,
-            reminder:this.props.item.reminder
+            reminder:this.props.item.reminder,
+            remindFront:null,
+            label:this.props.item
         }
     }
 
@@ -39,6 +42,47 @@ class DialogBox extends Component {
         });
     }
 
+    setArchive=()=>{
+        this.props.handleBox();
+        this.props.setArchive();
+    }
+
+    deleteNote=()=>{
+        this.props.handleBox();
+        this.props.delete();
+    }
+
+    getLabelData=(data)=>{
+       let array=this.state.label;
+
+       array.label.push(data);
+       this.setState({label:array});
+    }
+
+    getReminderData=(date,time)=>{
+
+        this.setState({
+            remind:true
+        })
+        let newTime= time.toString().slice(16,25),
+        dateFront=date.toString().slice(3,10);
+        var hours = time.getHours() ; // gives the value in 24 hours format
+        var AmOrPm = hours >= 12 ? 'PM' : 'AM';
+        hours = (hours % 12) || 12;
+        var minutes = time.getMinutes(); 
+        minutes=minutes<10?'0'+minutes:minutes;
+        var finalTime = hours + ":" + minutes + " " + AmOrPm; 
+
+        let remindFront=dateFront+', '+finalTime;
+        let reminder=dateFront+','+date.toString().slice(11,15)+' '+newTime;
+        
+        this.setState({
+            reminder:reminder,
+            remindFront:remindFront
+        })
+        
+    }
+
     /** 
      * handleClose is used to update the note when Dialog box is closed.
      * getNotes props is called to get updated Notes.
@@ -46,14 +90,14 @@ class DialogBox extends Component {
     */ 
 
     handleClose = (event) => {
-
+       
         let request = {
             note_id: this.props.item.id,
             title: this.state.title,
             description: this.state.description,
-            color: this.state.color
+            color: this.state.color,
         }
-
+       
         Service.updateNote(request).then(response => {
             this.props.getNotes();
             this.props.handleBox();
@@ -63,7 +107,11 @@ class DialogBox extends Component {
     }
 
     UNSAFE_componentWillReceiveProps() {
-        this.setState({ color: this.props.item.color })
+        this.setState({ 
+            color: this.props.item.color,
+            reminder:this.props.item.reminder,
+            label:this.props.item
+        })
     }
 
     /**
@@ -79,9 +127,11 @@ class DialogBox extends Component {
     }
 
     render() {
+       
         return (
             <div>
                 <Dialog open={this.props.open}
+                    id={this.props.open===false?'dialog':null}
                     PaperProps={{
                         style: {
                             backgroundColor: this.state.color
@@ -119,13 +169,27 @@ class DialogBox extends Component {
                                 disableUnderline: true
                             }} />
                     </div>
-                    <div>
+                    <div className='reminderBox'>
                         {this.state.reminder===null?null:
-                        <Chip label={this.state.reminder}></Chip>}
+                        <Chip label={this.state.remind?this.state.remindFront:this.state.reminder}></Chip>}
+                        
+                        {this.state.label.label.length===0?null:
+                        this.state.label.label.map((item,index)=>
+                            <div key={index}>
+                                <Chip label={item.label_name}></Chip>
+                            </div>
+                        )}
                     </div>
                     <div className='iconHead'>
                         <div id='iconList'>
-                            <Icon getColor={this.updateColor} />
+                            <Icon setArchive={this.setArchive}
+                            delete={this.deleteNote}
+                            dialog={this.props.open} 
+                            getNotes={this.props.getNotes} 
+                            getLabel={this.getLabelData}
+                            getReminder={this.getReminderData} 
+                            note={this.props.item}  
+                            getColor={this.updateColor} />
                         </div>
                         <div id='buttonHead'>
                             <button className='buttonHead' onClick={(event) => this.handleClose(event)}>Close</button>

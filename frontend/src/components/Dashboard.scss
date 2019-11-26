@@ -70,21 +70,23 @@
 }
 
 .displayCards{
-    width: 1200px;
+    max-width: auto;
     margin-top: 30px;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
+    flex-wrap: wrap;
+    
 }
 
-@media screen and (max-width: 680px) {
-    div {
-      width: 10%;
-    }
-    .refresh .settings .profile{
-        margin-left: 0;
-    }
-}
+// @media screen and (max-width: 680px) {
+//     .dashboard {
+//       display: flex;
+//       width: 500px;
+//     }
+//     .refresh .settings .profile{
+//         margin-left: 0;
+//     }
+// }
 
 
 // @media screen and (min-width:1380px) {
