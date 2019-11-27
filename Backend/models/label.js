@@ -19,7 +19,8 @@ const logger = require('../services/log');
 const labelSchema = mongoose.Schema({
     label_name:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     }
 });
 
@@ -125,7 +126,7 @@ class labelModel
             else
             {
                 let res ={
-                    id:data._id,
+                    _id:data._id,
                     message:"Label created successfully"
                 }
                 callback(null,res);

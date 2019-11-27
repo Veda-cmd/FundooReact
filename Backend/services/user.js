@@ -33,7 +33,9 @@ class Userservice
                 */
 
                 if(data)
+                {
                     reject({message:"Email already registered"});
+                }   
                 else
                 {
                     /**

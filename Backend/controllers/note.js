@@ -23,11 +23,8 @@ class NoteController {
             /**
             * @description express-validator is used for validation of input. 
             */
-
+            
             req.check('title', 'Title cannot be empty').notEmpty();
-            req.check('description', 'Description cannot be empty').notEmpty();
-            req.check('reminder', 'Reminder cannot be empty').notEmpty();
-            req.check('color', 'Color cannot be empty').notEmpty();
             const errors = await req.validationErrors();
             if (errors) {
                 return res.status(422).json({ errors: errors });
@@ -40,15 +37,15 @@ class NoteController {
             let request = {
                 title: req.body.title,
                 description: req.body.description,
-                reminder: new Date(req.body.reminder).toISOString(),
-                color: req.body.color,
-                label: req.body.label,
-                isTrash: req.body.isTrash,
-                isArchived: req.body.isArchived,
-                isPinned: req.body.isPinned,
+                color:req.body.color || null,
+                reminder:req.body.reminder || null,
+                label:req.body.label || null,
+                isPinned:req.body.isPinned || false,
+                isArchived:req.body.isArchived || false,
+                isTrash:req.body.isTrash || false,
                 user_id: req.decoded.email,
             }
-
+            
             noteService.add(request, (err, success) => {
                 if (err) {
                    return res.status(422).send(err);
@@ -120,7 +117,8 @@ class NoteController {
                 res.status(200).send(data);
             })
             .catch(err => {
-                logger.error({ message: "Error in finding notes." })
+                logger.error({ message: "Error in finding notes." });
+                res.status(422).send(err);
             });
         } 
         catch (error) {
@@ -181,6 +179,7 @@ class NoteController {
     */
 
     updateNote(req, res) {
+        
         try { 
             req.checkBody('note_id', 'Note id cannot be empty').notEmpty();
             const errors = req.validationErrors();
@@ -191,16 +190,17 @@ class NoteController {
             if ('title' in req.body || 'description' in req.body || 'color' in req.body ||
                 'reminder' in req.body || 'isArchived' in req.body || 'isPinned' in req.body
                 && 'email' in req.decoded) {
-                
+
                     let note = {
                         note_id:req.body.note_id,
-                        title: req.body.title,
-                        description: req.body.description,
-                        color: req.body.color,
-                        isArchived: req.body.isArchived,
-                        isPinned: req.body.isPinned,
-                        reminder: new Date(req.body.reminder).toISOString()
+                        title: req.body.title || null,
+                        description: req.body.description || null,
+                        color: req.body.color || null,
+                        isArchived: req.body.isArchived || false,
+                        isPinned: req.body.isPinned || false,
+                        reminder: req.body.reminder || null
                     }
+                    
                 noteService.updateNote(note)
                 .then(data => {
                     res.status(200).send(data);
@@ -246,6 +246,8 @@ class NoteController {
     */
 
     addLabelToNote(req, res) {
+        console.log(req.body);
+        
         req.checkBody('note_id', 'Note id cannot be empty').notEmpty();
         req.checkBody('label_name', 'Label name cannot be empty').notEmpty();
         const errors = req.validationErrors();

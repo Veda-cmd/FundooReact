@@ -81,8 +81,8 @@ class Dashboard extends Component{
             list:false,
             notes:[],
             labels:[],
-            labelsNote:[]
-        }
+            title:null
+        }        
     }
  
     /**
@@ -142,12 +142,8 @@ class Dashboard extends Component{
             }
             else
             {
-                let request={
-                    label:[]
-                }
                 this.setState({
                     labels:response.data,
-                    labelsNote:request
                 });
             }
         })
@@ -161,10 +157,10 @@ class Dashboard extends Component{
     render()
     {
         return(
-            <div className='dashboard'>
+            <div>
                 <MuiThemeProvider theme={theme}>
                     <div>
-                    <Appbar 
+                    <Appbar title={this.state.title}
                         handleDrawer={this.handleDrawerOpen}
                         getNotes={this.getAllNotes}
                         list={this.handleList}

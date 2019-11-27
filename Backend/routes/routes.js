@@ -28,7 +28,7 @@ router.post('/login', userControl.login);
 router.post('/forgot',userControl.forgot);
 router.post('/reset',auth.checkToken,userControl.reset);
 router.post('/upload',auth.loginToken,profileImage.single('image'),userControl.upload);
-router.post('/:url',auth.verificationToken,userControl.verifyMail);
+router.post('/verify',auth.verificationToken,userControl.verifyMail);
 router.post('/note/addNote',auth.loginToken,noteController.addNote);
 router.get('/note/getAllNotes',auth.loginToken,cacheController.cacheNotes,noteController.getAllNotes);
 router.get('/note/getListings',auth.loginToken,cacheController.cacheListings,noteController.getListings);
@@ -37,6 +37,7 @@ router.post('/note/deleteLabel',auth.loginToken,noteController.deleteLabelFromNo
 router.post('/note/updateNote',auth.loginToken,noteController.updateNote);
 router.post('/note/deleteNote',auth.loginToken,noteController.deleteNote);
 router.post('/note/searchNote',auth.loginToken,noteController.searchNotes);
+router.get('/label/getAllLabels',auth.loginToken,labelController.getAllLabels);
 router.post('/label/add',auth.loginToken,labelController.addLabel);
 router.post('/label/update',auth.loginToken,labelController.updateLabel);
 router.post('/label/delete',auth.loginToken,labelController.deleteLabel);

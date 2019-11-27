@@ -27,38 +27,37 @@ const noteSchema = mongoose.Schema({
     },
     description:{
         type:String,
-        required:true
+        required:false,
+        default:''
     },
     label:[{ type: mongoose.Schema.Types.ObjectId, ref: 'label' }],
     reminder:{
-        type:String,
-        required:false
+        type:Date,
+        required:false,
+        default:null
     },
     color:{
         type:String,
-        required:false
+        required:false,
+        default:null
     },
     isPinned: {
         type:Boolean,
-        required:false
+        required:false,
+        default:false
     },
     isArchived: {
         type:Boolean,
-        required:false
+        required:false,
+        default:false
     },
     isTrash: {
         type:Boolean,
-        required:false
+        required:false,
+        default:false
     },
-    created_at: {
-        type: Date,
-        default: Date.now 
-    },
-    updated_at: {
-        type: Date,
-        default: Date.now 
-    }
-});
+},
+{timestamps:true});
 
 /**
 *@description Note Model is defined for storing object in database. 
@@ -148,9 +147,9 @@ class noteModel
         });
     }
 
-    updateOne(req,res,callback)
+    updateOne(req,query,callback)
     { 
-        Note.findOneAndUpdate(req,res,{new:true})
+        Note.findOneAndUpdate(req,query,{new:true})
         .then(data=>
         {
             callback(null,data);
@@ -196,6 +195,8 @@ class noteModel
             }
             else
             {
+                console.log(data);
+                
                 let res ={
                     id:data._id,
                     title:note.title,

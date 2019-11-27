@@ -170,8 +170,15 @@ export default withStyles(useStyles)(
                         aria-label='open drawer'>
                             <MenuIcon />
                         </IconButton>
-                        <img src='https://ssl.gstatic.com/keep/keep.ico' alt='Logo'/>
-                        <Typography className='header' variant='h6' noWrap>Fundoo</Typography>
+                        {this.props.title===null?
+                        <div className='imgTitle'>
+                            <img className='image' alt="Logo" aria-hidden="true" src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png" />
+                            <Typography className='header' variant='h6' noWrap>Fundoo</Typography>
+                        </div>:
+                            this.props.title==='reminder'?<div className='imgTitle'><Typography className='header' variant='h6' noWrap>Reminders</Typography></div>:
+                        <div className='imgTitle'><Typography className='header' variant='h6' noWrap>{this.props.title}</Typography></div>
+                        }
+                       
                         <div className={classes.search}>
                             <InputBase
                             startAdornment={(

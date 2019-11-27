@@ -26,6 +26,7 @@ class Usercontroller
 
     async register(req,res)
     {
+        
         try 
         {
             /**
@@ -53,7 +54,7 @@ class Usercontroller
                 let request =
                 {
                     email:data.email,
-                    url:'http://localhost:5000/'
+                    url:'http://localhost:3000/verify/'
                 }
 
                 /**
@@ -81,6 +82,8 @@ class Usercontroller
             })
             .catch(err=>
             {
+                console.log(err);
+                
                 res.status(422).send(err);
             })    
         } 
@@ -146,9 +149,7 @@ class Usercontroller
                     });
 
                     let result = {
-                        response:{
-                            data: data.message
-                        },
+                        response:data,
                         session:token
                     }
 
@@ -217,7 +218,7 @@ class Usercontroller
                         res.status(422).send(err);
                     else
                     {
-                        let url = 'http://localhost:5000/#!/reset/'+token;
+                        let url = 'http://localhost:3000/reset/'+token;
                         mail.sendForgotLink(url,data.email);
                         res.status(200).send(data);
                     }

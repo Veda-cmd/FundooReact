@@ -53,7 +53,7 @@ class labelController {
 
     async updateLabel(req, res) {
         try {
-             // express-validator is used for validation of input
+            // express-validator is used for validation of input
             req.checkBody('label_id', 'Label ID cannot be empty').notEmpty();
             req.checkBody('label_name', 'Name cannot be empty').notEmpty();
             const errors = await req.validationErrors();
@@ -122,6 +122,22 @@ class labelController {
             response.success = false;
             response.message = 'Operation failed';
             res.status(404).send(response);
+        }
+    }
+
+    getAllLabels(req,res){
+        try {
+           
+           labelService.getAllLabels(req.decoded)
+           .then(data=>{
+                res.status(200).send(data);
+           })
+           .catch(err=>{
+                res.status(422).send(err);
+           });
+        } 
+        catch (error) {
+            res.status(422).send({message:"Operation failed."});
         }
     }
 }

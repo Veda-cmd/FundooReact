@@ -28,7 +28,7 @@ let checkToken = (req,res,next) =>
 {   
     if(req.headers.token == undefined)
     {
-        res.status(422).send({message:"No token found"});
+        return res.status(422).send({message:"No token found"});
     }
     else
     {
@@ -94,7 +94,8 @@ let checkToken = (req,res,next) =>
 
 let verificationToken = (req,res,next) =>
 {  
-    let bearerHeader = req.params.url;
+    let bearerHeader = req.query.url;
+    
     userModel.findOne({urlCode:bearerHeader})
     .then(data=>
     {   
@@ -105,7 +106,8 @@ let verificationToken = (req,res,next) =>
         }
         else
         {
-            let url = data.longUrl.slice(22);
+            let url = data.longUrl.slice(29);
+            
             jwt.verify(url, 'secret', (err, decoded)=>
             {
                 if (err)

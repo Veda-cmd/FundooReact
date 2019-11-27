@@ -153,7 +153,8 @@ class Usermodel
             id:req._id,
             firstName:req.firstName,
             email:req.email,
-            message:'Success'
+            message:'Success',
+            imageUrl:req.imageUrl
         }
         callback(null,response);
                

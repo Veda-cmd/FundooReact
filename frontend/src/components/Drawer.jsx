@@ -9,7 +9,15 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 class DrawerMenu extends Component{
 
     handleReminder=()=>{
-       this.props.props.history.push('/dashboard/reminders')
+       this.props.props.history.push('/dashboard/reminders');
+    }
+
+    handleLabel=(event,item)=>{
+        this.props.props.history.push(`/dashboard/label/${item.label_name}`);
+    }
+
+    handleNotes=()=>{
+        this.props.props.history.push('/dashboard');
     }
 
     render(){
@@ -20,7 +28,7 @@ class DrawerMenu extends Component{
                 anchor="left"
                 open={this.props.getValue}>
                     <List className='spanTitle'>
-                        <ListItem button>
+                        <ListItem button onClick={this.handleNotes}>
                             <ListItemIcon><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/>
                                 </svg></ListItemIcon>
@@ -33,12 +41,13 @@ class DrawerMenu extends Component{
                                 </svg></ListItemIcon>
                             <span>Reminders</span>
                         </ListItem>
-                        <Divider/>
+                        
                     </List>
+                    <Divider/>
                     <div className='label'>Labels</div>
                     <List>
                         {this.props.labels.map((item,index)=>
-                        <ListItem button key={index}>
+                        <ListItem button onClick={(event)=>this.handleLabel(event,item)} key={index}>
                             <ListItemIcon>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16zM16 17H5V7h11l3.55 5L16 17z"></path>
                             </svg>

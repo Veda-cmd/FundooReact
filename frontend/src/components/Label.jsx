@@ -58,7 +58,8 @@ const theme = createMuiTheme({
     }
 });
 
-class Reminder extends Component{
+
+class Label extends Component{
     constructor(props){
         /** 
          * @description super(props) would pass props to the parent constructor.
@@ -72,7 +73,8 @@ class Reminder extends Component{
            list:false,
            notes:[],
            labels:[],
-           title:'reminder'
+           name:null,
+           title:this.props.match.params.name
        }
     }
 
@@ -116,8 +118,8 @@ class Reminder extends Component{
         })
     }
 
-    getNoteswithReminders=()=>{
-        Service.getNotes((err,response)=>
+    getNoteswithLabels=()=>{
+        Service.getNotes(async(err,response)=>
         {
             if(err)
             {
@@ -125,62 +127,79 @@ class Reminder extends Component{
             }
             else
             {
-                let data = response.data.reverse();   
-                let array = data.filter((item)=>{
-                    return item.reminder!==null
+                let data = response.data.reverse(),
+                res=[]   
+                
+                let array = await data.filter(item => {
+                  return item.label.length!==0
                 })
+               
+                for(let i=0;i<array.length;i++){
+                    
+                    for(let j=0;j<array[i].label.length;j++){   
+                        if(array[i].label[j].label_name===this.props.match.params.name){
+                            res.push(array[i]);
+                            break;
+                        }
+                    }
+                }
                 
                 this.setState({
-                    notes:array,
+                    notes:res,
+                    name:this.props.match.params.name,
+                    title:this.props.match.params.name
                 });
             }
         })
     }
+    
+    componentDidUpdate(){
+        if(this.props.match.params.name!==this.state.name){
+            this.getNoteswithLabels();
+        }
+    }
 
     UNSAFE_componentWillMount(){
-        this.getNoteswithReminders();
         this.getAllLabels();
     }
 
-    render()
-    {
+    render(){
         return(
-            <div>
-                <MuiThemeProvider theme={theme}>
-                    <div>
-                        <AppBar title={this.state.title} 
-                            handleDrawer={this.handleDrawerOpen}
-                            getNotes={this.getNoteswithReminders}
-                            list={this.handleList}
-                            tagChange={this.state.list}
-                            props={this.props} />
-                    </div>
-                    <div>
-                        <Drawer getValue={this.state.openDrawer} 
-                        labels={this.state.labels}
+        <div>
+            <MuiThemeProvider theme={theme}>
+                <div>
+                    <AppBar title={this.state.title} 
+                        handleDrawer={this.handleDrawerOpen}
+                        getNotes={this.getNoteswithLabels}
+                        list={this.handleList}
+                        tagChange={this.state.list}
                         props={this.props} />
+                </div>
+                <div>
+                    <Drawer getValue={this.state.openDrawer} 
+                    labels={this.state.labels}
+                    props={this.props} />
+                </div>
+                <div className={this.state.openDrawer?'shift':'cardAnimate'}>
+                    <NoteEditor labels={this.state.labelsNote} 
+                        openNoteEditor={this.state.openNoteEditor}
+                        noteEditor={this.handleNoteEditor} 
+                        getAllNotes={this.getNoteswithLabels} />
+                    <div>
+                        <Masonry className='displayCards'>
+                        {this.state.notes.map((item,index)=>
+                            <div key={index} >
+                            <DisplayNote 
+                            note={item} getNotes={this.getNoteswithLabels}
+                            list={this.state.list} />
+                            </div>
+                        )}
+                        </Masonry>
                     </div>
-                    <div className={this.state.openDrawer?'shift':'cardAnimate'}>
-                        <NoteEditor labels={this.state.labelsNote} 
-                            openNoteEditor={this.state.openNoteEditor}
-                            noteEditor={this.handleNoteEditor} 
-                            getAllNotes={this.getNoteswithReminders} />
-                        <div>
-                            <Masonry className='displayCards'>
-                            {this.state.notes.map((item,index)=>
-                                <div key={index} >
-                                <DisplayNote 
-                                note={item} getNotes={this.getNoteswithReminders}
-                                list={this.state.list} />
-                                </div>
-                            )}
-                            </Masonry>
-                        </div>
-                    </div>
-                </MuiThemeProvider>
-            </div>
-        )
+                </div>
+            </MuiThemeProvider>
+        </div>)
     }
 }
 
-export default Reminder;
+export default Label;

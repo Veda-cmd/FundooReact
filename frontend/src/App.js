@@ -15,6 +15,7 @@ import Register from './components/Register';
 import Forgot from './components/Forgot';
 import Reset from './components/Reset';
 import Dashboard from './components/Dashboard';
+import Label from './components/Label';
 import Login  from './components/Login';
 import './App.css';
 import Reminder from './components/Reminder';
@@ -34,6 +35,7 @@ function App() {
           <Route path='/verify/:url' exact={true}component={Verification}></Route>
           <PrivateRoute path='/dashboard' exact={true} component={Dashboard} />
           <PrivateRoute path="/dashboard/reminders" exact={true} component={Reminder} />
+          <PrivateRoute path="/dashboard/label/:name" exact={true} component={Label} />
           <Route path='/forgot' exact={true} component={Forgot}></Route>
           <Route path='/reset/:token' exact={true} component={Reset}></Route>
         </Switch>

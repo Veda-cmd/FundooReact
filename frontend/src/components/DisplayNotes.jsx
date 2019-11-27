@@ -104,9 +104,10 @@ class DisplayNote extends Component {
 
     deleteNote = () => {
         this.setState({
-            snack: !this.state.snack
+            snack: true
         })
-
+        console.log('hiiii');
+        
         let request = {
             note_id: this.props.note.id
         }
@@ -122,7 +123,7 @@ class DisplayNote extends Component {
 
     handleClose = () => {
         this.setState({
-            snack: !this.state.snack
+            snack: false
         })
     }
 

@@ -91,6 +91,21 @@ class labelService {
             logger.error(error);
         }
     }
+
+    getAllLabels(req){
+        return new Promise((resolve,reject)=>
+        {
+            labelModel.findAll({},(err,success)=>
+            {   
+                if(err){
+                    reject(err)
+                }
+                else{
+                    resolve(success);
+                }
+            })
+        })
+    }
 }
 
 module.exports = new labelService();
