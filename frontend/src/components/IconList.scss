@@ -5,11 +5,18 @@
     justify-content: space-between;
 }
 
-#more,#color,#archive,#remind{
+.trashIcons{
+    @include flex;
+    margin:20px 0 20px 20px;
+    width: 20%;
+    justify-content: space-between;
+}
+
+#more,#color,#archive,#remind,#unarchive,#restore,#delete{
     fill: #202124;
 }
 
-#more:hover,#color:hover,#archive:hover,#remind:hover{
+#more:hover,#color:hover,#archive:hover,#remind:hover,#unarchive:hover,#restore:hover,#delete:hover{
     opacity: .71;
 }
 

@@ -20,6 +20,14 @@ class DrawerMenu extends Component{
         this.props.props.history.push('/dashboard');
     }
 
+    handleArchive=()=>{
+        this.props.props.history.push('/dashboard/archive');
+    }
+
+    handleTrash=()=>{
+        this.props.props.history.push('/dashboard/trash');
+    }
+
     render(){
         return(
             <div>
@@ -57,15 +65,15 @@ class DrawerMenu extends Component{
                     </List>
                     <Divider/>
                     <List className='spanTitle'>
-                        <ListItem button>
-                            <ListItemIcon onClick={(event)=>{this.handleList(event)}}>
+                        <ListItem button onClick={this.handleArchive}>
+                            <ListItemIcon>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path d="M20.54 5.23l-1.39-1.68C18.88 3.21 18.47 3 18 3H6c-.47 0-.88.21-1.16.55L3.46 5.23C3.17 5.57 3 6.02 3 6.5V19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6.5c0-.48-.17-.93-.46-1.27zM6.24 5h11.52l.83 1H5.42l.82-1zM5 19V8h14v11H5zm11-5.5l-4 4-4-4 1.41-1.41L11 13.67V10h2v3.67l1.59-1.59L16 13.5z"></path>
                             </svg>
                             </ListItemIcon>
                             <span>Archive</span>
                         </ListItem>
-                        <ListItem button>
+                        <ListItem button onClick={this.handleTrash}>
                             <ListItemIcon>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z"></path>

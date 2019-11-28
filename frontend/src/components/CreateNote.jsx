@@ -191,11 +191,36 @@ class Note extends Component{
     }
 
     /**
-     *@description handleDelete is used for deletion of Chip.
+     *@description handleDelete is used for deletion of reminder Chip.
     */
 
     handleDelete=()=>{
-        console.log('deleted');
+       this.setState({
+           remindFront:null
+       })
+    }
+
+    handleLabelChip=(item)=>{
+        let array = this.state.label;
+        let res = array.filter((element)=>{
+            return element !== item;
+        });
+
+        if(value.length!==0){
+            for(let i=0;i<value.length;i++){
+                if(value[i].label_name===item){
+                    value.splice(i,1);
+                    break;
+                }
+            }
+        }
+        
+        this.setState({
+            label:res,
+            labels:{
+                label:value
+            }
+        });
     }
 
     render()
@@ -251,7 +276,7 @@ class Note extends Component{
                             <div key={index}>
                                 <Chip
                                 label={item}
-                                onDelete={this.handleDelete}>
+                                onDelete={(event)=>this.handleLabelChip(item)}>
                                 </Chip>
                             </div>)
                             }

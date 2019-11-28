@@ -14,7 +14,6 @@ import Drawer from './Drawer';
 import DisplayNote from './DisplayNotes';
 import { createMuiTheme, MuiThemeProvider} from "@material-ui/core";
 const Service = require('../services/services');
-
 const theme = createMuiTheme({
     overrides: {
         'MuiInputBase': {
@@ -117,7 +116,6 @@ class Dashboard extends Component{
 
     getAllNotes=()=>
     {
-
         Service.getNotes((err,response)=>
         {
             if(err)
@@ -126,7 +124,7 @@ class Dashboard extends Component{
             }
             else
             {
-                let data = response.data.reverse();   
+                let data = response.data.reverse(); 
                 this.setState({
                     notes:data,
                 });
@@ -156,6 +154,7 @@ class Dashboard extends Component{
 
     render()
     {
+        
         return(
             <div>
                 <MuiThemeProvider theme={theme}>

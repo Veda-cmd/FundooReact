@@ -9,6 +9,7 @@ import React, { Component } from 'react';
 import { Card, Tooltip,Avatar } from '@material-ui/core';
 import Chip from '@material-ui/core/Chip';
 import Icon from './IconList';
+import TrashIcons from './TrashIcons';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -24,7 +25,7 @@ class DisplayNote extends Component {
             color: '',
             open: false,
             snack: false,
-            archive:false
+            message:''
         }
     }
 
@@ -65,6 +66,11 @@ class DisplayNote extends Component {
     */
 
     setArchive=()=>{
+        this.setState({
+            snack:true,
+            message:'Note archived'
+        })
+
         let request={
             note_id:this.props.note.id,
             isArchived:true
@@ -73,15 +79,32 @@ class DisplayNote extends Component {
         Service.updateNote(request)
         .then(res=>{
             this.props.getNotes();
-            this.setState({
-                archive:!this.state.archive
-            })
         })
         .catch(err=>{
             console.log(err);    
         }) 
     }
 
+    setUnarchive=()=>{
+        this.setState({
+            snack:true,
+            message:'Note unarchived'
+        })
+
+        let request={
+            note_id:this.props.note.id,
+            isArchived:false
+        }
+
+        Service.updateNote(request)
+        .then(res=>{
+            this.props.getNotes();
+        })
+        .catch(err=>{
+            console.log(err);    
+        }) 
+    }
+    
     setColor = async (index) => {
         await this.setState({
             color: index.code
@@ -104,9 +127,9 @@ class DisplayNote extends Component {
 
     deleteNote = () => {
         this.setState({
-            snack: true
+            snack: true,
+            message:'Note moved to Trash'
         })
-        console.log('hiiii');
         
         let request = {
             note_id: this.props.note.id
@@ -127,17 +150,67 @@ class DisplayNote extends Component {
         })
     }
 
-    handleArchiveClose = () => {
-        this.setState({
-            archive:!this.state.archive
+    handleReminderChip=(event)=>{
+        let request={
+            note_id: this.props.note.id,
+            reminder:null
+        }
+
+        Service.updateNote(request)
+        .then(response=>{  
+            this.setState({
+                snack:true,
+                message:'Reminder deleted'
+            }) 
+            this.props.getNotes();
+        })
+        .catch(err=>{
+            console.log(err);
         })
     }
 
+    handleLabelChip=(item)=>{
+        let request={
+            note_id: this.props.note.id,
+            label_id:item._id
+        }
+        Service.deleteLabelFromNote(request)
+        .then(res=>{
+            this.props.getNotes();
+        })
+        .catch(err=>{
+            console.log(err);
+            
+        })
+        
+    }
+
+    handleRestoreNote=(event)=>{
+        this.setState({
+            snack: true,
+            message:'Note restored'
+        })
+        
+        let request = {
+            note_id: this.props.note.id,
+            isTrash:false
+        }
+        console.log(request);
+        
+        Service.updateNote(request)
+        .then(response => {
+            
+            this.props.getNotes();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+
     render() {
-       
         return (
-            <div>
-                <Card className={this.props.list ? 'double' : 'single'}
+            <div className={this.props.list ? 'double' : 'single'}>
+                <Card
                     style={{ backgroundColor: this.state.color === '' ? this.props.note.color : this.state.color }}>
                     <div className='title' onClick={this.handleDialogBox}>
                         <div className='label1'>
@@ -158,23 +231,31 @@ class DisplayNote extends Component {
                     <div className='reminder'>
                         {this.props.note.reminder === null ? null :
                         <Chip avatar={<Avatar src='data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE4cHgiIHdpZHRoPSIxOHB4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0iIzAwMDAwMCI+CiA8cGF0aCBkPSJtMjMuOTkgNGMtMTEuMDUgMC0xOS45OSA4Ljk1LTE5Ljk5IDIwczguOTQgMjAgMTkuOTkgMjBjMTEuMDUgMCAyMC4wMS04Ljk1IDIwLjAxLTIwcy04Ljk2LTIwLTIwLjAxLTIwem0wLjAxIDM2Yy04Ljg0IDAtMTYtNy4xNi0xNi0xNnM3LjE2LTE2IDE2LTE2IDE2IDcuMTYgMTYgMTYtNy4xNiAxNi0xNiAxNnoiLz4KIDxwYXRoIGQ9Im0wIDBoNDh2NDhoLTQ4eiIgZmlsbD0ibm9uZSIvPgogPHBhdGggZD0ibTI1IDE0aC0zdjEybDEwLjQ5IDYuMyAxLjUxLTIuNDYtOS01LjM0eiIvPgo8L3N2Zz4K'></Avatar>} 
-                        label={this.props.note.reminder}></Chip>}
+                        label={this.props.note.reminder} onDelete={(event)=>this.handleReminderChip(event)}></Chip>}
 
                         {this.props.note.label.length===0?null:
                         this.props.note.label.map((item,index)=>
                             <div key={index}>
-                                <Chip label={item.label_name}></Chip>
+                                <Chip label={item.label_name} onDelete={(event)=>this.handleLabelChip(item)}></Chip>
                             </div>
                         )}
                     </div>
-                    <div id='icons'>
-                        <Icon getReminder={this.getReminderData} 
-                            setArchive={this.setArchive}
-                            getNotes={this.props.getNotes} 
-                            note={this.props.note} 
-                            getColor={this.setColor}
-                            delete={this.deleteNote} />
-                    </div>
+                    {this.props.trash!=='Trash'?
+                        <div id='icons'>
+                                <Icon archive={this.props.archive}
+                                    getReminder={this.getReminderData} 
+                                    setUnarchive={this.setUnarchive}
+                                    setArchive={this.setArchive}
+                                    getNotes={this.props.getNotes} 
+                                    note={this.props.note} 
+                                    getColor={this.setColor}
+                                    delete={this.deleteNote} />
+                        </div>
+                        :
+                        <TrashIcons restore={this.handleRestoreNote}
+                        />
+                    }
+                    
                 </Card>
                 <div>
                     <DialogBox
@@ -196,7 +277,7 @@ class DisplayNote extends Component {
                     ContentProps={{
                         'aria-describedby': 'message-id',
                     }}
-                    message={<span id="message-id">Note moved to Trash</span>}
+                    message={<span id="message-id">{this.state.message}</span>}
                     action={[
                         <Button key="undo" color="secondary" size="small" onClick={this.handleClose}>
                             UNDO
@@ -209,32 +290,6 @@ class DisplayNote extends Component {
                         >
                             <CloseIcon />
                         </IconButton>,
-                    ]}
-                />
-                <Snackbar
-                    anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                    }}
-                    open={this.state.archive}
-                    autoHideDuration={6000}
-                    onClose={this.handleArchiveClose}
-                    ContentProps={{
-                    'aria-describedby': 'message-id',
-                    }}
-                    message={<span id="message-id">Note archived</span>}
-                    action={[
-                    <Button key="undo" color="secondary" size="small" onClick={this.handleArchiveClose}>
-                        UNDO
-                    </Button>,
-                    <IconButton
-                        key="close"
-                        aria-label="close"
-                        color="inherit"
-                        onClick={this.handleArchiveClose}
-                    >
-                        <CloseIcon />
-                    </IconButton>,
                     ]}
                 />
             </div>

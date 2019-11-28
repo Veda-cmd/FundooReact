@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import AppBar from './AppBar';
 import './Dashboard.scss';
-import NoteEditor from './CreateNote';
 import Drawer from './Drawer';
 import Masonry from 'react-masonry-component';
 import DisplayNote from './DisplayNotes';
@@ -58,7 +57,7 @@ const theme = createMuiTheme({
     }
 });
 
-class Reminder extends Component{
+class Trash extends Component{
     constructor(props){
         /** 
          * @description super(props) would pass props to the parent constructor.
@@ -68,11 +67,10 @@ class Reminder extends Component{
        super(props);
        this.state={
            openDrawer:false,
-           openNoteEditor:false,
            list:false,
            notes:[],
            labels:[],
-           title:'Reminders'
+           title:'Trash'
        }
     }
 
@@ -82,17 +80,6 @@ class Reminder extends Component{
             openNoteEditor:false
         });
     }
-
-    /**
-     * @description handleNoteEditor is used for managing open/close state of note editor.
-    */
-
-   handleNoteEditor=()=>
-   {
-       this.setState({
-           openNoteEditor:!this.state.openNoteEditor
-       })
-   }
 
    handleList=(event)=>
    {
@@ -116,71 +103,57 @@ class Reminder extends Component{
         })
     }
 
-    getNoteswithReminders=()=>{
-        Service.getNotes((err,response)=>
-        {
-            if(err)
-            {
-                console.log('Error',err);
-            }
-            else
-            {
-                let data = response.data.reverse();   
-                let array = data.filter((item)=>{
-                    return item.reminder!==null
-                })
-                
-                this.setState({
-                    notes:array,
-                });
-            }
+    getTrashNotes=()=>{
+        Service.getListings('isTrash')
+        .then(response=>{
+            let data = response.data.reverse();  
+            this.setState({
+                notes:data,
+            });
+        })
+        .catch(err=>{
+            console.log(err);   
         })
     }
 
     UNSAFE_componentWillMount(){
-        this.getNoteswithReminders();
+        this.getTrashNotes();
         this.getAllLabels();
     }
 
-    render()
-    {
+    render(){
         return(
-            <div>
-                <MuiThemeProvider theme={theme}>
-                    <div>
-                        <AppBar title={this.state.title} 
-                            handleDrawer={this.handleDrawerOpen}
-                            getNotes={this.getNoteswithReminders}
-                            list={this.handleList}
-                            tagChange={this.state.list}
-                            props={this.props} />
-                    </div>
-                    <div>
-                        <Drawer getValue={this.state.openDrawer} 
-                        labels={this.state.labels}
+        <div>
+            <MuiThemeProvider theme={theme}>
+                <div>
+                    <AppBar title={this.state.title} 
+                        handleDrawer={this.handleDrawerOpen}
+                        getNotes={this.getTrashNotes}
+                        list={this.handleList}
+                        tagChange={this.state.list}
                         props={this.props} />
+                </div>
+                <div>
+                    <Drawer getValue={this.state.openDrawer} 
+                    labels={this.state.labels}
+                    props={this.props} />
+                </div>
+                <div className={this.state.openDrawer?'shift':'cardAnimate'}>
+                    <div>
+                        <Masonry className='displayCards'>
+                        {this.state.notes.map((item,index)=>
+                            <div key={index} >
+                            <DisplayNote trash={this.state.title}
+                            note={item} getNotes={this.getTrashNotes}
+                            list={this.state.list} />
+                            </div>
+                        )}
+                        </Masonry>
                     </div>
-                    <div className={this.state.openDrawer?'shift':'cardAnimate'}>
-                        <NoteEditor labels={this.state.labelsNote} 
-                            openNoteEditor={this.state.openNoteEditor}
-                            noteEditor={this.handleNoteEditor} 
-                            getAllNotes={this.getNoteswithReminders} />
-                        <div>
-                            <Masonry className='displayCards'>
-                            {this.state.notes.map((item,index)=>
-                                <div key={index} >
-                                <DisplayNote 
-                                note={item} getNotes={this.getNoteswithReminders}
-                                list={this.state.list} />
-                                </div>
-                            )}
-                            </Masonry>
-                        </div>
-                    </div>
-                </MuiThemeProvider>
-            </div>
-        )
+                </div>
+            </MuiThemeProvider>
+        </div>)
     }
 }
 
-export default Reminder;
+export default Trash;

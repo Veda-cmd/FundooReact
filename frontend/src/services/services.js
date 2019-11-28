@@ -129,6 +129,13 @@ export function deleteLabelFromNote(request)
     return response;
 }
 
+export function getListings(request)
+{
+    let response = axios.get(baseUrl+'/note/getListings?'+request,{headers:{token:sessionStorage.getItem('token')}})
+
+    return response;
+}
+
 
 export const isLogin = () => {
     if (sessionStorage.getItem('token')) {
