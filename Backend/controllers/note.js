@@ -188,7 +188,7 @@ class NoteController {
             }
 
             if ('title' in req.body || 'description' in req.body || 'color' in req.body ||
-                'reminder' in req.body || 'isArchived' in req.body || 'isPinned' in req.body
+                'reminder' in req.body || 'isArchived' in req.body || 'isPinned' in req.body || 'isTrash' in req.body
                 && 'email' in req.decoded) {
 
                     let note = {
@@ -198,8 +198,10 @@ class NoteController {
                         color: req.body.color || null,
                         isArchived: req.body.isArchived || false,
                         isPinned: req.body.isPinned || false,
-                        reminder: req.body.reminder || null
+                        reminder: req.body.reminder,
+                        isTrash: req.body.isTrash || false
                     }
+                    
                     
                 noteService.updateNote(note)
                 .then(data => {
@@ -278,6 +280,8 @@ class NoteController {
             }
             noteService.deleteLabelFromNote(req.body)
                 .then(data => {
+                    console.log(data);
+                    
                     res.status(200).send(data);
                 })
                 .catch(err => {

@@ -136,6 +136,12 @@ export function getListings(request)
     return response;
 }
 
+export function addLabel(request)
+{
+    let response = axios.post(baseUrl+'/label/add',request,{headers:{token:sessionStorage.getItem('token')}})
+
+    return response;
+}
 
 export const isLogin = () => {
     if (sessionStorage.getItem('token')) {

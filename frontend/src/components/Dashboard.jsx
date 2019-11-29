@@ -39,6 +39,10 @@ const theme = createMuiTheme({
         'MuiPaper': {
             'elevation4': {
                 boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.1)'
+            },
+            'rounded':{
+                borderRadius:'10px',
+                border:'1px solid lightgrey'
             }
         },
         'MuiTypography':{
@@ -168,6 +172,7 @@ class Dashboard extends Component{
                     </div>
                     <div>
                         <Drawer getValue={this.state.openDrawer}
+                                getLabels={this.getAllLabels}
                                 labels={this.state.labels}
                                 props={this.props}
                         ></Drawer>

@@ -96,13 +96,57 @@ class noteService {
 
     getListings(req) {
         return new Promise((resolve, reject) => {
-            noteModel.findAll(req, (err, res) => {
+            noteModel.findAllAndPopulate(req, (err, res) => {
                 if (err) {
                     reject(err);
                 }
                 else {
+                    let array=[]
+                    for(let i=0;i<res.length;i++){
+                        if (res[i].reminder !== null) {
+                            let date = new Date(res[i].reminder).toDateString(),
+                                time = res[i].reminder;
+                            let dateFront = date.slice(4, 10);
+                            var hours = new Date(time).getHours(); // gives the value in 24 hours format
+                            var AmOrPm = hours >= 12 ? 'PM' : 'AM';
+                            hours = (hours % 12) || 12;
+                            var minutes = new Date(time).getMinutes();
+                            minutes = minutes < 10 ? '0' + minutes : minutes;
+                            var finalTime = hours + ":" + minutes + " " + AmOrPm;
+                            let remind= dateFront + ', ' + finalTime;
+                            let request={
+                                id:res[i]._id,
+                                title:res[i].title,
+                                description:res[i].description,
+                                label:res[i].label,
+                                color:res[i].color,
+                                reminder:remind,
+                                isArchived:res[i].isArchived,
+                                isPinned:res[i].isPinned,
+                                isTrash:res[i].isTrash
+                            }
+                            array.push(request);
+                        }
+                        else{
+                            let request={
+                                id:res[i]._id,
+                                title:res[i].title,
+                                description:res[i].description,
+                                color:res[i].color,
+                                label:res[i].label,
+                                reminder:res[i].reminder,
+                                isArchived:res[i].isArchived,
+                                isPinned:res[i].isPinned,
+                                isTrash:res[i].isTrash
+                            }
+                            array.push(request);
+                        }
+                    }
+
                     let key = Object.keys(req)[1] + req.user_id;
-                    redis.set(key, JSON.stringify(res), (error, data) => {
+                    
+                    
+                    redis.set(key, JSON.stringify(array), (error, data) => {
                         if (error) {
                             logger.error(error);
                         }
@@ -272,6 +316,7 @@ class noteService {
     */
 
     updateNote(req) {
+       
         try {
             return new Promise((resolve, reject) => {
                 // Note is searched in database and using note_id.
@@ -283,11 +328,12 @@ class noteService {
                             "title": req.title ? req.title : data.title,
                             "description": req.description ? req.description : data.description,
                             "color": req.color ? req.color : data.color,
-                            "isArchived": req.isArchived == true ? true : false,
-                            "isPinned": req.isPinned == true ? true : false,
-                            "reminder": req.reminder ? req.reminder : data.reminder
+                            "isArchived": req.isArchived === true ? true : false,
+                            "isPinned": req.isPinned === true ? true : false,
+                            "isTrash": req.isTrash === true ? true : false,
+                            "reminder": req.reminder===null ? req.reminder : req.reminder!==null?req.reminder:data.reminder
                         }
-                       
+    
                         // the new fields are updated according to given data in request.
                         
                         noteModel.updateOne({ _id: data._id }, note, (error, res) => {
@@ -303,7 +349,6 @@ class noteService {
                                         logger.error(err);
                                     }
                                     else{
-                                        console.log(res);
                                         
                                         this.getAllNotes({email:res.user_id});
                                         let archiveObject = { user_id: res.user_id, isArchived: true };
@@ -336,7 +381,7 @@ class noteService {
         // isTrash property of the specified note is updated to true.
         console.log(req);
         
-        noteModel.updateOne({ _id: req.note_id }, { isTrash: true }, (err, data) => {
+        noteModel.updateOne({ _id: req.note_id }, { isTrash: true,reminder:null }, (err, data) => {
             if (err) {
                 callback(err);
             }
@@ -379,7 +424,13 @@ class noteService {
                                 }
                                 else {
                                     resolve({ message: "Label added successfully" });
-                                    this.getAllNotes({email:data.user_id})
+                                    this.getAllNotes({email:data.user_id});
+                                    let archiveObject = { user_id: response.user_id, isArchived: true };
+                                    this.getListings(archiveObject);
+                                    let trashObject = { user_id: response.user_id, isTrash: true };
+                                    this.getListings(trashObject);
+                                    let pinnedObject = { user_id: response.user_id, isPinned: true };
+                                    this.getListings(pinnedObject);
                                 }
                             });
                         }
@@ -412,11 +463,17 @@ class noteService {
 
             noteModel.updateOne({ _id: req.note_id }, label, (err, data) => {
                 if (err) {
-                    reject(err);
+                    return reject(err);
                 }
                 else {
-                    this.getAllNotes({email:data.user_id})
-                    resolve({ message: "Label deleted successfullyk" });
+                    this.getAllNotes({email:data.user_id});
+                    let archiveObject = { user_id: data.user_id, isArchived: true };
+                    this.getListings(archiveObject);
+                    let trashObject = { user_id: data.user_id, isTrash: true };
+                    this.getListings(trashObject);
+                    let pinnedObject = { user_id: data.user_id, isPinned: true };
+                    this.getListings(pinnedObject);
+                    resolve({ message: "Label deleted successfully" });
                 }
             });
         });

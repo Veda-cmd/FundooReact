@@ -132,8 +132,9 @@ class DisplayNote extends Component {
         })
         
         let request = {
-            note_id: this.props.note.id
+            note_id: this.props.note.id,
         }
+
         Service.deleteNote(request)
         .then(response => {
             
@@ -174,6 +175,7 @@ class DisplayNote extends Component {
             note_id: this.props.note.id,
             label_id:item._id
         }
+        
         Service.deleteLabelFromNote(request)
         .then(res=>{
             this.props.getNotes();
@@ -195,7 +197,6 @@ class DisplayNote extends Component {
             note_id: this.props.note.id,
             isTrash:false
         }
-        console.log(request);
         
         Service.updateNote(request)
         .then(response => {

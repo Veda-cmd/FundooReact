@@ -1,12 +1,20 @@
 import React,{Component} from 'react';
 import './Dashboard.scss';
 import Drawer from '@material-ui/core/Drawer';
+import EditLabelDialog from './EditLabels';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 
 class DrawerMenu extends Component{
+
+    constructor(props){
+        super(props);
+        this.state={
+            edit:false
+        }
+    }
 
     handleReminder=()=>{
        this.props.props.history.push('/dashboard/reminders');
@@ -28,7 +36,14 @@ class DrawerMenu extends Component{
         this.props.props.history.push('/dashboard/trash');
     }
 
+    handleDialog=(event)=>{
+        this.setState({
+            edit:!this.state.edit
+        })
+    }
+
     render(){
+        
         return(
             <div>
                 <Drawer
@@ -57,11 +72,20 @@ class DrawerMenu extends Component{
                         {this.props.labels.map((item,index)=>
                         <ListItem button onClick={(event)=>this.handleLabel(event,item)} key={index}>
                             <ListItemIcon>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16zM16 17H5V7h11l3.55 5L16 17z"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12l-4.37-6.16zM16 17H5V7h11l3.55 5L16 17z"></path>
                             </svg>
                             </ListItemIcon>
                             <span>{item.label_name}</span>
                         </ListItem>)}
+                        <ListItem button onClick={(event)=>{this.handleDialog(event)}}>
+                            <ListItemIcon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M20.41 4.94l-1.35-1.35c-.78-.78-2.05-.78-2.83 0L13.4 6.41 3 16.82V21h4.18l10.46-10.46 2.77-2.77c.79-.78.79-2.05 0-2.83zm-14 14.12L5 19v-1.36l9.82-9.82 1.41 1.41-9.82 9.83z"></path>
+                            </svg>
+                            </ListItemIcon>
+                            <span>Edit labels</span>
+                        </ListItem>
                     </List>
                     <Divider/>
                     <List className='spanTitle'>
@@ -84,6 +108,10 @@ class DrawerMenu extends Component{
                         </ListItem>
                     </List>
                 </Drawer>
+                <EditLabelDialog open={this.state.edit}
+                getLabels={this.props.getLabels}
+                handleDialog={this.handleDialog}
+                labels={this.props.labels}/>
             </div>
         )
     }

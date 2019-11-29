@@ -256,6 +256,7 @@ class Note extends Component{
                             <TextField id='description' 
                             placeholder='Take a note...'
                             multiline={true}
+                            autoFocus
                             name='description'
                             value={this.state.description}
                             onChange={(event)=>this.input(event)}

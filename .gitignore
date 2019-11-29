@@ -2,3 +2,5 @@
 /Backend/test/.env
 /Backend/test/cool.jpeg
 /Backend/test/token.txt
+/Backend/test/logs
+/Backend/logs
