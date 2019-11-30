@@ -40,6 +40,27 @@ width:70px
 padding: 12px;
 }
 
+#createLabelStart:hover,#createLabelDone:hover{
+cursor: pointer;
+}
+
+#delete {
+color: grey;
+display: none;
+cursor: pointer;
+margin: 5px 0 0 5px;
+}
+
+#show:hover #label {
+color: grey;
+display: none;
+}
+
+#show:hover #delete {
+color:grey;
+display: inline;
+}
+
 #input{
     font-family:'Roboto',arial,sans-serif;
     padding: 13px;

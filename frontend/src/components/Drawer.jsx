@@ -110,6 +110,7 @@ class DrawerMenu extends Component{
                 </Drawer>
                 <EditLabelDialog open={this.state.edit}
                 getLabels={this.props.getLabels}
+                getNotes={this.props.getNotes}
                 handleDialog={this.handleDialog}
                 labels={this.props.labels}/>
             </div>

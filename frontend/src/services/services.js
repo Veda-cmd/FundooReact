@@ -143,6 +143,27 @@ export function addLabel(request)
     return response;
 }
 
+export function deleteLabel(request)
+{
+    let response = axios.post(baseUrl+'/label/delete',request,{headers:{token:sessionStorage.getItem('token')}})
+
+    return response;
+}
+
+export function updateLabel(request)
+{
+    let response = axios.post(baseUrl+'/label/update',request,{headers:{token:sessionStorage.getItem('token')}})
+
+    return response;
+}
+
+export function search(request)
+{
+    let response = axios.post(baseUrl+'/note/searchNote',request,{headers:{token:sessionStorage.getItem('token')}})
+
+    return response;
+}
+
 export const isLogin = () => {
     if (sessionStorage.getItem('token')) {
         return true;

@@ -155,12 +155,10 @@ export default withStyles(useStyles)(
             })
         };
 
-        searchNotes=(event)=>{
-           
-        }
-
         render()
         {
+            console.log(this.props.value);
+            
             const {classes} = this.props;
             return(
             <div className={classes.grow}>
@@ -191,9 +189,18 @@ export default withStyles(useStyles)(
                                     </Tooltip>   
                                 </InputAdornment> 
                             )}
-                            onChange={(event)=>this.searchNotes(event)}
+                            // value={this.props.value}
+                            onChange={(event)=>this.props.search(event)}
+                            onClick={(event)=>this.props.opensearch(event)}
                             placeholder='Search' 
-                            inputProps={{'aria-label':'search'}}/>
+                            inputProps={{'aria-label':'search'}}
+                            endAdornment={(this.props.toggle?<button onClick={(event)=>this.props.close(event)} id='searchButton' aria-label="Clear search" type="button">
+                                <svg focusable="false" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                </svg>
+                                </button>:null)}
+                            />
                         </div>
                         <div className={this.state.refresh?'loader':'refresh'} onClick={this.handleReload}>
                             <Tooltip title='Refresh'>

@@ -78,6 +78,47 @@
     padding: 15px 24px 10px;
 }
 
+#searchButton{
+visibility: visible;
+margin:10px;
+padding: 0 5px;
+background: none;
+border: none;
+cursor: pointer;
+outline: none;
+line-height: 0;
+transition: opacity 250ms ease-out;
+}
+
+#searchButton:hover{
+    background-color: rgba(60,64,67,0.08);
+    border-radius: 40%;
+}
+
+.searchText{
+    color: #80868b;
+    cursor: default;
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-size: 1.375rem;
+    font-weight: 400;
+    line-height: 1.75rem;
+}
+
+.searchDisplay{
+   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjMDAwIj4KICA8cGF0aCBkPSJNMTcuNjMgNS44NEMxNy4yNyA1LjMzIDE2LjY3IDUgMTYgNUw1IDUuMDFDMy45IDUuMDEgMyA1LjkgMyA3djEwYzAgMS4xLjkgMS45OSAyIDEuOTlMMTYgMTljLjY3IDAgMS4yNy0uMzMgMS42My0uODRMMjIgMTJsLTQuMzctNi4xNnpNMTYgMTdINVY3aDExbDMuNTUgNUwxNiAxN3oiLz4KPC9zdmc+Cg==);
+   opacity: .2;
+   background-size: 120px 120px;
+    height: 120px;
+    margin-left: 35rem;
+    margin-top: 18rem;
+    width: 120px;
+}
+
+.searchDiv{
+    margin-top:150px;
+    margin-left: 100px;
+}
+
 .displayCards{
     max-width: auto;
     margin-top: 30px;

@@ -30,7 +30,8 @@ const theme = createMuiTheme({
         'MuiDrawer': {
             'paper': {
                 top: "66px",
-                width: "250px"
+                width: "250px",
+                height:'calc(100% - 50px);'
             },
             'paperAnchorDockedLeft': {
                 borderRight: '0px solid'
@@ -84,7 +85,10 @@ class Dashboard extends Component{
             list:false,
             notes:[],
             labels:[],
-            title:null
+            title:null,
+            toggle:false,
+            search:false,
+            value:''
         }        
     }
  
@@ -151,6 +155,50 @@ class Dashboard extends Component{
         })
     }
 
+    searchNotes=(event)=>{
+        
+        if(event.target.value.length>0){
+            this.setState({
+                search:true
+            })
+
+            let request={
+                search:event.target.value
+            }
+        
+            Service.search(request)
+            .then(res=>{
+                console.log(res.data.data);
+                this.setState({
+                    notes:res.data.data
+                })
+                
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+        }
+        else{
+            this.setState({
+                search:false
+            })
+        }
+    }
+
+    searchClose=(event)=>{
+        this.setState({
+            toggle:!this.state.toggle,
+            [event.target.value]:''
+        })
+        this.getAllNotes();
+    }
+
+    searchOpen=(event)=>{
+        this.setState({
+            toggle:!this.state.toggle,
+        })
+    }
+
     UNSAFE_componentWillMount(){
         this.getAllNotes();
         this.getAllLabels();
@@ -163,7 +211,12 @@ class Dashboard extends Component{
             <div>
                 <MuiThemeProvider theme={theme}>
                     <div>
-                    <Appbar title={this.state.title}
+                    <Appbar value={this.state.value} 
+                        opensearch={this.searchOpen} 
+                        toggle={this.state.toggle}
+                        close={this.searchClose} 
+                        search={this.searchNotes} 
+                        title={this.state.title}
                         handleDrawer={this.handleDrawerOpen}
                         getNotes={this.getAllNotes}
                         list={this.handleList}
@@ -171,12 +224,33 @@ class Dashboard extends Component{
                         props={this.props} />
                     </div>
                     <div>
-                        <Drawer getValue={this.state.openDrawer}
+                        <Drawer 
+                                getValue={this.state.openDrawer}
+                                getNotes={this.getAllNotes}
                                 getLabels={this.getAllLabels}
                                 labels={this.state.labels}
                                 props={this.props}
                         ></Drawer>
                     </div>
+                    {this.state.toggle?
+                    <div>
+                        {this.state.search?
+                        <div className='searchDiv'>
+                            <Masonry className='displayCards'>
+                            {this.state.notes.map((item,index)=>
+                                <div key={index} >
+                                <DisplayNote 
+                                note={item}  />
+                                </div>
+                            )}
+                            </Masonry>
+                        </div>  
+                        :
+                        <div>
+                            <div className='searchDisplay'></div>
+                            <div className='searchText'>No search data</div>
+                        </div>}
+                    </div>:
                     <div className={this.state.openDrawer?'shift':'cardAnimate'}>
                         <Note labels={this.state.labelsNote} 
                             openNoteEditor={this.state.openNoteEditor}
@@ -194,6 +268,7 @@ class Dashboard extends Component{
                             </Masonry>
                         </div>
                     </div>
+                    }
                 </MuiThemeProvider> 
             </div>
         )
