@@ -157,12 +157,11 @@ export default withStyles(useStyles)(
 
         render()
         {
-            console.log(this.props.value);
-            
+           
             const {classes} = this.props;
             return(
             <div className={classes.grow}>
-                <AppBar position='fixed' color='inherit' style={{border:'1px light'}}>
+                <AppBar position='fixed' color='inherit'>
                     <Toolbar>
                         <IconButton
                         edge='start'

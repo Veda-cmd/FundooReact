@@ -20,7 +20,7 @@ class labelService {
     */
 
     add(req, callback) {
-        labelModel.findOne(req)
+        labelModel.findOne({label_name:req.label_name})
             .then(data => {
                 if (data != null) {
                     callback(null, data);
@@ -95,7 +95,7 @@ class labelService {
     getAllLabels(req){
         return new Promise((resolve,reject)=>
         {
-            labelModel.findAll({},(err,success)=>
+            labelModel.findAll({user_id:req.email},(err,success)=>
             {   
                 if(err){
                     reject(err)

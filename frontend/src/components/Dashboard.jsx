@@ -65,6 +65,12 @@ const theme = createMuiTheme({
                 marginLeft:'10px',
                 marginTop:'10px'
             }
+        },
+        'MuiButtonBase':{
+            'root':{
+                backgroundColor:null,
+                borderRadius:null
+            }
         }
     }
 });
@@ -168,7 +174,6 @@ class Dashboard extends Component{
         
             Service.search(request)
             .then(res=>{
-                console.log(res.data.data);
                 this.setState({
                     notes:res.data.data
                 })
@@ -235,12 +240,13 @@ class Dashboard extends Component{
                     {this.state.toggle?
                     <div>
                         {this.state.search?
-                        <div className='searchDiv'>
+                        <div className={this.state.openDrawer?'shift':'cardAnimate'}>
                             <Masonry className='displayCards'>
                             {this.state.notes.map((item,index)=>
                                 <div key={index} >
                                 <DisplayNote 
-                                note={item}  />
+                                note={item} getNotes={this.getAllNotes}
+                                list={this.state.list} />
                                 </div>
                             )}
                             </Masonry>

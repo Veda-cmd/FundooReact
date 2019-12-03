@@ -5,6 +5,14 @@
     cursor: default;
     color: rgb(100,108,108);
 }
+.iconButton{
+background-color: transparent;
+}
+
+.buttonBackground{
+    border-radius: 0 25px 25px 0;
+    background-color: #feefc3;
+}
 
 .imgTitle{
     @include flex;

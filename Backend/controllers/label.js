@@ -20,6 +20,7 @@ class labelController {
     */
 
     async addLabel(req, res) {
+       
         try {
 
             // express-validator is used for validation of input
@@ -29,8 +30,13 @@ class labelController {
                 return res.status(422).json({ errors: errors });
             }
 
+            let request={
+                label_name:req.body.label_name,
+                user_id:req.decoded.email
+            }
+            
             // add method of label service is called
-            labelService.add(req.body, (err, data) => {
+            labelService.add(request, (err, data) => {
                 if (err) {
                     res.status(422).send(err);
                 }
@@ -67,7 +73,13 @@ class labelController {
                     res.status(422).send(err);
                 }
                 else {
-                    res.status(200).send(data);
+                    service.getAllNotes({email:data.user_id})
+                    .then(success=>{
+                        res.status(200).send(data);
+                    })
+                    .catch(error=>{
+                        logger.error(error)
+                    }) 
                 }
             });
         }
@@ -85,14 +97,16 @@ class labelController {
 
     async deleteLabel(req, res) {
         try {
-            req.checkBody('_id', 'Label id cannot be empty').notEmpty();
+            req.checkBody('id', 'Label id cannot be empty').notEmpty();
             const errors = await req.validationErrors();
             if (errors) {
                 return res.status(422).json({ errors: errors });
             }
-
+            let request={
+                _id:req.body.id
+            }
             // delete method of label service is called
-            labelService.delete(req.body, (err, data) => {
+            labelService.delete(request, (err, data) => {
                 if (err) {
                     res.status(422).send(err);
                 }
@@ -100,9 +114,12 @@ class labelController {
                     // after getting success response from label service, we call removeLabel method
                     // in note Service to update notes having reference of the deleted label.
                     let request = {
-                        $pull: {
-                            label: data._id
-                        }
+                        label:{
+                            $pull: {
+                                label: data._id
+                            }
+                        },
+                        user_id:data.user_id
                     }
                 
                     service.removeLabel(request, (error, success) => {
@@ -110,6 +127,7 @@ class labelController {
                             res.status(422).send(err);
                         }
                         else {
+                            logger.info(`Success in removinf labels`);
                             res.status(200).send(data);
                         }
                     })

@@ -21,6 +21,10 @@ const labelSchema = mongoose.Schema({
         type:String,
         required:true,
         unique:true
+    },
+    user_id:{
+        type:String,
+        required:true
     }
 });
 
@@ -115,8 +119,10 @@ class labelModel
     addLabel(req,callback)
     {
         const label = new Label({
-            label_name:req.label_name
+            label_name:req.label_name,
+            user_id:req.user_id
         });
+        
         label.save((err,data)=>
         {
             if(err)
@@ -127,6 +133,7 @@ class labelModel
             {
                 let res ={
                     _id:data._id,
+                    label_name:data.label_name,
                     message:"Label created successfully"
                 }
                 callback(null,res);

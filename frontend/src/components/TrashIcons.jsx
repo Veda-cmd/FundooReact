@@ -7,7 +7,7 @@ class TrashIcons extends Component{
        
         return(
             <div className='trashIcons'>
-                <div id='delete'>
+                <div id='deleteicon' onClick={(event)=>this.props.delete(event)}>
                     <Tooltip title='Delete forever'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" viewBox="0 0 24 24">
                         <path fill="none" d="M0 0h24v24H0V0z"/>

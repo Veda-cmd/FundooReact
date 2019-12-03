@@ -6,7 +6,7 @@
 */
 
 import React, { Component } from 'react';
-import { Card, Tooltip,Avatar } from '@material-ui/core';
+import { Card, Tooltip,Avatar} from '@material-ui/core';
 import Chip from '@material-ui/core/Chip';
 import Icon from './IconList';
 import TrashIcons from './TrashIcons';
@@ -42,7 +42,6 @@ class DisplayNote extends Component {
     }
 
     getReminderData=(date,time)=>{
-
         let newTime= time.toString().slice(16,25),
         dateFront=date.toString().slice(3,10);
         let reminder=dateFront+','+date.toString().slice(11,15)+' '+newTime;
@@ -208,6 +207,24 @@ class DisplayNote extends Component {
         });
     }
 
+    handleDeleteNote=(event)=>{
+        let request = {
+            note_id: this.props.note.id,
+        }
+        
+        Service.deleteNoteForever(request)
+        .then(response => {
+            this.props.getNotes();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+
+    handleClickAway=()=>{
+        this.handleDialogBox();
+    }
+
     render() {
         return (
             <div className={this.props.list ? 'double' : 'single'}>
@@ -243,17 +260,18 @@ class DisplayNote extends Component {
                     </div>
                     {this.props.trash!=='Trash'?
                         <div id='icons'>
-                                <Icon archive={this.props.archive}
-                                    getReminder={this.getReminderData} 
-                                    setUnarchive={this.setUnarchive}
-                                    setArchive={this.setArchive}
-                                    getNotes={this.props.getNotes} 
-                                    note={this.props.note} 
-                                    getColor={this.setColor}
-                                    delete={this.deleteNote} />
+                            <Icon archive={this.props.archive}
+                                getReminder={this.getReminderData} 
+                                setUnarchive={this.setUnarchive}
+                                setArchive={this.setArchive}
+                                getNotes={this.props.getNotes} 
+                                note={this.props.note} 
+                                getColor={this.setColor}
+                                delete={this.deleteNote} />
                         </div>
                         :
                         <TrashIcons restore={this.handleRestoreNote}
+                        delete={this.handleDeleteNote}
                         />
                     }
                     

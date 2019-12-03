@@ -97,6 +97,7 @@ class noteModel
 
     findAll(req,callback)
     {
+       
         Note.find(req,(err,data)=>
         {
             if(err)
@@ -173,6 +174,18 @@ class noteModel
         {
             callback(err);
         });
+    }
+
+    deleteOne(req,callback){
+       
+        Note.findOneAndDelete(req)
+        .then(res=>{
+            
+            callback(null,res)
+        })
+        .catch(err=>{
+            logger.error(err)
+        })
     }
 
     add(req,callback)

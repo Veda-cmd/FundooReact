@@ -115,6 +115,13 @@ export function deleteNote(request)
     return response;
 }
 
+export function deleteNoteForever(request)
+{
+    let response = axios.post(baseUrl+'/note/forever',request,{headers:{token:sessionStorage.getItem('token')}})
+
+    return response;
+}
+
 export function addLabelToNote(request)
 {
     let response = axios.post(baseUrl+'/note/addLabel',request,{headers:{token:sessionStorage.getItem('token')}})
@@ -145,6 +152,8 @@ export function addLabel(request)
 
 export function deleteLabel(request)
 {
+    console.log(request);
+    
     let response = axios.post(baseUrl+'/label/delete',request,{headers:{token:sessionStorage.getItem('token')}})
 
     return response;

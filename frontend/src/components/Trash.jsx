@@ -122,6 +122,8 @@ class Trash extends Component{
     }
 
     render(){
+        console.log(this.state.notes);
+        
         return(
         <div>
             <MuiThemeProvider theme={theme}>

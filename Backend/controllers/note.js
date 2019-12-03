@@ -131,6 +131,7 @@ class NoteController {
     */
 
     searchNotes(req, res) {
+       
         try {
             /**
             *@description If params are not present in req.body, it goes to else part.
@@ -244,6 +245,33 @@ class NoteController {
     }
 
     /**
+    *@description deleteNoteForever API is used for deleting note permanently.
+    */
+
+    deleteNoteForever(req,res){
+        
+        try {
+            req.checkBody('note_id', 'Note id cannot be empty').notEmpty();
+            const errors = req.validationErrors();
+            if (errors) {
+                return res.status(422).json({ errors: errors });
+            }
+            
+            noteService.deleteNoteForever(req.body, (err, data) => {
+                if (err) {
+                    res.status(422).send(err);
+                }
+                else {
+                    res.status(200).send(data);
+                }
+            })
+        } 
+        catch (error) {
+            res.status(422).send({message:"Operation failed."});
+        }
+    }
+
+    /**
     *@description addLabelToNote API is used for adding labels to an existing note.
     */
 
@@ -272,6 +300,8 @@ class NoteController {
 
     deleteLabelFromNote(req, res) {
         try {
+            console.log(req.body);
+            
             req.checkBody('note_id', 'Note id cannot be empty').notEmpty();
             req.checkBody('label_id', 'Label id cannot be empty').notEmpty();
             const errors = req.validationErrors();

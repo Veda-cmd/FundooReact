@@ -106,6 +106,10 @@ class DialogBox extends Component {
         })
     }
 
+    handleClickAway=()=>{
+        this.props.handleBox();
+    }
+
     UNSAFE_componentWillReceiveProps() {
         this.setState({ 
             color: this.props.item.color,
@@ -127,7 +131,6 @@ class DialogBox extends Component {
     }
 
     render() {
-       
         return (
             <div>
                 <Dialog open={this.props.open}
@@ -197,8 +200,8 @@ class DialogBox extends Component {
                     </div>
                 </Dialog>
             </div>
-        )
-    }
+    )
+}
 }
 
 export default DialogBox;

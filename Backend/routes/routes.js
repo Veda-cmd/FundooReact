@@ -36,6 +36,7 @@ router.post('/note/addLabel',auth.loginToken,noteController.addLabelToNote);
 router.post('/note/deleteLabel',auth.loginToken,noteController.deleteLabelFromNote);
 router.post('/note/updateNote',auth.loginToken,noteController.updateNote);
 router.post('/note/deleteNote',auth.loginToken,noteController.deleteNote);
+router.post('/note/forever',auth.loginToken,noteController.deleteNoteForever);
 router.post('/note/searchNote',auth.loginToken,noteController.searchNotes);
 router.get('/label/getAllLabels',auth.loginToken,labelController.getAllLabels);
 router.post('/label/add',auth.loginToken,labelController.addLabel);

@@ -3,4 +3,8 @@
 /Backend/test/cool.jpeg
 /Backend/test/token.txt
 /Backend/test/logs
+/Backend/services/push.js
 /Backend/logs
+/frontend/public/firebase-messaging-sw.js
+/frontend/src/push/*.js
+/frontend/src/push/

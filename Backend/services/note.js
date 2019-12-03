@@ -14,7 +14,7 @@ const cron = require('node-cron')
 const noteModel = require('../models/note');
 const labelService = require('./label');
 const logger = require('./log');
-
+const push=require('./push.js')
 
 class noteService {
 
@@ -23,9 +23,7 @@ class noteService {
     */
 
     add(req, callback) {
-        
-        // console.log('req',req);
-        
+       
         // add method is used for saving note to database
 
         noteModel.add(req, (error, res) => {
@@ -45,7 +43,7 @@ class noteService {
                     // If label field is present in request, labelService is called to 
                     // register the label in Schema and return label id.
 
-                    labelService.add({ label_name: req.label[i] }, (err, result) => {
+                    labelService.add({user_id: req.user_id,label_name: req.label[i]}, (err, result) => {
 
                         if (result.id != null) {
                             let labelID = [];
@@ -246,16 +244,17 @@ class noteService {
                         [
                             { 'title': { $regex: enteredData, $options: 'i' } },
                             { 'description': { $regex: enteredData, $options: 'i' } },
-                            { 'reminder': { $regex: enteredData, $options: 'i' } },
+                            // { 'reminder': { $regex: enteredData, $options: 'i' } },
                             { 'color': { $regex: enteredData, $options: 'i' } }
                         ]
                 }, { 'user_id': req.email }]
             }
-
+            
         // Notes are retrieved according to the specified query.
 
-        noteModel.findAll(query, (err, res) => {
+        noteModel.findAllAndPopulate(query, (err, res) => {
             if (err) {
+                
                 logger.error(err);
             }
             else {
@@ -335,6 +334,7 @@ class noteService {
                         }
     
                         // the new fields are updated according to given data in request.
+                       
                         
                         noteModel.updateOne({ _id: data._id }, note, (error, res) => {
                             if (error) {
@@ -379,8 +379,7 @@ class noteService {
 
     deleteNote(req, callback) {
         // isTrash property of the specified note is updated to true.
-        console.log(req);
-        
+       
         noteModel.updateOne({ _id: req.note_id }, { isTrash: true,reminder:null }, (err, data) => {
             if (err) {
                 callback(err);
@@ -388,6 +387,27 @@ class noteService {
             else {
                 callback(null, { message: 'Note moved to Trash' });
                 this.getAllNotes({email:data.user_id});
+            }
+        });
+    }
+
+    deleteNoteForever(req, callback) {
+        // isTrash property of the specified note is updated to true.
+       
+        noteModel.deleteOne({ _id: req.note_id },(err, data) => {
+           
+            if (err) {
+                callback(err);
+            }
+            else {    
+                this.getAllNotes({email:data.user_id});
+                let archiveObject = { user_id: data.user_id, isArchived: true };
+                this.getListings(archiveObject);
+                let trashObject = { user_id: data.user_id, isTrash: true };
+                this.getListings(trashObject);
+                let pinnedObject = { user_id: data.user_id, isPinned: true };
+                this.getListings(pinnedObject);
+                callback(null, { message: 'Note deleted' });
             }
         });
     }
@@ -485,11 +505,12 @@ class noteService {
 
     removeLabel(req, callback) {
         // updateMany method from note model is called
-        noteModel.updateMany({}, req, (err, data) => {
+        noteModel.updateMany({user_id:req.user_id}, req.label, (err, data) => {
             if (err) {
                 return callback(err);
             }
             else {
+                this.getAllNotes({email:req.user_id});
                 return callback(null, data);
             }
         });
@@ -521,8 +542,9 @@ class noteService {
     }
 
     reminderSchedular() {
-        cron.schedule('15 * * * *', () => {
-            noteModel.findAll({}, (err, result) => {
+        cron.schedule('0 0 * * *', () => {
+            
+            noteModel.findAllAndPopulate({}, (err, result) => {
                 if (err) {
                     callback(err);
                 }
@@ -567,8 +589,9 @@ class noteService {
                         for (let j = 0; j < sortArray.length; j++) {
                             let currentReminder = new Date(sortArray[j].reminder).getDay();
                             let today = new Date().getDay();
-                            if (sortArray[j].reminder != 'false' && currentReminder == today) {
-                                console.log(`Upcoming reminders are:\n`, sortArray[j]);
+                            if (sortArray[j].reminder != null && currentReminder == today) {
+                                // console.log(`Upcoming reminders are:\n`, sortArray[j]);
+                                push.pushNotify(sortArray[j]);
                             }
                         }
                     }

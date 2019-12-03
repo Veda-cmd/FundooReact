@@ -43,6 +43,7 @@ class LabelPoppper extends Component{
             return;
         }
         else if(this.props.dialog){
+            
             if(event.target.checked === false){
                 for(let i=0;i<this.state.noteLabels.label.length;i++){
                     if(this.state.noteLabels.label[i]._id===item._id){
@@ -84,6 +85,7 @@ class LabelPoppper extends Component{
             }
         }
         else{
+            
             if(event.target.checked === false){
                 for(let i=0;i<this.state.noteLabels.label.length;i++){
                     if(this.state.noteLabels.label[i]._id===item._id){
@@ -98,6 +100,7 @@ class LabelPoppper extends Component{
                     note_id:this.state.noteLabels.id,
                     label_id:item._id
                 }
+               
                 Service.deleteLabelFromNote(request)
                 .then(response=>{
                     // console.log(response);
@@ -130,6 +133,7 @@ class LabelPoppper extends Component{
   
 
     render(){
+       
         return(
             <div>
                 <Popper className='labelPop' open={this.props.open} anchorEl={this.props.anchorEl}
