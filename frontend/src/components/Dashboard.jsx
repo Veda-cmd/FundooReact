@@ -71,6 +71,16 @@ const theme = createMuiTheme({
                 backgroundColor:null,
                 borderRadius:null
             }
+        },
+        'MuiButton':{
+            'root':{
+                backgroundColor:'transparent'
+            }
+        },
+        'MuiIconButton':{
+            'root':{
+                backgroundColor:'transparent'
+            }
         }
     }
 });
@@ -204,6 +214,28 @@ class Dashboard extends Component{
         })
     }
 
+    handleDragStart=(e,note)=>{
+        e.dataTransfer.setData('text/plain', note.id);
+    }
+
+    onDrop=(e,index)=>{
+        let note = e.dataTransfer.getData('text');
+        let temp,noteArray=this.state.notes;
+
+        for(let i=0;i<noteArray.length;i++){  
+            if(noteArray[i].id === note){
+                temp=noteArray[index];
+                noteArray[index]=noteArray[i];
+                noteArray[i]=temp;
+                break;
+            }
+        }
+
+        this.setState({
+            notes:noteArray
+        })
+    }
+
     UNSAFE_componentWillMount(){
         this.getAllNotes();
         this.getAllLabels();
@@ -265,8 +297,9 @@ class Dashboard extends Component{
                         <div>
                             <Masonry className='displayCards'>
                             {this.state.notes.map((item,index)=>
-                                <div key={index} >
-                                <DisplayNote 
+                                <div key={index}  onDragOver={(e) => e.preventDefault()}
+                                onDrop={(e)=>this.onDrop(e,index)}>
+                                <DisplayNote handleDragStart={this.handleDragStart}
                                 note={item} getNotes={this.getAllNotes}
                                 list={this.state.list} />
                                 </div>

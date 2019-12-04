@@ -66,6 +66,7 @@ const useStyles = {
     },
     menuButton: {
       marginRight: theme.spacing(2),
+      backgroundColor:'transparent'
     },
     title: {
       display: 'none',
@@ -243,6 +244,7 @@ export default withStyles(useStyles)(
                         <IconButton
                             edge="end"
                             aria-label="account of current user"
+                            className='iconButton'
                             aria-haspopup="true"
                             color="inherit"
                             onClick={(event)=>{this.handleMenu(event)}}

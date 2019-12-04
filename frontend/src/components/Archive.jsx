@@ -131,7 +131,8 @@ class Archive extends Component{
                         getNotes={this.getArchivedNotes}
                         list={this.handleList}
                         tagChange={this.state.list}
-                        props={this.props} />
+                        props={this.props} 
+                    />
                 </div>
                 <div>
                     <Drawer getValue={this.state.openDrawer} 

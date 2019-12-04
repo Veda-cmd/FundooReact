@@ -228,7 +228,7 @@ class DisplayNote extends Component {
     render() {
         return (
             <div className={this.props.list ? 'double' : 'single'}>
-                <Card
+                <Card draggable  onDragStart={(e) => this.props.handleDragStart(e, this.props.note)}
                     style={{ backgroundColor: this.state.color === '' ? this.props.note.color : this.state.color }}>
                     <div className='title' onClick={this.handleDialogBox}>
                         <div className='label1'>
